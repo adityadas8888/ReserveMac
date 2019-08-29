@@ -27,7 +27,7 @@ public class LoginRepository {
         }
         return instance;
     }
-
+    // Comments for the new branch [Priyank]
     public boolean isLoggedIn() {
         return user != null;
     }
