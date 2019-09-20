@@ -1,0 +1,46 @@
+<?php
+  $host_name = 'db5000177580.hosting-data.io';
+  $database = 'dbs172376';
+  $user_name = 'dbu264463';
+  $password = 'tvh-fqz@f3mpuJ5';
+  $dbh = null;
+
+  try {
+    $dbh = new PDO("mysql:host=$host_name; dbname=$database;", $user_name, $password);
+    $sql = 'use dbs1722376; SELECT distinct username, password from user_login;';
+    $q = $pdo->query($sql);
+    $q->setFetchMode(PDO::FETCH_ASSOC);
+  } catch (PDOException $e) {
+    die("Error!: " . $e->getMessage());
+    
+  }
+  echo "Connection successful";
+?><!DOCTYPE html>
+<html>
+    <head>
+        <title>PHP MySQL Query Data Demo</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="container">
+            <h1>users</h1>
+            <table class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>username</th>
+                        <th>password</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while ($row = $q->fetch()): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['username']) ?></td>
+                            <td><?php echo htmlspecialchars($row['password']); ?></td>
+                        </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+    </body>
+</div>
+</html>
