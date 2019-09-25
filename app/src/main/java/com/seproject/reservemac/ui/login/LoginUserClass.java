@@ -1,77 +1,87 @@
 package com.seproject.reservemac.ui.login;
 
+
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
+import java.net.URLConnection;
 import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
 
-import javax.net.ssl.HttpsURLConnection;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 
-public class LoginUserClass {
+import android.content.Context;
+import android.os.AsyncTask;
+import android.widget.Toast;
 
-    public String sendPostRequest(String requestURL,
-                                  HashMap<String, String> postDataParams) {
 
-        URL url;
-        String response = "";
-        try {
-            url = new URL(requestURL);
+public  class LoginUserClass extends  AsyncTask<String, Void,String>{
 
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(15000);
-            conn.setConnectTimeout(15000);
-            conn.setRequestMethod("POST");
-            conn.setDoInput(true);
-            conn.setDoOutput(true);
-            conn.setDoOutput(true);
-            OutputStream os = conn.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(
-                    new OutputStreamWriter(os, "UTF-8"));
-            writer.write(getPostDataString(postDataParams));
+    private Context context;
 
-            writer.flush();
-            writer.close();
-            os.close();
-            int responseCode=conn.getResponseCode();
 
-            if (responseCode == HttpsURLConnection.HTTP_OK) {
-                BufferedReader br=new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                response = br.readLine();
-            }
-            else {
-                response="Error Logging in";
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    //flag 0 means get and 1 means post.(By default it is get.)
+    public LoginUserClass(Context context) {
 
-        return response;
+        this.context = context;
     }
 
-    private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
-        StringBuilder result = new StringBuilder();
-        boolean first = true;
-        for(Map.Entry<String, String> entry : params.entrySet()){
-            if (first)
-                first = false;
-            else
-                result.append("&");
+    @Override
+    protected String doInBackground(String... arg0) {
+        try{
+            Toast.makeText(context,"inside try",Toast.LENGTH_LONG).show();
+            String username = arg0[0];
+            String password = arg0[1];
 
-            result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
-            result.append("=");
-            result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
+            String link="http://zenithwrites.org/login.php";
+            String data  = URLEncoder.encode("username", "UTF-8") + "=" +
+                    URLEncoder.encode(username, "UTF-8");
+            data += "&" + URLEncoder.encode("password", "UTF-8") + "=" +
+                    URLEncoder.encode(password, "UTF-8");
+
+            URL url = new URL(link);
+            URLConnection conn = url.openConnection();
+
+            conn.setDoOutput(true);
+            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+
+            wr.write( data );
+            wr.flush();
+
+            BufferedReader reader = new BufferedReader(new
+                    InputStreamReader(conn.getInputStream()));
+
+            StringBuilder sb = new StringBuilder();
+            String line = null;
+            Toast.makeText(context,reader.readLine(),Toast.LENGTH_LONG).show();
+            // Read Server Response
+            while((line = reader.readLine()) != null) {
+                sb.append(line);
+                break;
+            }
+            Toast.makeText(context,line.toString(),Toast.LENGTH_LONG).show();
+            return sb.toString();
+        } catch(Exception e){
+            return new String("Exception: " + e.getMessage());
         }
 
-        return result.toString();
+    }
+
+    protected void onPreExecute(){
+    }
+
+
+
+    @Override
+    protected void onPostExecute(String result){
+
     }
 }
+
 
 
 

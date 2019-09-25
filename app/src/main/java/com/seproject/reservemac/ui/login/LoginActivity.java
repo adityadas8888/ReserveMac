@@ -19,9 +19,9 @@ import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private  boolean connection = false;
-    private static  String url = null;
-    private  static String  loginurl =  "http://zenithwrites.org/login.php";
+    private boolean connection = false;
+    private static String url = null;
+    private static String loginurl = "http://zenithwrites.org/login.php";
 
 
     EditText usernameEditText = null;
@@ -45,11 +45,10 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (connection){
-                      loginUser();
-                }
-                else{
-                       Toast.makeText(getApplicationContext(), "Switch on the Internet", Toast.LENGTH_LONG).show();
+                if (connection) {
+                    loginUser();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Switch on the Internet", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -58,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    public void loginUser(){
+    public void loginUser() {
 
 
         String username = usernameEditText.getText().toString().trim().toLowerCase();
@@ -79,33 +78,8 @@ public class LoginActivity extends AppCompatActivity {
         login(username, password);
 
     }
-    private void login(final String username, final String password){
 
-       final LoginUserClass luc = new LoginUserClass();
-        class  loginUser extends AsyncTask<String,Void, String>
-        {
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
-                super.onPostExecute(s);
-            }
-
-            @Override
-            protected String doInBackground(String... params) {
-                Toast.makeText(getApplicationContext(),"Inside doinBackGround",Toast.LENGTH_LONG).show();
-                HashMap<String,String> data =  new HashMap<String, String>();
-                data.put("username",username);
-                data.put("password",password);
-                String result = luc.sendPostRequest(loginurl,data);
-                return result;  /// this should return a toast that says that the user logged in.
-            }
-        }
-
+    private void login(final String username, final String password) {
+        new LoginUserClass(this).execute(username,password);
     }
 }
