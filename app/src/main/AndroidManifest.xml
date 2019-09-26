@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".mainscreens.Facility_manager_screen"></activity>
+        <activity android:name=".mainscreens.ChangePassword"></activity>
+        <activity android:name=".mainscreens.Facility_manager_screen" />
         <activity android:name=".mainscreens.Admin_screen" />
         <activity android:name=".mainscreens.User_screen" />
         <activity android:name=".ui.RegisterActivity" />

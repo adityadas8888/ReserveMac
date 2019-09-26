@@ -137,24 +137,29 @@ public class LoginActivity extends AppCompatActivity {
 
                 } while (cursor.moveToNext());
             }
-            Toast.makeText(this, "user:"+username+" role: "+role, Toast.LENGTH_SHORT).show();
 
+            if (username.isEmpty()){
+                Toast.makeText(this, "Incorrect Credentials", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(this, "user:" + username + " role: " + role, Toast.LENGTH_SHORT).show();
+            }
             switch (role){
                 case "user":
                     Intent myintent = new Intent(getBaseContext(), User_screen.class);
-                    myintent.putExtra("role",role);
+                    myintent.putExtra("username",username);
                     startActivity(myintent);
                     break;
 
                 case "admin":
                     Intent myintent1 = new Intent(getBaseContext(), Admin_screen.class);
-                    myintent1.putExtra("role",role);
+                    myintent1.putExtra("username",username);
                     startActivity(myintent1);
                     break;
 
                 case "facility manager":
                     Intent myintent2 = new Intent(getBaseContext(), Facility_manager_screen.class);
-                    myintent2.putExtra("role",role);
+                    myintent2.putExtra("username",username);
                     startActivity(myintent2);
                     break;
             }
