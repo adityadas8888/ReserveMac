@@ -66,7 +66,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         else{
-            Toast.makeText(this, username+password,Toast.LENGTH_SHORT).show();
             String type = "login";
             Backgroundworker backgroundworker = new Backgroundworker(this);
             backgroundworker.execute(type,username,password);
