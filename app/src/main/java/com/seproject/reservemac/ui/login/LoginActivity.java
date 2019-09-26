@@ -16,6 +16,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.seproject.reservemac.R;
 import com.seproject.reservemac.data.model.DatabaseHelpers;
+import com.seproject.reservemac.mainscreens.Admin_screen;
+import com.seproject.reservemac.mainscreens.Facility_manager_screen;
+import com.seproject.reservemac.mainscreens.User_screen;
 import com.seproject.reservemac.ui.RegisterActivity;
 
 
@@ -135,6 +138,28 @@ public class LoginActivity extends AppCompatActivity {
                 } while (cursor.moveToNext());
             }
             Toast.makeText(this, "user:"+username+" role: "+role, Toast.LENGTH_SHORT).show();
+
+            switch (role){
+                case "user":
+                    Intent myintent = new Intent(getBaseContext(), User_screen.class);
+                    myintent.putExtra("role",role);
+                    startActivity(myintent);
+                    break;
+
+                case "admin":
+                    Intent myintent1 = new Intent(getBaseContext(), Admin_screen.class);
+                    myintent1.putExtra("role",role);
+                    startActivity(myintent1);
+                    break;
+
+                case "facility manager":
+                    Intent myintent2 = new Intent(getBaseContext(), Facility_manager_screen.class);
+                    myintent2.putExtra("role",role);
+                    startActivity(myintent2);
+                    break;
+            }
+
+
             Log.d("TAG", "The total cursor count is " + cursor.getCount());
         } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
