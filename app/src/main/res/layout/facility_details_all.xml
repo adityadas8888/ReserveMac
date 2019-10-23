@@ -14,12 +14,13 @@
             android:layout_height="50dp"
             android:padding="15dp"
             android:src="@drawable/ic_arrow_back" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="User Homepage"
+            android:text="Facility "
             android:textColor="@color/colorTextWhite"
             android:textSize="16dp"
             android:textStyle="bold" />
@@ -135,6 +136,56 @@
                 android:textColor="#000"
                 android:textSize="10dp" />
 
+        </TableRow>
+        <TableRow
+
+            android:id="@+id/thirdRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <!-- first element of the row-->
+            <TextView
+
+                android:id="@+id/facilityname2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#fffff"
+                android:padding="1dip"
+                android:text="OBVC-2"
+                android:textColor="#000"
+                android:textSize="12dp" />
+
+            <TextView
+
+                android:id="@+id/facilitynumber2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#fffff"
+                android:padding="1dip"
+                android:text="Outdoor"
+                android:textColor="#000"
+                android:textSize="12dp" />
+            <TextView
+
+                android:id="@+id/facilitydetails2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:padding="1dip"
+                android:layout_gravity="center"
+                android:text="2 hours"
+                android:textColor="#000"
+                android:textSize="10dp" />
+            <TextView
+
+                android:id="@+id/facilitydeposit2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:padding="1dip"
+                android:text="$30"
+                android:textColor="#000"
+                android:textSize="10dp" />
         </TableRow>
     </TableLayout>
 

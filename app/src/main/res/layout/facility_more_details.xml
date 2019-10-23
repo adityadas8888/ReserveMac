@@ -68,4 +68,11 @@ Boundary lines mark the perimeter of the court. The end lines mark the length or
 The Attack line is the line that separates the front court(the area near the net) and the back court(the area between the attack line and end line.
 The Service area is the area beyond the service line where players serve the ball"
         android:textSize="14dp"></TextView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Make Unavailable">
+
+    </Button>
 </LinearLayout>
