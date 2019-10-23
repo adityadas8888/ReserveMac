@@ -3,31 +3,20 @@ package com.seproject.reservemac.ui.login;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
 
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.client.ClientProtocolException;
 import cz.msebera.android.httpclient.client.HttpClient;
 import cz.msebera.android.httpclient.client.methods.HttpGet;
-import cz.msebera.android.httpclient.client.methods.HttpPost;
-import cz.msebera.android.httpclient.entity.StringEntity;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
-import cz.msebera.android.httpclient.protocol.HTTP;
 
 public class Backgroundworker extends AsyncTask<String,Void,String> {
     private static final String TAG = "MyActivity";
@@ -99,9 +88,9 @@ public class Backgroundworker extends AsyncTask<String,Void,String> {
             String post_data =url+"username"+"="+username+"&"+"password"+"="+password;
 //            StringEntity se = new StringEntity(post_data.toString(), HTTP.UTF_8);
 //            se.setContentType("text/xml");
-            HttpGet httpGet = new HttpGet(url);
-       //     httpGet.setHeader("Content-Type", "application/x-www-form-urlencoded");
-         //   httpGet.setHeader("Content-Type", "application/json");
+            HttpGet httpGet = new HttpGet(post_data);
+            httpGet.setHeader("Content-Type", "application/x-www-form-urlencoded");
+            httpGet.setHeader("Content-Type", "application/json");
 //            if (HasHeader) {
 //                httpPost.setHeader("Authorization", "Bearer " + Token);
 //            }
@@ -145,7 +134,9 @@ public class Backgroundworker extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String result) {
        alertDialog.setMessage(result);
+
        alertDialog.show();
+        Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
     }
 
     @Override

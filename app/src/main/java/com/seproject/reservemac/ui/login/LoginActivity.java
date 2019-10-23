@@ -7,13 +7,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.seproject.reservemac.R;
 import com.seproject.reservemac.data.model.DatabaseHelpers;
 import com.seproject.reservemac.mainscreens.Admin_screen;
@@ -49,12 +50,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                if (connection) {
-//                    loginUser();
-//                } else {
-//                    Toast.makeText(getApplicationContext(), "Switch on the Internet", Toast.LENGTH_LONG).show();
-//                }
-                readFromDB(usernameEditText.getText().toString(), passwordEditText.getText().toString());
+                if (connection) {
+                    loginUser();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Switch on the Internet", Toast.LENGTH_LONG).show();
+                }
+//                readFromDB(usernameEditText.getText().toString(), passwordEditText.getText().toString());
 
             }
         });
