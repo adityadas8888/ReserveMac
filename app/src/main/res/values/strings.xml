@@ -23,4 +23,28 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <string-array name="ftype">
+        <item>Multipurpose Rooms</item>
+        <item>5 Indoor Basketball Court</item>
+        <item>9 Volleyball Court</item>
+        <item>Indoor Soccer Gymnasium</item>
+        <item>5 Racquetball Courts</item>
+        <item>10 Badminton Courts</item>
+        <item>Table Tennis</item>
+        <item>Conference Rooms</item>
+        <item>2 Outdoor Volleyball Courts</item>
+        <item>2 Outdoor Basketball Courts</item>
+
+    </string-array>
+
+    <string-array name="fname">
+        <item>MR 1</item>
+        <item>MR 2</item>
+        <item>MR 3</item>
+        <item>MR 4</item>
+
+
+    </string-array>
+
 </resources>
