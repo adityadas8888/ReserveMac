@@ -14,58 +14,109 @@
             android:layout_height="50dp"
             android:padding="15dp"
             android:src="@drawable/ic_arrow_back" />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="Facility Details"
+            android:text="Reservation Details"
             android:textColor="@color/colorTextWhite"
             android:textSize="16dp"
             android:textStyle="bold" />
     </LinearLayout>
+    <Button
+        android:layout_marginTop="200dp"
+        android:textSize="12dp"
+        android:text="Click to view more details"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:textColor="#000000"
+        android:layout_height="wrap_content">
+    </Button>
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"></LinearLayout>
+        android:id="@+id/simpleTableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="*"> <!-- stretch the second column of the layout-->
 
-    <TextView
-        android:id="@+id/facility_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="OUTDOOR VOLLEYBALL COURT"
-        android:textSize="20dp"></TextView>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="TYPE: OUTDOOR"
-        android:gravity="center"></TextView>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="TIME: 2hrs"
-        android:gravity="center"></TextView>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="DEPOSIT: $30"
-        android:gravity="center"></TextView>
-    <TextView
-        android:id="@+id/facility_details"
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="Regulation indoor volleyball court dimensions remain the same whether you are playing International, collegiate or club volleyball. The regulation court dimensions for high school are slightly different. Net heights are different for men’s, women’s volleyball, sitting, junior’s and recreation volleyball. Sports Imports has made it easy to determine what volleyball court dimensions and volleyball net heights are required to meet the regulations set by the FIVB, NCAA, NFHS and USA Volleyball.
+        <!-- first row of the table layout-->
+        <TableRow
 
-Boundary lines mark the perimeter of the court. The end lines mark the length or the court, and the sidelines to mark the width of the court.
-The Attack line is the line that separates the front court(the area near the net) and the back court(the area between the attack line and end line.
-The Service area is the area beyond the service line where players serve the ball"
-        android:textSize="14dp"></TextView>
+            android:id="@+id/firstRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <!-- first element of the row-->
+            <TextView
+
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="Username"
+                android:textColor="#000"
+                android:padding="1dp"
+                android:textSize="16dp" />
+
+
+            <TextView
+                android:padding="1dp"
+                android:id="@+id/facility_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="First Name"
+                android:textColor="#000"
+                android:textSize="16dp" />
+            <TextView
+                android:padding="1dp"
+                android:id="@+id/Date_booked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="Last Name"
+                android:textColor="#000"
+                android:textSize="16dp" />
+
+        </TableRow>
+        <TableRow
+
+            android:id="@+id/secondRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <!-- first element of the row-->
+            <TextView
+
+                android:id="@+id/facilityname1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#fffff"
+                android:text="1001675"
+                android:textColor="#000"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/facilitydetails1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:text="Aditya"
+                android:textColor="#000"
+                android:textSize="16dp" />
+            <TextView
+
+                android:id="@+id/reservationdates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:padding="1dp"
+                android:text="Das"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+        </TableRow>
+    </TableLayout>
+
 </LinearLayout>
