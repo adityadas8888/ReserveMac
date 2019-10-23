@@ -162,6 +162,12 @@ public class LoginActivity extends AppCompatActivity {
                     myintent2.putExtra("username",username);
                     startActivity(myintent2);
                     break;
+
+//                default:
+//                    Intent myintent3 = new Intent(getBaseContext(), Facility_manager_screen.class);
+//                    myintent3.putExtra("username",username);
+//                    startActivity(myintent3);
+//                    break;
             }
 
 

@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.seproject.reservemac.R;
+import com.seproject.reservemac.ui.login.LoginActivity;
 
 public class User_screen extends AppCompatActivity {
 
@@ -26,6 +27,14 @@ public class User_screen extends AppCompatActivity {
         username = findViewById(R.id.username);
         signout = findViewById(R.id.signout);
         BtnChangePassword = findViewById(R.id.BtnChangePassword);
+        signout = findViewById(R.id.signout);
+        signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myintent1 = new Intent(getBaseContext(), LoginActivity.class);
+                startActivity(myintent1);
+            }
+        });
 
         username.setText("Welcome "+getIntent().getStringExtra("username"));
 

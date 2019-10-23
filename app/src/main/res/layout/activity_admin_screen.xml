@@ -17,7 +17,7 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="25dp" />
 
-    <EditText
+    <TextView
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -31,8 +31,14 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Change user roles"
-        android:id="@+id/change_roles"/>
+        android:text="Update Password"
+        android:id="@+id/BtnChangePassword"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Change User Roles"
+        android:id="@+id/BtnChangeRoles"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

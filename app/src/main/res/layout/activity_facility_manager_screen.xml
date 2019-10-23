@@ -18,22 +18,34 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="25dp" />
 
-    <EditText
+    <TextView
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/user_role"
-        android:text="Admin"
+        android:text="Facility Manager"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Change Password"
+        android:id="@+id/BtnChangePassword"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Facility Details"
-        android:id="@+id/Facility"/>
+        android:id="@+id/BtnFacilityDetails"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:id="@+id/search_facility"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

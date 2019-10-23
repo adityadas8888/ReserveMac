@@ -28,7 +28,7 @@
 
     <TextView
         android:id="@+id/user_role"
-        android:text="Admin"
+        android:text="User"
         android:gravity="center"
         android:layout_height="25dp"
         android:textSize="16dp"
