@@ -29,7 +29,7 @@
         android:id="@+id/simpleTableLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:stretchColumns="2"> <!-- stretch the second column of the layout-->
+        android:stretchColumns="*"> <!-- stretch the second column of the layout-->
 
     <!-- first row of the table layout-->
     <TableRow
@@ -45,31 +45,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:padding="18dip"
             android:text="Reservation ID"
             android:textColor="#000"
-            android:textSize="14dp" />
+            android:padding="1dp"
+            android:textSize="16dp" />
 
         <TextView
 
+            android:id="@+id/Userid"
+            android:padding="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="Username"
+            android:textColor="#000"
+            android:textSize="16dp" />
+        <TextView
+            android:padding="1dp"
             android:id="@+id/facility_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:padding="18dip"
             android:text="Facility Name"
             android:textColor="#000"
-            android:textSize="14dp" />
+            android:textSize="16dp" />
         <TextView
-
-            android:id="@+id/facilitydetails"
+            android:padding="1dp"
+            android:id="@+id/Date_booked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:padding="18dip"
-            android:text="Details"
+            android:text="Booking slot"
             android:textColor="#000"
-            android:textSize="14dp" />
+            android:textSize="16dp" />
 
     </TableRow>
     <TableRow
@@ -85,10 +93,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#fffff"
-            android:padding="18dip"
-            android:text="Indoor Pool"
+            android:text="1001675"
             android:textColor="#000"
-            android:textSize="12dp" />
+            android:textSize="16dp" />
 
         <TextView
 
@@ -96,20 +103,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#fffff"
-            android:padding="18dip"
-            android:text="2"
+            android:text="ax5748"
             android:textColor="#000"
-            android:textSize="12dp" />
+            android:textSize="16dp" />
         <TextView
 
             android:id="@+id/facilitydetails1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#ffffff"
-            android:padding="18dip"
-            android:text="Indoor pool with max depth of 5 ft"
+            android:text="MR-1"
             android:textColor="#000"
-            android:textSize="10dp" />
+            android:textSize="16dp" />
+        <TextView
+
+            android:id="@+id/reservationdates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:padding="1dp"
+            android:text="8-8:30pm 10/20/19"
+            android:textColor="#000"
+            android:textSize="14dp" />
 
     </TableRow>
     </TableLayout>

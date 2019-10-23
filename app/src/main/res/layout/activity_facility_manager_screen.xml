@@ -68,13 +68,13 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Facility Details"
+        android:text="Search Facility"
         android:id="@+id/BtnFacilityDetails"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search"
+        android:text="Search User"
         android:id="@+id/search_facility"/>
     <Button
         android:layout_width="match_parent"

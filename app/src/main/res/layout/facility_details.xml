@@ -14,24 +14,26 @@
             android:layout_height="50dp"
             android:padding="15dp"
             android:src="@drawable/ic_arrow_back" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="User Homepage"
+            android:text="Facility "
             android:textColor="@color/colorTextWhite"
             android:textSize="16dp"
             android:textStyle="bold" />
     </LinearLayout>
+
 
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:gravity="center_vertical"
         android:id="@+id/simpleTableLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:shrinkColumns="1"
-        android:stretchColumns="2"> <!-- stretch the second column of the layout-->
+        android:stretchColumns="*"
+        > <!-- stretch the second column of the layout-->
 
         <!-- first row of the table layout-->
         <TableRow
@@ -47,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
-                android:padding="18dip"
+                android:padding="1dip"
                 android:text="Facility Name"
                 android:textColor="#000"
                 android:textSize="14dp" />
@@ -58,8 +60,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
-                android:padding="18dip"
-                android:text="facility No"
+                android:padding="1dip"
+                android:text="Type"
                 android:textColor="#000"
                 android:textSize="14dp" />
             <TextView
@@ -68,8 +70,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
-                android:padding="18dip"
-                android:text="Details"
+                android:padding="1dip"
+                android:text="Time"
+                android:textColor="#000"
+                android:textSize="14dp" />
+            <TextView
+
+                android:id="@+id/facilitydeposit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="1dip"
+                android:text="Deposit Amount"
                 android:textColor="#000"
                 android:textSize="14dp" />
 
@@ -87,8 +99,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#fffff"
-                android:padding="18dip"
-                android:text="Indoor Pool"
+                android:padding="5dp"
+                android:text="OBVC-1"
                 android:textColor="#000"
                 android:textSize="12dp" />
 
@@ -98,8 +110,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#fffff"
-                android:padding="18dip"
-                android:text="2"
+                android:padding="5dip"
+                android:text="Outdoor"
                 android:textColor="#000"
                 android:textSize="12dp" />
             <TextView
@@ -108,8 +120,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
-                android:padding="18dip"
-                android:text="Indoor pool with max depth of 5 ft"
+                android:padding="5dip"
+                android:gravity="center"
+                android:text="2 hours"
+                android:textColor="#000"
+                android:textSize="10dp" />
+            <TextView
+
+                android:id="@+id/facilitydeposit1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:padding="5dip"
+                android:text="$30"
                 android:textColor="#000"
                 android:textSize="10dp" />
 
@@ -127,8 +150,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#fffff"
-                android:padding="18dip"
-                android:text="Outdoor Pool"
+                android:padding="1dip"
+                android:text="OBVC-2"
                 android:textColor="#000"
                 android:textSize="12dp" />
 
@@ -138,8 +161,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#fffff"
-                android:padding="18dip"
-                android:text="3"
+                android:padding="1dip"
+                android:text="Outdoor"
                 android:textColor="#000"
                 android:textSize="12dp" />
             <TextView
@@ -148,11 +171,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
-                android:padding="18dip"
-                android:text="Indoor pool with max depth of 8 ft"
+                android:padding="1dip"
+                android:layout_gravity="center"
+                android:text="2 hours"
                 android:textColor="#000"
                 android:textSize="10dp" />
+            <TextView
 
+                android:id="@+id/facilitydeposit2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:padding="1dip"
+                android:text="$30"
+                android:textColor="#000"
+                android:textSize="10dp" />
         </TableRow>
     </TableLayout>
+
 </LinearLayout>
