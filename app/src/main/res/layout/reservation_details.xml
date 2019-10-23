@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:gravity="center_vertical"
+        android:id="@+id/simpleTableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="2"> <!-- stretch the second column of the layout-->
+
+    <!-- first row of the table layout-->
+    <TableRow
+
+        android:id="@+id/firstRow"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <!-- first element of the row-->
+        <TextView
+
+            android:id="@+id/reservationid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#c0b0c0"
+            android:padding="18dip"
+            android:text="Reservation ID"
+            android:textColor="#000"
+            android:textSize="14dp" />
+
+        <TextView
+
+            android:id="@+id/facility_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#b0b0b0"
+            android:padding="18dip"
+            android:text="Facility Name"
+            android:textColor="#000"
+            android:textSize="14dp" />
+        <TextView
+
+            android:id="@+id/facilitydetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#b0b0b0"
+            android:padding="18dip"
+            android:text="Details"
+            android:textColor="#000"
+            android:textSize="14dp" />
+
+    </TableRow>
+    <TableRow
+
+        android:id="@+id/secondRow"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <!-- first element of the row-->
+        <TextView
+
+            android:id="@+id/facilityname1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#fffff"
+            android:padding="18dip"
+            android:text="Indoor Pool"
+            android:textColor="#000"
+            android:textSize="12dp" />
+
+        <TextView
+
+            android:id="@+id/facilitynumber1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#fffff"
+            android:padding="18dip"
+            android:text="2"
+            android:textColor="#000"
+            android:textSize="12dp" />
+        <TextView
+
+            android:id="@+id/facilitydetails1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:padding="18dip"
+            android:text="Indoor pool with max depth of 5 ft"
+            android:textColor="#000"
+            android:textSize="10dp" />
+
+    </TableRow>
+    </TableLayout>
+</LinearLayout>
