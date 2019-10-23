@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="15dp"
+            android:src="@drawable/ic_arrow_back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="Facility Details"
+            android:textColor="@color/colorTextWhite"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"></LinearLayout>
+
+    <TextView
+        android:id="@+id/facility_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="OUTDOOR VOLLEYBALL COURT"
+        android:textSize="20dp"></TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="TYPE: OUTDOOR"
+        android:gravity="center"></TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="TIME: 2hrs"
+        android:gravity="center"></TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="DEPOSIT: $30"
+        android:gravity="center"></TextView>
+    <TextView
+        android:id="@+id/facility_details"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Regulation indoor volleyball court dimensions remain the same whether you are playing International, collegiate or club volleyball. The regulation court dimensions for high school are slightly different. Net heights are different for men’s, women’s volleyball, sitting, junior’s and recreation volleyball. Sports Imports has made it easy to determine what volleyball court dimensions and volleyball net heights are required to meet the regulations set by the FIVB, NCAA, NFHS and USA Volleyball.
+
+Boundary lines mark the perimeter of the court. The end lines mark the length or the court, and the sidelines to mark the width of the court.
+The Attack line is the line that separates the front court(the area near the net) and the back court(the area between the attack line and end line.
+The Service area is the area beyond the service line where players serve the ball"
+        android:textSize="14dp"></TextView>
+</LinearLayout>
