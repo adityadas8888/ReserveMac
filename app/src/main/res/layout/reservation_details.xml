@@ -92,7 +92,7 @@
             android:id="@+id/facilityname1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#fffff"
+            android:background="@color/colorTextWhite"
             android:text="1001675"
             android:textColor="#000"
             android:textSize="16dp" />
@@ -102,7 +102,7 @@
             android:id="@+id/facilitynumber1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#fffff"
+            android:background="@color/colorTextWhite"
             android:text="ax5748"
             android:textColor="#000"
             android:textSize="16dp" />
@@ -111,7 +111,7 @@
             android:id="@+id/facilitydetails1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#ffffff"
+            android:background="@color/colorTextWhite"
             android:text="MR-1"
             android:textColor="#000"
             android:textSize="16dp" />
@@ -120,7 +120,7 @@
             android:id="@+id/reservationdates"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#ffffff"
+            android:background="@color/colorTextWhite"
             android:padding="1dp"
             android:text="8-8:30pm 10/20/19"
             android:textColor="#000"

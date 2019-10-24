@@ -49,10 +49,19 @@
             android:id="@+id/SpinnerFType"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:entries="@array/ftype"
-            android:prompt="Multipurpose Rooms" />
+            android:entries="@array/ftype" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:text="Select Date" />
 
+        <EditText
+            android:id="@+id/EtxDatePicker"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="10/23/2019"/>
 
 
         <TextView

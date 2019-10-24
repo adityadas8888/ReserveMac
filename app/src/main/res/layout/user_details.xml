@@ -92,7 +92,7 @@
                 android:id="@+id/facilityname1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#fffff"
+                android:background="@color/colorTextWhite"
                 android:text="1001675"
                 android:textColor="#000"
                 android:textSize="16dp" />
@@ -101,7 +101,7 @@
                 android:id="@+id/facilitydetails1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#ffffff"
+                android:background="@color/colorTextWhite"
                 android:text="Aditya"
                 android:textColor="#000"
                 android:textSize="16dp" />
@@ -110,7 +110,7 @@
                 android:id="@+id/reservationdates"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#ffffff"
+                android:background="@color/colorTextWhite"
                 android:padding="1dp"
                 android:text="Das"
                 android:textColor="#000"
