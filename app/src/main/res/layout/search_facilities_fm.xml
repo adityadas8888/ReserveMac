@@ -30,6 +30,12 @@
     android:layout_height="wrap_content"
     android:hint="Enter facility Name">
 </EditText>
+    <EditText
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Date">
+    </EditText>
 
     <Button
         android:id="@+id/button"
