@@ -23,7 +23,8 @@ public class Backgroundworker extends AsyncTask<String,Void,String> {
     Context context;
     AlertDialog alertDialog;
     JSONObject jsonObj;
-    String url="http://zenithwrites.org/login.php?";
+//    http://mohammedmurtuzabhaiji.uta.cloud/se1project/login.php?username=mohammed&password=pass@123
+    String url="http://mohammedmurtuzabhaiji.uta.cloud/se1project/login.php?";
 
     Backgroundworker (Context ctx){
         context = ctx;
