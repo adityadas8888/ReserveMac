@@ -29,55 +29,6 @@ public class Backgroundworker extends AsyncTask<String,Void,String> {
     Backgroundworker (Context ctx){
         context = ctx;
     }
-//    @Override
-//    protected String doInBackground(String... params) {
-//        String type = params[0];
-//        String link="http://zenithwrites.org/login.php?";
-//        if(type.equals("login")){
-//
-//            try {
-//                Log.i(TAG, "inside try");
-//                URL  url = new URL(link);
-//                String username = params[1];
-//                String password = params[2];
-//                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-//                httpURLConnection.setRequestMethod("GET");
-//                httpURLConnection.setDoOutput(true);
-//                httpURLConnection.setDoInput(true);
-//                OutputStream outputStream = httpURLConnection.getOutputStream();
-//                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
-////                String post_data = URLEncoder.encode("username")+"="+URLEncoder.encode(username)+"&"
-////                        +URLEncoder.encode("password")
-////                        +"="+URLEncoder.encode(password);
-//                String post_data ="username"+"="+username+"&"+"password"+"="+password;
-//                Log.e(TAG, "post data");
-//                bufferedWriter.write(post_data);
-//                Log.i(TAG, "post data"+post_data);
-//                bufferedWriter.flush();
-//                bufferedWriter.close();
-//                outputStream.close();
-//                InputStream inputStream = httpURLConnection.getInputStream();
-//                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
-//                String result = "";
-//                String line="";
-//
-//                while ((line = bufferedReader.readLine())!=null){
-//                    result+=line;
-//                }
-//                bufferedReader.close();
-//                inputStream.close();
-//                httpURLConnection.disconnect();
-//
-//                return result;
-//            } catch (MalformedURLException e) {
-//                e.printStackTrace();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//        }
-//        return null;
-//    }
 
     @Override
     protected String doInBackground(String... strings) {
