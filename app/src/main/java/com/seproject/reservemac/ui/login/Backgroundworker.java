@@ -62,8 +62,6 @@ public class Backgroundworker extends AsyncTask<String, Void, String> {
         HttpClient httpClient = new DefaultHttpClient();
         StringBuilder stringBuilder = new StringBuilder();
         try {
-//            String username = strings[1];
-//            String password = strings[2];
             String post_data = BASE_URL.concat(url);
             StringEntity se = new StringEntity(post_data.toString(), HTTP.UTF_8);
             se.setContentType("text/xml");
@@ -80,10 +78,11 @@ public class Backgroundworker extends AsyncTask<String, Void, String> {
                 stringBuilder.append(bufferedStrChunk);
             }
             try {
-                String jsonString = stringBuilder.toString().trim();
+                String jsonString = stringBuilder.toString().replace("Array", "");
 
-                jsonObj = new JSONObject();
-                jsonObj.getJSONObject(jsonString);
+//                jsonObj = new JSONObject();
+                jsonObj = new JSONObject(jsonString);
+//                jsonObj.getJSONObject(jsonString);
             } catch (Exception e) {
                 Toast.makeText(context, "Json Error Occurred: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
