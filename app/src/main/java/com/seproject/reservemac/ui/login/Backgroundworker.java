@@ -16,18 +16,45 @@ import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.client.ClientProtocolException;
 import cz.msebera.android.httpclient.client.HttpClient;
 import cz.msebera.android.httpclient.client.methods.HttpGet;
+import cz.msebera.android.httpclient.entity.StringEntity;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
+import cz.msebera.android.httpclient.protocol.HTTP;
 
-public class Backgroundworker extends AsyncTask<String,Void,String> {
+public class Backgroundworker extends AsyncTask<String, Void, String> {
     private static final String TAG = "MyActivity";
     Context context;
     AlertDialog alertDialog;
     JSONObject jsonObj;
-//    http://mohammedmurtuzabhaiji.uta.cloud/se1project/login.php?username=mohammed&password=pass@123
-    String url="http://mohammedmurtuzabhaiji.uta.cloud/se1project/login.php?";
 
-    Backgroundworker (Context ctx){
-        context = ctx;
+    String url, Identity;
+    public AsyncResponse delegate = null;
+
+
+    //    http://mohammedmurtuzabhaiji.uta.cloud/se1project/login.php?username=mohammed&password=pass@123
+    public static final String BASE_URL = "http://mohammedmurtuzabhaiji.uta.cloud/se1project/";
+
+    public Backgroundworker(Context ctx) {
+        this.context = ctx;
+    }
+
+
+    public interface AsyncResponse {
+        void ProcessFinish(String output, JSONObject jsonObject, String Identity);
+    }
+
+    public Backgroundworker(AsyncResponse delegate, String url, Context context, String Identity) {
+        this.delegate = delegate;
+        this.url = url;
+        this.context = context;
+        this.Identity = Identity;
+
+    }
+
+    @Override
+    protected void onPreExecute() {
+        alertDialog = new AlertDialog.Builder(context).create();
+        alertDialog.setTitle("Login Status");
+
     }
 
     @Override
@@ -35,17 +62,15 @@ public class Backgroundworker extends AsyncTask<String,Void,String> {
         HttpClient httpClient = new DefaultHttpClient();
         StringBuilder stringBuilder = new StringBuilder();
         try {
-            String username = strings[1];
-            String password = strings[2];
-            String post_data =url+"username"+"="+username+"&"+"password"+"="+password;
-//            StringEntity se = new StringEntity(post_data.toString(), HTTP.UTF_8);
-//            se.setContentType("text/xml");
+//            String username = strings[1];
+//            String password = strings[2];
+            String post_data = BASE_URL.concat(url);
+            StringEntity se = new StringEntity(post_data.toString(), HTTP.UTF_8);
+            se.setContentType("text/xml");
             HttpGet httpGet = new HttpGet(post_data);
             httpGet.setHeader("Content-Type", "application/x-www-form-urlencoded");
             httpGet.setHeader("Content-Type", "application/json");
-//            if (HasHeader) {
-//                httpPost.setHeader("Authorization", "Bearer " + Token);
-//            }
+
             HttpResponse httpResponse = httpClient.execute(httpGet);
             InputStream inputStream = httpResponse.getEntity().getContent();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -55,8 +80,12 @@ public class Backgroundworker extends AsyncTask<String,Void,String> {
                 stringBuilder.append(bufferedStrChunk);
             }
             try {
-                jsonObj = new JSONObject(stringBuilder.toString().trim());
+                String jsonString = stringBuilder.toString().trim();
+
+                jsonObj = new JSONObject();
+                jsonObj.getJSONObject(jsonString);
             } catch (Exception e) {
+                Toast.makeText(context, "Json Error Occurred: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
             return stringBuilder.toString();
         } catch (ClientProtocolException cpe) {
@@ -76,19 +105,23 @@ public class Backgroundworker extends AsyncTask<String,Void,String> {
         return stringBuilder.toString();
     }
 
-    @Override
-    protected void onPreExecute() {
-        alertDialog = new AlertDialog.Builder(context).create();
-       alertDialog.setTitle("Login Status");
-
-    }
 
     @Override
     protected void onPostExecute(String result) {
-       alertDialog.setMessage(result);
+        alertDialog.setMessage(result);
 
-       alertDialog.show();
-        Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
+        alertDialog.show();
+
+
+        super.onPostExecute(result);
+        try {
+//            JSONObject json = new JSONObject();
+//            json.getJSONArray(result);
+            delegate.ProcessFinish(result, jsonObj, Identity);
+        } catch (Exception e) {
+            Toast.makeText(context, "error Occurred" + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
