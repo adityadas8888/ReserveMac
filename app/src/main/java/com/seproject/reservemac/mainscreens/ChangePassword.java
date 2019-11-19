@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.seproject.reservemac.R;
-import com.seproject.reservemac.data.model.DatabaseHelpers;
 import com.seproject.reservemac.ui.login.LoginActivity;
 
 public class ChangePassword extends AppCompatActivity {
@@ -48,15 +47,15 @@ public class ChangePassword extends AppCompatActivity {
 
 
     public  void changePassword(String ChangePassword){
-        SQLiteDatabase database = new DatabaseHelpers(this).getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(DatabaseHelpers.PASSWORD, EtxChangePassword.getText().toString());
-
-//        long newRowId = database.insert(  .TASK_TABLE_NAME, null, values);
-
-        long newRowId = database.update(DatabaseHelpers.USER_TABLE_NAME, values,
-                "USERNAME='"+TxtUserName.getText().toString()+"' ",
-                null);
+//        SQLiteDatabase database = new DatabaseHelpers(this).getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(DatabaseHelpers.PASSWORD, EtxChangePassword.getText().toString());
+//
+////        long newRowId = database.insert(  .TASK_TABLE_NAME, null, values);
+//
+//        long newRowId = database.update(DatabaseHelpers.USER_TABLE_NAME, values,
+//                "USERNAME='"+TxtUserName.getText().toString()+"' ",
+//                null);
 
         Toast.makeText(this, "Password Updated !!", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(getBaseContext(), LoginActivity.class);
