@@ -17,10 +17,10 @@
         android:theme="@style/AppTheme"
         tools:replace="android:icon"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ViewViolations"></activity>
-        <activity android:name=".ModifyReservation" />
-        <activity android:name=".ViewReservation" />
-         <activity android:name=".ReserveFacility"></activity>
+        <activity android:name=".ui.common.ViewViolations"></activity>
+        <activity android:name=".ui.common.ModifyReservation" />
+        <activity android:name=".ui.common.ViewReservation" />
+         <activity android:name=".ui.common.ReserveFacility"></activity>
 <!--        <activity-->
 <!--            android:name=".ReserveFacility"-->
 <!--            android:label="@string/title_activity_login">-->
@@ -30,10 +30,10 @@
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
 <!--        </activity>-->
-        <activity android:name=".ListOfFacilitiesActivity" />
-        <activity android:name=".SearchFacilityActivity" />
-        <activity android:name=".ViewUserDetailsActivity" />
-        <activity android:name=".SearchUserActivity" />
+        <activity android:name=".ui.common.ListOfFacilitiesActivity" />
+        <activity android:name=".ui.common.SearchFacilityActivity" />
+        <activity android:name=".ui.common.ViewUserDetailsActivity" />
+        <activity android:name=".ui.common.SearchUserActivity" />
         <activity android:name=".administrator.AdminHomepage" />
         <activity android:name=".mainscreens.ChangePassword" />
         <activity android:name=".facility_manager.Facility_manager_screen" />

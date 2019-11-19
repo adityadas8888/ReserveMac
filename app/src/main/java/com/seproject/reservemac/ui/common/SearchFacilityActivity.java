@@ -1,4 +1,4 @@
-package com.seproject.reservemac;
+package com.seproject.reservemac.ui.common;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.seproject.reservemac.R;
 
 public class SearchFacilityActivity extends AppCompatActivity {
 

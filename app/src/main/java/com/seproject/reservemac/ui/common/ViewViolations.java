@@ -1,14 +1,16 @@
-package com.seproject.reservemac;
+package com.seproject.reservemac.ui.common;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ModifyReservation extends AppCompatActivity {
+import com.seproject.reservemac.R;
+
+public class ViewViolations extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modify_reservation);
+        setContentView(R.layout.activity_view_violations);
     }
 }

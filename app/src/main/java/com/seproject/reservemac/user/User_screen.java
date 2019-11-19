@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.seproject.reservemac.R;
-import com.seproject.reservemac.SearchFacilityActivity;
+import com.seproject.reservemac.ui.common.SearchFacilityActivity;
 import com.seproject.reservemac.mainscreens.ChangePassword;
 import com.seproject.reservemac.ui.login.LoginActivity;
 

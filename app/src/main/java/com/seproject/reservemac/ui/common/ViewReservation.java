@@ -1,14 +1,16 @@
-package com.seproject.reservemac;
+package com.seproject.reservemac.ui.common;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SearchUserActivity extends AppCompatActivity {
+import com.seproject.reservemac.R;
+
+public class ViewReservation extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_user);
+        setContentView(R.layout.activity_view_reservation);
     }
 }
