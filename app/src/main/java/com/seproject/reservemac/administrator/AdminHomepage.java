@@ -1,8 +1,10 @@
-package com.seproject.reservemac;
+package com.seproject.reservemac.administrator;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.seproject.reservemac.R;
 
 public class AdminHomepage extends AppCompatActivity {
 

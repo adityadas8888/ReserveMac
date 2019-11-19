@@ -1,4 +1,4 @@
-package com.seproject.reservemac.mainscreens;
+package com.seproject.reservemac.facility_manager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.seproject.reservemac.R;
+import com.seproject.reservemac.mainscreens.ChangePassword;
 import com.seproject.reservemac.ui.login.LoginActivity;
 
 public class Facility_manager_screen extends AppCompatActivity {
