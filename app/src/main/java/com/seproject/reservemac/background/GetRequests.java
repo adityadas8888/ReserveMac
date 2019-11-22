@@ -1,4 +1,4 @@
-package com.seproject.reservemac.ui.login;
+package com.seproject.reservemac.background;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -20,7 +20,7 @@ import cz.msebera.android.httpclient.entity.StringEntity;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import cz.msebera.android.httpclient.protocol.HTTP;
 
-public class Backgroundworker extends AsyncTask<String, Void, String> {
+public class GetRequests extends AsyncTask<String, Void, String> {
     private static final String TAG = "MyActivity";
     Context context;
     AlertDialog alertDialog;
@@ -33,7 +33,7 @@ public class Backgroundworker extends AsyncTask<String, Void, String> {
     //    http://mohammedmurtuzabhaiji.uta.cloud/se1project/login.php?username=mohammed&password=pass@123
     public static final String BASE_URL = "http://mohammedmurtuzabhaiji.uta.cloud/se1project/";
 
-    public Backgroundworker(Context ctx) {
+    public GetRequests(Context ctx) {
         this.context = ctx;
     }
 
@@ -42,7 +42,7 @@ public class Backgroundworker extends AsyncTask<String, Void, String> {
         void ProcessFinish(String output, JSONObject jsonObject, String Identity);
     }
 
-    public Backgroundworker(AsyncResponse delegate, String url, Context context, String Identity) {
+    public GetRequests(AsyncResponse delegate, String url, Context context, String Identity) {
         this.delegate = delegate;
         this.url = url;
         this.context = context;
@@ -80,9 +80,7 @@ public class Backgroundworker extends AsyncTask<String, Void, String> {
             try {
                 String jsonString = stringBuilder.toString().replace("Array", "");
 
-//                jsonObj = new JSONObject();
                 jsonObj = new JSONObject(jsonString);
-//                jsonObj.getJSONObject(jsonString);
             } catch (Exception e) {
                 Toast.makeText(context, "Json Error Occurred: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
@@ -109,7 +107,7 @@ public class Backgroundworker extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String result) {
         alertDialog.setMessage(result);
 
-        alertDialog.show();
+//        alertDialog.show();
 
 
         super.onPostExecute(result);

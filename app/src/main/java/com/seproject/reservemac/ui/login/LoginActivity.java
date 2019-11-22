@@ -13,12 +13,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.seproject.reservemac.R;
+import com.seproject.reservemac.background.GetRequests;
+import com.seproject.reservemac.model.UserModel;
 import com.seproject.reservemac.ui.RegisterActivity;
+import com.seproject.reservemac.user.User_screen;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class LoginActivity extends AppCompatActivity implements Backgroundworker.AsyncResponse {
+public class LoginActivity extends AppCompatActivity implements GetRequests.AsyncResponse {
 
     private boolean connection = false;
 
@@ -26,7 +30,8 @@ public class LoginActivity extends AppCompatActivity implements Backgroundworker
     EditText passwordEditText = null;
     Button loginButton = null;
     Button registerButton = null;
-
+    UserModel userModel ;
+    String password, username;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,8 +73,8 @@ public class LoginActivity extends AppCompatActivity implements Backgroundworker
 
     public void loginUser() {
 
-        String password = passwordEditText.getText().toString().trim();
-        String username = usernameEditText.getText().toString().trim();
+        password = passwordEditText.getText().toString().trim();
+        username = usernameEditText.getText().toString().trim();
         if (usernameEditText.getText().toString().trim().equals("")) {
             usernameEditText.setError("The username is required");
 
@@ -87,7 +92,7 @@ public class LoginActivity extends AppCompatActivity implements Backgroundworker
             stringBuilder.append("&password=").append(password);
             String url = stringBuilder.toString();
 //                String Url = stringBuilder.toString();
-            new Backgroundworker(LoginActivity.this, url, LoginActivity.this, "Login").execute("");
+            new GetRequests(LoginActivity.this, url, LoginActivity.this, "Login").execute("");
 
 
         }
@@ -102,8 +107,24 @@ public class LoginActivity extends AppCompatActivity implements Backgroundworker
 
     private void AfterReceived(JSONObject jsonObject, String output) {
 
-        Toast.makeText(LoginActivity.this, "" + jsonObject.toString(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(LoginActivity.this, "" + output, Toast.LENGTH_SHORT).show();
+
+        if (jsonObject != null) {
+            try {
+                userModel = new UserModel();
+                JSONObject jsonContent = jsonObject.getJSONObject("content");
+                userModel.setUsername(String.valueOf(jsonContent.getString("username")));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            if (userModel.getUsername().equals(username)) {
+                Intent intent = new Intent(LoginActivity.this, User_screen.class);
+                startActivity(intent);
+
+            }
+
+        }
 
 
     }

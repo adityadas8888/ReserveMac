@@ -1,8 +1,7 @@
 package com.seproject.reservemac.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
@@ -10,10 +9,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.seproject.reservemac.R;
-import com.seproject.reservemac.ui.login.Backgroundworker;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class RegisterActivity extends AppCompatActivity {
+import com.seproject.reservemac.R;
+import com.seproject.reservemac.background.PostRequests;
+import com.seproject.reservemac.ui.login.LoginActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cz.msebera.android.httpclient.NameValuePair;
+import cz.msebera.android.httpclient.message.BasicNameValuePair;
+
+public class RegisterActivity extends AppCompatActivity implements PostRequests.PostAsyncResponse {
 
     private boolean connection = false;
     EditText usernameEditText = null;
@@ -28,16 +39,17 @@ public class RegisterActivity extends AppCompatActivity {
     EditText contactEditText = null;
     Button loginButton = null;  //this should be register button
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        setContentView(R.layout.activity_register);
+//        setContentView(R.layout.activity_register);
 
         final ConnectivityManager connectivityManager = ((ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE));
         usernameEditText = findViewById(R.id.username);
-        passwordEditText= findViewById(R.id.password);
+        passwordEditText = findViewById(R.id.password);
         addressEditText = findViewById(R.id.address);
         zipcodeEditText = findViewById(R.id.zipcode);
         utaidEditText = findViewById(R.id.UTA_ID);
@@ -74,60 +86,96 @@ public class RegisterActivity extends AppCompatActivity {
 
             usernameEditText.setError("The username is required");
             usernameEditText.setHint("Please enter your username");
-        }
-        else if (passwordEditText.getText().toString().trim().equals("")) {
+        } else if (passwordEditText.getText().toString().trim().equals("")) {
             passwordEditText.setError("Password is required!");
 
             passwordEditText.setHint("Please enter your Password");
-        }
-        else if (addressEditText.getText().toString().trim().equals("")) {
+        } else if (addressEditText.getText().toString().trim().equals("")) {
             addressEditText.setError("Address is required!");
 
             addressEditText.setHint("Please enter your Address");
-        }
-        else if (zipcodeEditText.getText().toString().trim().equals("")) {
+        } else if (zipcodeEditText.getText().toString().trim().equals("")) {
             zipcodeEditText.setError("Zipcode is required!");
 
             zipcodeEditText.setHint("Please enter your Zipcode");
-        }
-        else if (utaidEditText.getText().toString().trim().equals("")) {
+        } else if (utaidEditText.getText().toString().trim().equals("")) {
             utaidEditText.setError("UTA id is required!");
 
             utaidEditText.setHint("Please enter your UTA id");
-        }
-        else if (firstnameEditText.getText().toString().trim().equals("")) {
+        } else if (firstnameEditText.getText().toString().trim().equals("")) {
             firstnameEditText.setError("First name is required!");
 
             firstnameEditText.setHint("Please enter your First name");
-        }
-        else if (lastnameEditText.getText().toString().trim().equals("")) {
+        } else if (lastnameEditText.getText().toString().trim().equals("")) {
             lastnameEditText.setError("Last name is required!");
 
             lastnameEditText.setHint("Please enter your last name");
-        }
-        else if (contactEditText.getText().toString().trim().equals("")) {
+        } else if (contactEditText.getText().toString().trim().equals("")) {
             contactEditText.setError("Contatct number is required!");
 
             contactEditText.setHint("Please enter your Password");
-        }
-        else if (emailEditText.getText().toString().trim().equals("")) {
+        } else if (emailEditText.getText().toString().trim().equals("")) {
             emailEditText.setError("Email address is required!");
 
             emailEditText.setHint("Please enter your Email address");
-        }
-        else if (roleEditText.getText().toString().trim().equals("")) {
+        } else if (roleEditText.getText().toString().trim().equals("")) {
             roleEditText.setError("User role is required!");
 
             roleEditText.setHint("Please select your Role");
-        }
+        } else {
+            String type = "register";
+
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("register.php");
+            String url = stringBuilder.toString();
 
 
+//            (`username`, `password`, `firstname`, `lastname`, `utaid`, `role`,
+//                    `contactno`, `streetaddress`, `zipcode`, `noshow`, `revoked`, `email`)
 
-        else{
-            String type = "login";
-//            Backgroundworker backgroundworker = new Backgroundworker(this);
-//            backgroundworker.execute();
+            try {
+                List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+                pairs.add(new BasicNameValuePair("username", usernameEditText.getText().toString()));
+                pairs.add(new BasicNameValuePair("password", passwordEditText.getText().toString()));
+                pairs.add(new BasicNameValuePair("firstname", firstnameEditText.getText().toString()));
+                pairs.add(new BasicNameValuePair("lastname", lastnameEditText.getText().toString()));
+                pairs.add(new BasicNameValuePair("utaid", utaidEditText.getText().toString()));
+                pairs.add(new BasicNameValuePair("role", roleEditText.getText().toString()));
+                pairs.add(new BasicNameValuePair("contactno", contactEditText.getText().toString()));
+                pairs.add(new BasicNameValuePair("streetaddress", addressEditText.getText().toString()));
+                pairs.add(new BasicNameValuePair("zipcode", zipcodeEditText.getText().toString()));
+                pairs.add(new BasicNameValuePair("noshow", "0"));
+                pairs.add(new BasicNameValuePair("revoked", "0"));
+                pairs.add(new BasicNameValuePair("email", emailEditText.getText().toString()));
+
+
+                new PostRequests(RegisterActivity.this, url, RegisterActivity.this, "Register", pairs).execute("");
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
     }
 
+    @Override
+    public void ProcessFinish(String output, JSONObject jsonObject, String Identity) {
+        if (jsonObject != null) {
+
+            try {
+                String msg = String.valueOf(jsonObject.getString("content"));
+                if (msg.equals("TRUE")) {
+
+                    Toast.makeText(this, "User Registered. Please Login.!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+    }
 }

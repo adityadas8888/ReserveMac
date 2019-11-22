@@ -67,11 +67,11 @@
                 android:textSize="16dp" />
 
             <TextView
-                android:id="@+id/username"
+                android:id="@+id/Txtusername"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:gravity="center"
-                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
                 android:text="Murtuza24"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16dp" />
