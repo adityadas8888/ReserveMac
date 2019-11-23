@@ -115,9 +115,10 @@ public class LoginActivity extends AppCompatActivity implements GetRequests.Asyn
             try {
                 userModel = new UserModel();
                 JSONObject jsonContent = jsonObject.getJSONObject("content");
-//                userModel.setUsername(String.valueOf(jsonContent.getString("username")));
                 userModel.setUsername((jsonContent.getString("username")));
                 userModel.setFirstname((jsonContent.getString("firstname")));
+                userModel.setPassword((jsonContent.getString("password")));
+                userModel.setLastname((jsonContent.getString("lastname")));
                 userModel.setUtaid((jsonContent.getString("utaid")));
                 userModel.setRole((jsonContent.getString("role")));
                 userModel.setContactno((jsonContent.getString("contactno")));

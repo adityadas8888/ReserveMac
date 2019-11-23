@@ -9,6 +9,7 @@ public class UserModel implements Parcelable {
     public String username = "";
     public String firstname = "";
     public String lastname = "";
+    public String password = "";
     public String utaid = "";
     public String role = "";
     public String contactno = "";
@@ -43,6 +44,7 @@ public class UserModel implements Parcelable {
         username = in.readString();
         firstname = in.readString();
         lastname = in.readString();
+        password = in.readString();
         utaid = in.readString();
         role = in.readString();
         contactno = in.readString();
@@ -80,6 +82,10 @@ public class UserModel implements Parcelable {
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
+
+    public void setPassword(String password){ this.password = password; }
+
+    public String getPassword(){return password;    }
 
     public String getLastname() {
         return lastname;
@@ -176,6 +182,7 @@ public class UserModel implements Parcelable {
         dest.writeString(username);
         dest.writeString(firstname);
         dest.writeString(lastname);
+        dest.writeString(password);
         dest.writeString(utaid);
         dest.writeString(role);
         dest.writeString(contactno);

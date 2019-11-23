@@ -45,8 +45,7 @@ public class User_screen extends AppCompatActivity {
                 startActivity(myintent1);
             }
         });
-        Toast.makeText(User_screen.this, "username: " + username, Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(User_screen.this, "Logged in username: " + username, Toast.LENGTH_SHORT).show();
         Txtusername.setText(username);
 
         BtnChangePassword.setOnClickListener(new View.OnClickListener() {
