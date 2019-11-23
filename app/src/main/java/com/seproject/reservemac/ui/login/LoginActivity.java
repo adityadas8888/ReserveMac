@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +14,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.seproject.reservemac.R;
+import com.seproject.reservemac.administrator.Admin_screen;
 import com.seproject.reservemac.background.GetRequests;
+import com.seproject.reservemac.facility_manager.Facility_manager_screen;
 import com.seproject.reservemac.model.UserModel;
 import com.seproject.reservemac.ui.RegisterActivity;
 import com.seproject.reservemac.user.User_screen;
@@ -112,15 +115,43 @@ public class LoginActivity extends AppCompatActivity implements GetRequests.Asyn
             try {
                 userModel = new UserModel();
                 JSONObject jsonContent = jsonObject.getJSONObject("content");
-                userModel.setUsername(String.valueOf(jsonContent.getString("username")));
+//                userModel.setUsername(String.valueOf(jsonContent.getString("username")));
+                userModel.setUsername((jsonContent.getString("username")));
+                userModel.setFirstname((jsonContent.getString("firstname")));
+                userModel.setUtaid((jsonContent.getString("utaid")));
+                userModel.setRole((jsonContent.getString("role")));
+                userModel.setContactno((jsonContent.getString("contactno")));
+                userModel.setStreetaddress((jsonContent.getString("streetaddress")));
+                userModel.setZipcode((jsonContent.getString("zipcode")));
+                userModel.setNoshow((jsonContent.getInt("noshow")));
+                userModel.setRevoked((jsonContent.getInt("revoked")));
+                userModel.setEmail((jsonContent.getString("email")));
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
             if (userModel.getUsername().equals(username)) {
-                Intent intent = new Intent(LoginActivity.this, User_screen.class);
-                startActivity(intent);
+                Intent intent;
+                if(userModel.getRole().equals("user")) {
+                    intent = new Intent(LoginActivity.this, User_screen.class);
+                    intent.putExtra("username",userModel.getUsername());
+                    startActivity(intent);
+                }
+                if(userModel.getRole().equals("fm")) {
+                    intent = new Intent(LoginActivity.this, Facility_manager_screen.class);
+                    intent.putExtra("username",userModel.getUsername());
+                    startActivity(intent);
+                }
+
+                if(userModel.getRole().equals("admin")) {
+                    intent = new Intent(LoginActivity.this, Admin_screen.class);
+                    intent.putExtra("username",userModel.getUsername());
+                    startActivity(intent);
+                }
+//                intent.putExtra("usermodel", (Parcelable) userModel);
+
+
 
             }
 

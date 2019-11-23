@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="murtuza24" />
+                android:hint="murtuza24" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -68,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="user123" />
+                android:hint="user123" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -82,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="Mohammed" />
+                android:hint="Mohammed" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -96,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="Bhaiji" />
+                android:hint="Bhaiji" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -110,7 +110,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="1001666586" />
+                android:hint="1001666586" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -124,7 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="6822402078" />
+                android:hint="6822402078" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -138,7 +138,7 @@
                 android:layout_height="40dp"
                 android:inputType="textEmailAddress"
                 android:gravity="center_vertical"
-                android:text="murtuza@mavs.uta.edu" />
+                android:hint="murtuza@mavs.uta.edu" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -152,7 +152,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="914 Greek Row Drive" />
+                android:hint="914 Greek Row Drive" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -166,7 +166,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="Arligton" />
+                android:hint="Arligton" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -180,7 +180,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="Texas" />
+                android:hint="Texas" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -194,7 +194,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="76013" />
+                android:hint="76013" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -208,20 +208,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="Student/Faculty" />
+                android:hint="Student/Faculty" />
 
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/ic_rect"
-                android:gravity="center"
-                android:textColor="@color/colorTextWhite"
-                android:textSize="16sp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginTop="10dp"
-                android:text="Profile Updated.!!"/>
 
             <Button
                 android:layout_width="match_parent"

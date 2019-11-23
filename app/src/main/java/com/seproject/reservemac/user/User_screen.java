@@ -22,17 +22,21 @@ public class User_screen extends AppCompatActivity {
     Button BtnSearchFacility;
     Button signout;
     Button BtnChangePassword;
+    Button BtnViewProfile;
     UserModel userModel = UserModel.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_screen);
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("username");
 
         Txtusername = (TextView) findViewById(R.id.Txtusername);
         signout = findViewById(R.id.signout);
         BtnChangePassword = findViewById(R.id.BtnChangePassword);
         BtnSearchFacility = findViewById(R.id.BtnSearchFacility);
+        BtnViewProfile = findViewById(R.id.BtnViewProfile);
         signout = findViewById(R.id.signout);
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,9 +45,9 @@ public class User_screen extends AppCompatActivity {
                 startActivity(myintent1);
             }
         });
-        Toast.makeText(User_screen.this, "username: " + userModel.getUsername(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(User_screen.this, "username: " + username, Toast.LENGTH_SHORT).show();
 
-        Txtusername.setText(userModel.getUsername());
+        Txtusername.setText(username);
 
         BtnChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +66,13 @@ public class User_screen extends AppCompatActivity {
             }
         });
 
+        BtnViewProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myintent = new Intent(User_screen.this, view_profile_user.class);
+                startActivity(myintent);
+            }
+        });
 
     }
 }

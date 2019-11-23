@@ -1,12 +1,12 @@
-package com.seproject.reservemac.ui.common;
-
-import android.os.Bundle;
+package com.seproject.reservemac.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Bundle;
+
 import com.seproject.reservemac.R;
 
-public class ViewUserDetailsActivity extends AppCompatActivity {
+public class view_profile_user extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

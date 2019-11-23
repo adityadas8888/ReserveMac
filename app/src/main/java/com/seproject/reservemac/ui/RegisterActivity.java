@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity implements PostRequests.
     EditText usernameEditText = null;
     EditText passwordEditText = null;
     EditText emailEditText = null;
-    EditText roleEditText = null;
+    Spinner roleEditText = null;
     EditText addressEditText = null;
     EditText zipcodeEditText = null;
     EditText utaidEditText = null;
@@ -58,7 +60,11 @@ public class RegisterActivity extends AppCompatActivity implements PostRequests.
         contactEditText = findViewById(R.id.contact_no);
         emailEditText = findViewById(R.id.email);
         roleEditText = findViewById(R.id.role);
-
+        String[] items = new String[]{"user", "fm", "admin"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+//set the spinners adapter to the previously created one.
+        roleEditText.setSelection(0);
+        roleEditText.setAdapter(adapter);
 
         assert connectivityManager != null;
         connection = (connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnectedOrConnecting());
@@ -118,20 +124,13 @@ public class RegisterActivity extends AppCompatActivity implements PostRequests.
             emailEditText.setError("Email address is required!");
 
             emailEditText.setHint("Please enter your Email address");
-        } else if (roleEditText.getText().toString().trim().equals("")) {
-            roleEditText.setError("User role is required!");
-
-            roleEditText.setHint("Please select your Role");
-        } else {
+        }
+        else {
             String type = "register";
 
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("register.php");
             String url = stringBuilder.toString();
-
-
-//            (`username`, `password`, `firstname`, `lastname`, `utaid`, `role`,
-//                    `contactno`, `streetaddress`, `zipcode`, `noshow`, `revoked`, `email`)
 
             try {
                 List<NameValuePair> pairs = new ArrayList<NameValuePair>();
@@ -140,14 +139,13 @@ public class RegisterActivity extends AppCompatActivity implements PostRequests.
                 pairs.add(new BasicNameValuePair("firstname", firstnameEditText.getText().toString()));
                 pairs.add(new BasicNameValuePair("lastname", lastnameEditText.getText().toString()));
                 pairs.add(new BasicNameValuePair("utaid", utaidEditText.getText().toString()));
-                pairs.add(new BasicNameValuePair("role", roleEditText.getText().toString()));
+                pairs.add(new BasicNameValuePair("role", roleEditText.getSelectedItem().toString()));
                 pairs.add(new BasicNameValuePair("contactno", contactEditText.getText().toString()));
                 pairs.add(new BasicNameValuePair("streetaddress", addressEditText.getText().toString()));
                 pairs.add(new BasicNameValuePair("zipcode", zipcodeEditText.getText().toString()));
                 pairs.add(new BasicNameValuePair("noshow", "0"));
                 pairs.add(new BasicNameValuePair("revoked", "0"));
                 pairs.add(new BasicNameValuePair("email", emailEditText.getText().toString()));
-
 
                 new PostRequests(RegisterActivity.this, url, RegisterActivity.this, "Register", pairs).execute("");
 

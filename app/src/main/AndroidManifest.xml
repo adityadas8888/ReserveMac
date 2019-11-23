@@ -15,21 +15,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:icon"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.common.ViewViolations"></activity>
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:icon">
+        <activity android:name=".user.view_profile_user"></activity>
+        <activity android:name=".ui.common.ViewViolations" />
         <activity android:name=".ui.common.ModifyReservation" />
         <activity android:name=".ui.common.ViewReservation" />
-         <activity android:name=".ui.common.ReserveFacility"></activity>
-<!--        <activity-->
-<!--            android:name=".ReserveFacility"-->
-<!--            android:label="@string/title_activity_login">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+        <activity android:name=".ui.common.ReserveFacility" /> <!-- <activity -->
+        <!-- android:name=".ReserveFacility" -->
+        <!-- android:label="@string/title_activity_login"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
         <activity android:name=".ui.common.ListOfFacilitiesActivity" />
         <activity android:name=".ui.common.SearchFacilityActivity" />
         <activity android:name=".ui.common.ViewUserDetailsActivity" />
@@ -45,6 +44,7 @@
             android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
