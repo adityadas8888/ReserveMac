@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.seproject.reservemac.R;
 import com.seproject.reservemac.mainscreens.ChangePassword;
+import com.seproject.reservemac.model.UserModel;
 import com.seproject.reservemac.ui.login.LoginActivity;
 
 public class Admin_screen extends AppCompatActivity {
@@ -36,8 +37,10 @@ public class Admin_screen extends AppCompatActivity {
                 startActivity(myintent1);
             }
         });
+        UserModel usermodel = (UserModel)getIntent().getParcelableExtra("usermodel");
 
-        username.setText("Welcome "+getIntent().getStringExtra("username"));
+
+        username.setText("Welcome "+usermodel.getUsername());
 
 
         BtnChangePassword.setOnClickListener(new View.OnClickListener() {

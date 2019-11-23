@@ -1,6 +1,9 @@
 package com.seproject.reservemac.model;
 
-public class UserModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class UserModel implements Parcelable {
 
 
     public String username = "";
@@ -21,20 +24,46 @@ public class UserModel {
 
     }
 
-    public UserModel(String username, String firstname, String lastname, String utaid, String role, String contactno, String streetaddress, String zipcode, int noshow, int revoked, String email) {
-        this.username = username;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.utaid = utaid;
-        this.role = role;
-        this.contactno = contactno;
-        this.streetaddress = streetaddress;
-        this.zipcode = zipcode;
-        this.noshow = noshow;
-        this.revoked = revoked;
-        this.email = email;
+//    public UserModel(String username, String firstname, String lastname, String utaid, String role, String contactno, String streetaddress, String zipcode, int noshow, int revoked, String email) {
+//        this.username = username;
+//        this.firstname = firstname;
+//        this.lastname = lastname;
+//        this.utaid = utaid;
+//        this.role = role;
+//        this.contactno = contactno;
+//        this.streetaddress = streetaddress;
+//        this.zipcode = zipcode;
+//        this.noshow = noshow;
+//        this.revoked = revoked;
+//        this.email = email;
+//    }
+
+
+    protected UserModel(Parcel in) {
+        username = in.readString();
+        firstname = in.readString();
+        lastname = in.readString();
+        utaid = in.readString();
+        role = in.readString();
+        contactno = in.readString();
+        streetaddress = in.readString();
+        zipcode = in.readString();
+        noshow = in.readInt();
+        revoked = in.readInt();
+        email = in.readString();
     }
 
+    public static final Creator<UserModel> CREATOR = new Creator<UserModel>() {
+        @Override
+        public UserModel createFromParcel(Parcel in) {
+            return new UserModel(in);
+        }
+
+        @Override
+        public UserModel[] newArray(int size) {
+            return new UserModel[size];
+        }
+    };
 
     public String getUsername() {
         return username;
@@ -137,4 +166,23 @@ public class UserModel {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(username);
+        dest.writeString(firstname);
+        dest.writeString(lastname);
+        dest.writeString(utaid);
+        dest.writeString(role);
+        dest.writeString(contactno);
+        dest.writeString(streetaddress);
+        dest.writeString(zipcode);
+        dest.writeInt(noshow);
+        dest.writeInt(revoked);
+        dest.writeString(email);
+    }
 }

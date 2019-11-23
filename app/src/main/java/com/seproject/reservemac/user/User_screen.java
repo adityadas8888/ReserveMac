@@ -2,6 +2,7 @@ package com.seproject.reservemac.user;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,14 +24,13 @@ public class User_screen extends AppCompatActivity {
     Button signout;
     Button BtnChangePassword;
     Button BtnViewProfile;
-    UserModel userModel = UserModel.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_screen);
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
+        final UserModel usermodel = (UserModel)getIntent().getParcelableExtra("usermodel");
+        String username = usermodel.getUsername();
 
         Txtusername = (TextView) findViewById(R.id.Txtusername);
         signout = findViewById(R.id.signout);
@@ -70,6 +70,7 @@ public class User_screen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent myintent = new Intent(User_screen.this, view_profile_user.class);
+                myintent.putExtra("usermodel",(Parcelable)usermodel);
                 startActivity(myintent);
             }
         });

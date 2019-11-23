@@ -49,12 +49,12 @@
                 android:gravity="center_vertical"
                 android:text="Username:" />
 
-            <EditText
+            <TextView
                 android:id="@+id/EtxUsername"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:hint="murtuza24" />
+                android:hint="JohnRobb" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -68,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:hint="user123" />
+                android:hint="password" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -82,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:hint="Mohammed" />
+                android:hint="John" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -96,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:hint="Bhaiji" />
+                android:hint="Doe" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -105,12 +105,12 @@
                 android:gravity="center_vertical"
                 android:text="UTA ID" />
 
-            <EditText
+            <TextView
                 android:id="@+id/EtxUtaID"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:hint="1001666586" />
+                android:hint="1001666666" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -124,7 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:hint="6822402078" />
+                android:hint="6826696690" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -138,7 +138,7 @@
                 android:layout_height="40dp"
                 android:inputType="textEmailAddress"
                 android:gravity="center_vertical"
-                android:hint="murtuza@mavs.uta.edu" />
+                android:hint="johndoe@mavs.uta.edu" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -152,7 +152,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:hint="914 Greek Row Drive" />
+                android:hint="900 Summer Road" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -166,7 +166,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:hint="Arligton" />
+                android:hint="Arlington" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -194,7 +194,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:hint="76013" />
+                android:hint="76010" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -203,18 +203,18 @@
                 android:gravity="center_vertical"
                 android:text="Role" />
 
-            <EditText
+            <TextView
                 android:id="@+id/EtxRole"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:hint="Student/Faculty" />
+                android:hint="User" />
 
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:text="Make Changes"
+                android:text="Update Details"
                 android:layout_marginTop="15dp"
                 android:textColor="@color/colorTextWhite"
                 android:background="@color/colorPrimary"/>

@@ -135,18 +135,18 @@ public class LoginActivity extends AppCompatActivity implements GetRequests.Asyn
                 Intent intent;
                 if(userModel.getRole().equals("user")) {
                     intent = new Intent(LoginActivity.this, User_screen.class);
-                    intent.putExtra("username",userModel.getUsername());
+                    intent.putExtra("usermodel", (Parcelable) userModel);
                     startActivity(intent);
                 }
                 if(userModel.getRole().equals("fm")) {
                     intent = new Intent(LoginActivity.this, Facility_manager_screen.class);
-                    intent.putExtra("username",userModel.getUsername());
+                    intent.putExtra("usermodel", (Parcelable) userModel);
                     startActivity(intent);
                 }
 
                 if(userModel.getRole().equals("admin")) {
                     intent = new Intent(LoginActivity.this, Admin_screen.class);
-                    intent.putExtra("username",userModel.getUsername());
+                    intent.putExtra("usermodel", (Parcelable) userModel);
                     startActivity(intent);
                 }
 //                intent.putExtra("usermodel", (Parcelable) userModel);
