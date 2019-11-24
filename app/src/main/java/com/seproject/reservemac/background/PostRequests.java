@@ -2,6 +2,7 @@ package com.seproject.reservemac.background;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.NameValuePair;
 import cz.msebera.android.httpclient.client.HttpClient;
@@ -29,6 +31,7 @@ public class PostRequests extends AsyncTask<String, Void, String> {
 
     Context context;
     AlertDialog alertDialog;
+    SweetAlertDialog dialog;
     JSONObject jsonObject;
     List<NameValuePair> pairs;
 
@@ -56,7 +59,11 @@ public class PostRequests extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPreExecute() {
-        alertDialog = new AlertDialog.Builder(context).create();
+        dialog = new SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE);
+        dialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        dialog.setTitleText("Loading");
+        dialog.setCancelable(false);
+        dialog.show();alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setTitle("Status");
     }
 
@@ -95,9 +102,9 @@ public class PostRequests extends AsyncTask<String, Void, String> {
             HttpResponse httpResponse = httpclient.execute(httpPost);
             inputStream = httpResponse.getEntity().getContent();
 
-            if (inputStream != null)
+            if (inputStream != null) {
                 result = convertInputStreamToString(inputStream);
-            else
+            } else
                 result = "Did not work!";
         } catch (Exception e) {
 //            dialog.dismiss();
@@ -112,8 +119,8 @@ public class PostRequests extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        alertDialog.setMessage(result);
-
+//        alertDialog.setMessage(result);
+        dialog.dismissWithAnimation();
 
         super.onPostExecute(result);
         try {
@@ -135,12 +142,12 @@ public class PostRequests extends AsyncTask<String, Void, String> {
     private static String convertInputStreamToString(InputStream inputStream) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         String line;
-        String result = "";
+        StringBuilder result = new StringBuilder();
         while ((line = bufferedReader.readLine()) != null)
-            result += line;
+            result.append(line);
 
         inputStream.close();
-        return result;
+        return result.toString().replace("Array", "");
 
     }
 

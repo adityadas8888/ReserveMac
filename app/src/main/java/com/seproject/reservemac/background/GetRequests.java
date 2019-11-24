@@ -1,7 +1,7 @@
 package com.seproject.reservemac.background;
 
-import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.client.ClientProtocolException;
 import cz.msebera.android.httpclient.client.HttpClient;
@@ -22,15 +23,13 @@ import cz.msebera.android.httpclient.protocol.HTTP;
 
 public class GetRequests extends AsyncTask<String, Void, String> {
     private static final String TAG = "MyActivity";
+    SweetAlertDialog dialog;
     Context context;
-    AlertDialog alertDialog;
     JSONObject jsonObj;
 
     String url, Identity;
     public AsyncResponse delegate = null;
 
-
-    //    http://mohammedmurtuzabhaiji.uta.cloud/se1project/login.php?username=mohammed&password=pass@123
     public static final String BASE_URL = "http://mohammedmurtuzabhaiji.uta.cloud/se1project/";
 
     public GetRequests(Context ctx) {
@@ -52,8 +51,11 @@ public class GetRequests extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPreExecute() {
-        alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle("Login Status");
+        dialog = new SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE);
+        dialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        dialog.setTitleText("Loading");
+        dialog.setCancelable(false);
+        dialog.show();
 
     }
 
@@ -105,10 +107,10 @@ public class GetRequests extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        alertDialog.setMessage(result);
+//        alertDialog.setMessage(result);
 
 //        alertDialog.show();
-
+        dialog.dismiss();
 
         super.onPostExecute(result);
         try {
