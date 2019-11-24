@@ -57,12 +57,13 @@
             android:layout_marginTop="10dp"
             android:text="Select Date" />
 
-        <EditText
+
+
+        <Button
             android:id="@+id/EtxDatePicker"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="10/23/2019"/>
-
+            android:hint="Select Date"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -70,11 +71,10 @@
             android:layout_marginTop="10dp"
             android:text="Select Time" />
         
-        <EditText
+        <Spinner
             android:id="@+id/EtxTimePicker"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="10:00 AM"/>
+            android:layout_height="50dp" />
 
 
         <Button

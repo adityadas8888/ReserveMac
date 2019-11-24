@@ -60,12 +60,12 @@ public class RegisterActivity extends AppCompatActivity implements PostRequests.
         contactEditText = findViewById(R.id.contact_no);
         emailEditText = findViewById(R.id.email);
         roleEditText = findViewById(R.id.role);
+
         String[] items = new String[]{"user", "fm", "admin"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
 //set the spinners adapter to the previously created one.
         roleEditText.setSelection(0);
         roleEditText.setAdapter(adapter);
-
         assert connectivityManager != null;
         connection = (connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnectedOrConnecting());
         loginButton = findViewById(R.id.login_button);

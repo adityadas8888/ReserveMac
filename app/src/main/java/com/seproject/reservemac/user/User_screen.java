@@ -22,7 +22,6 @@ public class User_screen extends AppCompatActivity {
     TextView Txtusername;
     Button BtnSearchFacility;
     Button signout;
-
     Button BtnViewProfile;
 
     @Override
