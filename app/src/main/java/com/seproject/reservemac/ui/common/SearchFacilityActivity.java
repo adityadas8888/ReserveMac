@@ -1,6 +1,7 @@
 package com.seproject.reservemac.ui.common;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,19 +31,19 @@ public class SearchFacilityActivity extends AppCompatActivity implements  DatePi
 
     Button BtnSearchFacility;
     Button BtnDate;
-    Spinner SpinnerTime;
-
+    Button BtnTime;
+    TimePickerDialog timePickerDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_facility);
         BtnSearchFacility = findViewById(R.id.BtnSearchFacility);
         BtnDate = findViewById(R.id.EtxDatePicker);
-        SpinnerTime = findViewById(R.id.EtxTimePicker);
-        String[] items = new String[]{"00:00", "01:00","02:00", "03:00","04:00", "05:00","06:00", "07:00","08:00", "09:00","10:00", "11:00","12:00", "13:00","14:00", "15:00","16:00", "17:00","18:00", "19:00","20:00", "21:00","22:00", "23:00"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        SpinnerTime.setSelection(0);
-        SpinnerTime.setAdapter(adapter);
+        BtnTime = findViewById(R.id.EtxTimePicker);
+//        String[] items = new String[]{"00:00", "01:00","02:00", "03:00","04:00", "05:00","06:00", "07:00","08:00", "09:00","10:00", "11:00","12:00", "13:00","14:00", "15:00","16:00", "17:00","18:00", "19:00","20:00", "21:00","22:00", "23:00"};
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+//        SpinnerTime.setSelection(0);
+//        SpinnerTime.setAdapter(adapter);
 
         BtnSearchFacility.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,25 +62,32 @@ public class SearchFacilityActivity extends AppCompatActivity implements  DatePi
             }
             });
 
-        SpinnerTime.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        BtnTime.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String time = SpinnerTime.getSelectedItem().toString();
-                DateFormat sdf = new SimpleDateFormat("hh:mm");
-                try {
-                    Date date = sdf.parse(time);
-                    Calendar cal = Calendar.getInstance();
-                    cal.setTime(date);
-                    Toast.makeText(getApplicationContext(), "time: " + cal.get(Calendar.HOUR), Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(SearchFacilityActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                        String roundMinutes="";
+                        if (minutes==0 ||minutes<=15){
+                            roundMinutes="00";
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+                        }
+                        else if (minutes>15 && minutes<59 ){
+                            roundMinutes="30";
+                        }
+                        String roundHours="";
+                        if (hourOfDay==0 ){
+                            roundHours="00";
+                        }
+                        else
+                            roundHours=Integer.toString(hourOfDay);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+                    BtnTime.setText(roundHours+":"+roundMinutes);
+                    }
+                }, 0, 0, false);
+                timePickerDialog.show();
             }
         });
     }
@@ -92,4 +101,34 @@ public class SearchFacilityActivity extends AppCompatActivity implements  DatePi
         String currentDateString = DateFormat.getDateInstance(DateFormat.DEFAULT).format(c.getTime());
         BtnDate.setText(currentDateString);
     }
-}
+
+
+    }
+//}
+
+
+
+
+
+//
+//        SpinnerTime.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                String time = SpinnerTime.getSelectedItem().toString();
+//                DateFormat sdf = new SimpleDateFormat("hh:mm");
+//                try {
+//                    Date date = sdf.parse(time);
+//                    Calendar cal = Calendar.getInstance();
+//                    cal.setTime(date);
+//                    Toast.makeText(getApplicationContext(), "time: " + cal.get(Calendar.HOUR), Toast.LENGTH_SHORT).show();
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
