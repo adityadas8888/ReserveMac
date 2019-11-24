@@ -22,7 +22,7 @@ public class User_screen extends AppCompatActivity {
     TextView Txtusername;
     Button BtnSearchFacility;
     Button signout;
-    Button BtnChangePassword;
+
     Button BtnViewProfile;
 
     @Override
@@ -34,7 +34,6 @@ public class User_screen extends AppCompatActivity {
 
         Txtusername = (TextView) findViewById(R.id.Txtusername);
         signout = findViewById(R.id.signout);
-        BtnChangePassword = findViewById(R.id.BtnChangePassword);
         BtnSearchFacility = findViewById(R.id.BtnSearchFacility);
         BtnViewProfile = findViewById(R.id.BtnViewProfile);
         signout = findViewById(R.id.signout);
@@ -48,14 +47,7 @@ public class User_screen extends AppCompatActivity {
         Toast.makeText(User_screen.this, "Logged in username: " + username, Toast.LENGTH_SHORT).show();
         Txtusername.setText(username);
 
-        BtnChangePassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent myintent = new Intent(getBaseContext(), ChangePassword.class);
-                myintent.putExtra("username", Txtusername.getText().toString());
-                startActivity(myintent);
-            }
-        });
+
 
         BtnSearchFacility.setOnClickListener(new View.OnClickListener() {
             @Override

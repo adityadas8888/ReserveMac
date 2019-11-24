@@ -69,7 +69,6 @@ public class PostRequests extends AsyncTask<String, Void, String> {
 
         try {
             HttpClient httpclient = new DefaultHttpClient();
-//            UserDetailsModel userDetail = UserDetailsModel.getInstance();
             String post_data = BASE_URL.concat(url);
             StringEntity stringEntity = new StringEntity(post_data.toString(), HTTP.UTF_8);
             stringEntity.setContentType("text/xml");
@@ -78,7 +77,6 @@ public class PostRequests extends AsyncTask<String, Void, String> {
             httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded");
 
 //            httpPost
-
 //            JSONObject jsonObject = new JSONObject();
 //            JSONArray jsonArray = new JSONArray();
 //            for (String s : imageArray) {

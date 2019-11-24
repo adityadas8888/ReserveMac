@@ -16,6 +16,7 @@
         android:paddingLeft="10dp">
 
         <ImageView
+            android:id="@+id/bckbutton"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:padding="15dp"
@@ -63,7 +64,7 @@
                 android:gravity="center_vertical"
                 android:text="Password" />
 
-            <TextView
+            <EditText
                 android:id="@+id/EtxPassword"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -185,12 +186,14 @@
 
 
             <Button
+                android:id="@+id/Update"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:text="Update Details"
                 android:layout_marginTop="15dp"
                 android:textColor="@color/colorTextWhite"
-                android:background="@color/colorPrimary"/>
+                android:background="@color/colorPrimary"
+                tools:ignore="InvalidId" />
 
         </LinearLayout>
 

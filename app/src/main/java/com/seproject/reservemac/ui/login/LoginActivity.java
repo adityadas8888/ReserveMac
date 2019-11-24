@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements GetRequests.Asyn
                 } else {
                     Toast.makeText(getApplicationContext(), "Switch on the Internet", Toast.LENGTH_LONG).show();
                 }
-//                readFromDB(usernameEditText.getText().toString(), passwordEditText.getText().toString());
+
 
             }
         });
@@ -96,7 +96,6 @@ public class LoginActivity extends AppCompatActivity implements GetRequests.Asyn
             String url = stringBuilder.toString();
 //                String Url = stringBuilder.toString();
             new GetRequests(LoginActivity.this, url, LoginActivity.this, "Login").execute("");
-
 
         }
 
@@ -150,7 +149,6 @@ public class LoginActivity extends AppCompatActivity implements GetRequests.Asyn
                     intent.putExtra("usermodel", (Parcelable) userModel);
                     startActivity(intent);
                 }
-//                intent.putExtra("usermodel", (Parcelable) userModel);
 
 
 

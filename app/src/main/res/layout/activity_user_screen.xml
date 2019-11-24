@@ -86,15 +86,6 @@
             android:textColor="@color/colorTextWhite" />
 
         <Button
-            android:id="@+id/BtnChangePassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorPrimary"
-            android:text="Change Password"
-            android:textColor="@color/colorTextWhite" />
-
-        <Button
             android:id="@+id/BtnSearchFacility"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -127,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@color/colorPrimary"
-            android:text="Sign out"
+            android:text="Log out"
             android:textColor="@color/colorTextWhite" />
     </LinearLayout>
 </LinearLayout>
