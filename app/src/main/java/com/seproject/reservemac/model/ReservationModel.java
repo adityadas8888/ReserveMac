@@ -7,13 +7,18 @@ public class ReservationModel implements Parcelable {
 
 
     public int reservationid = 0;
-    public String datetime = "";
+    public String date = "";
+    public String starttime = "";
+    public String endtime = "";
     public int violation = 0;
     public String viodetails = "";
     public int resstatus = 0;
     public String username = "";
     public String facilitycode = "";
     public String facilityname = "";
+
+    public String facilitydescription = "";
+    public int deposit = 0;
 
     private static ReservationModel instance;
 
@@ -38,12 +43,16 @@ public class ReservationModel implements Parcelable {
 
     protected ReservationModel(Parcel in) {
         username = in.readString();
-        datetime = in.readString();
+        date = in.readString();
+        starttime = in.readString();
+        endtime = in.readString();
         facilitycode = in.readString();
         viodetails = in.readString();
         reservationid = in.readInt();
         violation = in.readInt();
         resstatus = in.readInt();
+        facilitydescription = in.readString();
+        deposit = in.readInt();
     }
 
     public static final Creator<ReservationModel> CREATOR = new Creator<ReservationModel>() {
@@ -75,12 +84,28 @@ public class ReservationModel implements Parcelable {
         this.reservationid = reservationid;
     }
 
-    public String getDatetime() {
-        return datetime;
+    public String getDate() {
+        return date;
     }
 
-    public void setDatetime(String datetime) {
-        this.datetime = datetime;
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getstarttime() {
+        return starttime;
+    }
+
+    public void setstarttime(String starttime) {
+        this.starttime = starttime;
+    }
+
+    public String getEndTime() {
+        return endtime;
+    }
+
+    public void setEndTime(String endtime) {
+        this.endtime = endtime;
     }
 
     public int getViolation() {
@@ -123,6 +148,22 @@ public class ReservationModel implements Parcelable {
         this.facilityname = facilityname;
     }
 
+    public String getFacilitydescription() {
+        return facilitydescription;
+    }
+
+    public void setFacilitydescription(String facilitydescription) {
+        this.facilitydescription = facilitydescription;
+    }
+
+    public int getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(int deposit) {
+        this.deposit = deposit;
+    }
+
 
     public static void setInstance(ReservationModel instance) {
         ReservationModel.instance = instance;
@@ -144,9 +185,13 @@ public class ReservationModel implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(username);
-        dest.writeString(datetime);
+        dest.writeString(date);
+        dest.writeString(starttime);
+        dest.writeString(endtime);
         dest.writeString(facilitycode);
         dest.writeString(facilityname);
+        dest.writeString(facilitydescription);
+        dest.writeInt(deposit);
         dest.writeInt(reservationid);
         dest.writeInt(resstatus);
         dest.writeInt(violation);

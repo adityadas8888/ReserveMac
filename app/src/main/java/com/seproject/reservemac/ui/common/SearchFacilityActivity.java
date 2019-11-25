@@ -18,73 +18,88 @@ import androidx.fragment.app.DialogFragment;
 
 import com.seproject.reservemac.R;
 import com.seproject.reservemac.model.UserModel;
-import com.seproject.reservemac.user.ReserveFacility;
-import com.seproject.reservemac.user.User_screen;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashMap;
 
-public class SearchFacilityActivity extends AppCompatActivity implements  DatePickerDialog.OnDateSetListener{
+
+public class SearchFacilityActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     Button BtnSearchFacility;
     Button BtnDate;
     Button BtnTime;
     TimePickerDialog timePickerDialog;
     TextView header;
-    Spinner FacilityName;
-    Integer maxDate=0;
+    Spinner SpinnerFType;
+    String facilityCode = "";
+
+    HashMap<String, String> facilitycode = new HashMap<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_facility);
+        SpinnerFType = findViewById(R.id.SpinnerFType);
         BtnSearchFacility = findViewById(R.id.BtnSearchFacility);
         BtnDate = findViewById(R.id.EtxDatePicker);
         header = findViewById(R.id.activityheader);
         BtnTime = findViewById(R.id.EtxTimePicker);
-        FacilityName = findViewById(R.id.SpinnerFType);
         final UserModel usermodel = (UserModel) getIntent().getParcelableExtra("usermodel");
 
-        if (usermodel.getRole().equals("fm")){
+        if (usermodel.getRole().equals("fm")) {
             header.setText("Search Facility FM");
-        }
-        else
+        } else
             header.setText("Search Facility");
+
+
+        facilitycode.put("Multipurpose Rooms", "MR");
+        facilitycode.put("5 Indoor Basketball Court", "IBBC");
+        facilitycode.put("9 Volleyball Court", "IVBC");
+        facilitycode.put("Indoor Soccer Gymnasium", "SCG");
+        facilitycode.put("5 Racquetball Courts", "RBC");
+        facilitycode.put("10 Badminton Courts", "BMC");
+        facilitycode.put("Table Tennis", "TT");
+        facilitycode.put("Conference Rooms", "CR");
+        facilitycode.put("2 Outdoor Volleyball Courts", "OVBC");
+        facilitycode.put("2 Outdoor Basketball Courts", "OBBC");
+
+        SpinnerFType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String faclity = SpinnerFType.getSelectedItem().toString();
+
+                facilityCode = facilitycode.get(faclity);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                facilityCode = "MR";
+            }
+        });
+
 
         BtnSearchFacility.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myintent = new Intent(getBaseContext(), ReserveFacility.class);
+                Toast.makeText(SearchFacilityActivity.this, "" + facilityCode, Toast.LENGTH_SHORT).show();
+                Intent myintent = new Intent(getBaseContext(), ListOfFacilitiesActivity.class);
+
+                myintent.putExtra("facilitycode", facilityCode);
+                myintent.putExtra("date", BtnDate.getText());
+                myintent.putExtra("time", BtnTime.getText());
                 startActivity(myintent);
             }
         });
 
-        FacilityName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                String Fname = FacilityName.getSelectedItem().toString();
-                String[] outdoor = new String[] { "2 Outdoor Volleyball Courts", "2 Outdoor Basketball Courts"};
-                if(Arrays.asList(outdoor).contains(Fname))
-                {
-                    maxDate = 6;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         BtnDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment datePicker = new DatePickerFragment();
-                datePicker.show(getSupportFragmentManager(),"date picker");
+                datePicker.show(getSupportFragmentManager(), "date picker");
             }
-            });
+        });
 
 
         BtnTime.setOnClickListener(new View.OnClickListener() {
@@ -93,31 +108,25 @@ public class SearchFacilityActivity extends AppCompatActivity implements  DatePi
                 TimePickerDialog timePickerDialog = new TimePickerDialog(SearchFacilityActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
-                        String roundMinutes="";
-                        if (minutes==0 ||minutes<=15){
-                            roundMinutes="00";
+                        String roundMinutes = "";
+                        if (minutes == 0 || minutes <= 15) {
+                            roundMinutes = "00";
 
+                        } else if (minutes > 15 && minutes < 59) {
+                            roundMinutes = "30";
                         }
-                        else if (minutes>15 && minutes<59 ){
-                            roundMinutes="30";
-                        }
-                        String roundHours="";
-                        if (hourOfDay==0 ){
-                            roundHours="00";
-                        }
-                        else
-                            roundHours=Integer.toString(hourOfDay);
+                        String roundHours = "";
+                        if (hourOfDay == 0) {
+                            roundHours = "00";
+                        } else
+                            roundHours = Integer.toString(hourOfDay);
 
-                    BtnTime.setText(roundHours+":"+roundMinutes);
+                        BtnTime.setText(roundHours + ":" + roundMinutes);
                     }
                 }, 0, 0, false);
                 timePickerDialog.show();
             }
         });
-
-
-
-
     }
 
     @Override
@@ -125,19 +134,17 @@ public class SearchFacilityActivity extends AppCompatActivity implements  DatePi
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month);
-        String Fname = FacilityName.getSelectedItem().toString();
-        String[] outdoor = new String[] { "2 Outdoor Volleyball Courts", "2 Outdoor Basketball Courts"};
-        if(Arrays.asList(outdoor).contains(Fname))
-        {
-            maxDate = 6;
-        }
-        else {
-            Toast.makeText(getApplicationContext(), "Invalid date for the facility type: " , Toast.LENGTH_SHORT).show();
-        }
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+
         String currentDateString = format1.format(c.getTime());
+
+//        String currentDateString = DateFormat.getDateInstance(DateFormat.DEFAULT).format(c.getTime());
         BtnDate.setText(currentDateString);
     }
 
 
-    }
+}
+
+

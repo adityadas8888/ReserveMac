@@ -11,13 +11,12 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".user.view_profile_user"></activity>
+        <activity android:name=".user.view_profile_user" />
         <activity android:name=".ui.common.ViewViolations" />
         <activity android:name=".user.ModifyReservation" />
         <activity android:name=".ui.common.ViewReservation" />

@@ -26,7 +26,7 @@ public class ViewReservation extends AppCompatActivity implements GetRequests.As
 
     RecyclerView RecycleViewReservation;
     ViewReservationsAdapter viewReservationsAdapter;
-//    ArrayList<ReservationModel> listofreservations;
+    //    ArrayList<ReservationModel> listofreservations;
     ArrayList<ReservationModel> reservationModelArrayList;
 
     @Override
@@ -61,7 +61,7 @@ public class ViewReservation extends AppCompatActivity implements GetRequests.As
                     ReservationModel reservationModel = new ReservationModel();
                     JSONObject json = jsonArray.getJSONObject(i);
                     reservationModel.setReservationid(Integer.parseInt((json.getString("reservationid"))));
-                    reservationModel.setDatetime((json.getString("datetime")));
+                    reservationModel.setDate((json.getString("date")));
                     reservationModel.setViolation(Integer.parseInt((json.getString("violation"))));
                     reservationModel.setViodetails((json.getString("viodetails")));
                     reservationModel.setResstatus(Integer.parseInt((json.getString("resstatus"))));
@@ -84,8 +84,8 @@ public class ViewReservation extends AppCompatActivity implements GetRequests.As
     public class ViewReservationsAdapter extends RecyclerView.Adapter<ViewReservationsAdapter.MyViewHolder> {
         ArrayList<ReservationModel> listofreservation;
 
-        public ViewReservationsAdapter(ArrayList<ReservationModel> listofspecialoccasions) {
-            this.listofreservation = listofspecialoccasions;
+        public ViewReservationsAdapter(ArrayList<ReservationModel> listofreservation) {
+            this.listofreservation = listofreservation;
             //  loadDailyTaskArray();
 
         }
@@ -127,7 +127,7 @@ public class ViewReservation extends AppCompatActivity implements GetRequests.As
             holder.TxtFacilityName.setText(reservationModel.getFacilityName());
             holder.TxtFacilityCode.setText(reservationModel.getFacilitycode());
             holder.TxtReservationID.setText("Res ID: " + reservationModel.getReservationid());
-            holder.TxtDate.setText(reservationModel.getDatetime());
+            holder.TxtDate.setText(reservationModel.getDate());
 
         }
 

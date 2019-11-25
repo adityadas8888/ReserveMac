@@ -27,9 +27,9 @@ public class ReserveFacility extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reserve_facility);
 
-        final ReservationModel reservationModel =  getIntent().getParcelableExtra("reservationmodel");
+        final ReservationModel reservationModel = getIntent().getParcelableExtra("reservationmodel");
 
-        BtnMakeReservation =  findViewById(R.id.BtnMakeReservation);
+        BtnMakeReservation = findViewById(R.id.BtnMakeReservation);
 
         FacilityName = findViewById(R.id.TxtFName);
         FacilityName.setText(reservationModel.getFacilityName());
@@ -38,10 +38,10 @@ public class ReserveFacility extends AppCompatActivity {
         FacilityCode.setText(reservationModel.getFacilitycode());
 
         Date = findViewById(R.id.TxtDate);
-        Date.setText(reservationModel.getDatetime());/// fix this
+        Date.setText(reservationModel.getDate());/// fix this
 
-        Time = findViewById(R.id.TxtInterval);
-        Time.setText(reservationModel.getDatetime());/// fix this
+        Time = findViewById(R.id.TxtStartTime);
+        Time.setText(reservationModel.getstarttime());/// fix this
 
         Deposit = findViewById(R.id.TxtDeposit);
 //        Deposit.setText(reservationModel.getDeposit());/// fix this
