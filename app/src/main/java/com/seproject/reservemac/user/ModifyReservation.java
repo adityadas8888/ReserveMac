@@ -141,10 +141,13 @@ public class ModifyReservation extends AppCompatActivity implements DatePickerDi
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month);
-        if(Calendar.DAY_OF_MONTH<=Calendar.DAY_OF_MONTH+maxDate)
-            c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String Fname = FacilityName.getText().toString();
+        String[] outdoor = new String[] { "2 Outdoor Volleyball Courts", "2 Outdoor Basketball Courts"};
+        if(Arrays.asList(outdoor).contains(Fname))
+        {
+            maxDate = 6;
+        }
         else {
-            c.set(Calendar.DAY_OF_MONTH, Calendar.DAY_OF_MONTH);
             Toast.makeText(getApplicationContext(), "Invalid date for the facility type: " , Toast.LENGTH_SHORT).show();
         }
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
