@@ -154,16 +154,18 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-
+        if(maxDate>0){
             if(maxDate>6){
-                Toast.makeText(getApplicationContext(), "Outdoor Facilities are limited to just 7 days including today" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Outdoor Facilities are limited to just 7 days from today" , Toast.LENGTH_SHORT).show();
             }
             else{
                 c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
                 c.set(Calendar.MONTH,month);
                 c.set(Calendar.YEAR,year);
             }
-
+        }
+        else
+            Toast.makeText(getApplicationContext(), "Outdoor Facilities are can't be booked in the past" , Toast.LENGTH_SHORT).show();
         }
         else {
             Toast.makeText(getApplicationContext(), "Indoor Facilities are limited to just today's date " , Toast.LENGTH_SHORT).show();
