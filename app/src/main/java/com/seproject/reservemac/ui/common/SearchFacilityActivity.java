@@ -5,10 +5,13 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -16,8 +19,11 @@ import androidx.fragment.app.DialogFragment;
 import com.seproject.reservemac.R;
 import com.seproject.reservemac.model.UserModel;
 import com.seproject.reservemac.user.ReserveFacility;
+import com.seproject.reservemac.user.User_screen;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class SearchFacilityActivity extends AppCompatActivity implements  DatePickerDialog.OnDateSetListener{
@@ -27,6 +33,8 @@ public class SearchFacilityActivity extends AppCompatActivity implements  DatePi
     Button BtnTime;
     TimePickerDialog timePickerDialog;
     TextView header;
+    Spinner FacilityName;
+    Integer maxDate=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +43,7 @@ public class SearchFacilityActivity extends AppCompatActivity implements  DatePi
         BtnDate = findViewById(R.id.EtxDatePicker);
         header = findViewById(R.id.activityheader);
         BtnTime = findViewById(R.id.EtxTimePicker);
+        FacilityName = findViewById(R.id.SpinnerFType);
         final UserModel usermodel = (UserModel) getIntent().getParcelableExtra("usermodel");
 
         if (usermodel.getRole().equals("fm")){
@@ -51,6 +60,23 @@ public class SearchFacilityActivity extends AppCompatActivity implements  DatePi
             }
         });
 
+        FacilityName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String Fname = FacilityName.getSelectedItem().toString();
+                String[] outdoor = new String[] { "2 Outdoor Volleyball Courts", "2 Outdoor Basketball Courts"};
+                if(Arrays.asList(outdoor).contains(Fname))
+                {
+                    maxDate = 6;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         BtnDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,6 +114,10 @@ public class SearchFacilityActivity extends AppCompatActivity implements  DatePi
                 timePickerDialog.show();
             }
         });
+
+
+
+
     }
 
     @Override
@@ -95,8 +125,14 @@ public class SearchFacilityActivity extends AppCompatActivity implements  DatePi
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month);
-        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        String currentDateString = DateFormat.getDateInstance(DateFormat.DEFAULT).format(c.getTime());
+        if(Calendar.DAY_OF_MONTH<=Calendar.DAY_OF_MONTH+maxDate)
+            c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        else {
+            c.set(Calendar.DAY_OF_MONTH, Calendar.DAY_OF_MONTH);
+            Toast.makeText(getApplicationContext(), "Invalid date for the facility type: " , Toast.LENGTH_SHORT).show();
+        }
+        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDateString = format1.format(c.getTime());
         BtnDate.setText(currentDateString);
     }
 

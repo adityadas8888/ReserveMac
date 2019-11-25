@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +29,7 @@ import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class ModifyReservation extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, GetRequests.AsyncResponse {
@@ -42,6 +44,7 @@ public class ModifyReservation extends AppCompatActivity implements DatePickerDi
     TextView FacilityCode;
     TextView FacilityDescription;
     TextView FacilityDeposit;
+    Integer maxDate =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +90,13 @@ public class ModifyReservation extends AppCompatActivity implements DatePickerDi
             }
         });
 
+        String Fname = FacilityName.getText().toString();
+        String[] outdoor = new String[] { "2 Outdoor Volleyball Courts", "2 Outdoor Basketball Courts"};
+        if(Arrays.asList(outdoor).contains(Fname))
+        {
+            maxDate = 6;
+        }
+
         BtnDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,7 +141,12 @@ public class ModifyReservation extends AppCompatActivity implements DatePickerDi
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month);
-        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        if(Calendar.DAY_OF_MONTH<=Calendar.DAY_OF_MONTH+maxDate)
+            c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        else {
+            c.set(Calendar.DAY_OF_MONTH, Calendar.DAY_OF_MONTH);
+            Toast.makeText(getApplicationContext(), "Invalid date for the facility type: " , Toast.LENGTH_SHORT).show();
+        }
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
         String currentDateString = format1.format(c.getTime());
         BtnDate.setText(currentDateString);
