@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -137,17 +138,20 @@ public class LoginActivity extends AppCompatActivity implements GetRequests.Asyn
                     intent = new Intent(LoginActivity.this, User_screen.class);
                     intent.putExtra("usermodel", (Parcelable) userModel);
                     startActivity(intent);
+                    LoginActivity.this.finish();
                 }
                 if(userModel.getRole().equals("fm")) {
                     intent = new Intent(LoginActivity.this, Facility_manager_screen.class);
                     intent.putExtra("usermodel", (Parcelable) userModel);
                     startActivity(intent);
+                    LoginActivity.this.finish();
                 }
 
                 if(userModel.getRole().equals("admin")) {
                     intent = new Intent(LoginActivity.this, Admin_screen.class);
                     intent.putExtra("usermodel", (Parcelable) userModel);
                     startActivity(intent);
+                    LoginActivity.this.finish();
                 }
 
 

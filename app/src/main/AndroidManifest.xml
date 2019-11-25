@@ -32,7 +32,7 @@
         <activity android:name=".ui.common.ListOfFacilitiesActivity" />
         <activity android:name=".ui.common.SearchFacilityActivity" />
         <activity android:name=".ui.common.ViewUserDetailsActivity" />
-        <activity android:name=".ui.common.SearchUserActivity" />
+        <activity android:name=".facility_manager.SearchUserActivity" />
         <activity android:name=".administrator.AdminHomepage" />
         <activity android:name=".mainscreens.ChangePassword" />
         <activity android:name=".facility_manager.Facility_manager_screen" />

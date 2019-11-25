@@ -1,4 +1,4 @@
-package com.seproject.reservemac.ui.common;
+package com.seproject.reservemac.facility_manager;
 
 import android.os.Bundle;
 

@@ -1,7 +1,9 @@
 package com.seproject.reservemac.administrator;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ import com.seproject.reservemac.R;
 import com.seproject.reservemac.mainscreens.ChangePassword;
 import com.seproject.reservemac.model.UserModel;
 import com.seproject.reservemac.ui.login.LoginActivity;
+import com.seproject.reservemac.user.User_screen;
 
 public class Admin_screen extends AppCompatActivity {
 
@@ -33,8 +36,7 @@ public class Admin_screen extends AppCompatActivity {
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myintent1 = new Intent(getBaseContext(), LoginActivity.class);
-                startActivity(myintent1);
+                onBackPressed();
             }
         });
         UserModel usermodel = (UserModel)getIntent().getParcelableExtra("usermodel");
@@ -51,6 +53,29 @@ public class Admin_screen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to Logout?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(Admin_screen.this,LoginActivity.class);
+                        startActivity(intent);
+                        Admin_screen.this.finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
 
     }
 }

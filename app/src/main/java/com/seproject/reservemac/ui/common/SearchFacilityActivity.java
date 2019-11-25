@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import com.seproject.reservemac.R;
+import com.seproject.reservemac.model.UserModel;
 import com.seproject.reservemac.user.User_screen;
 
 import java.text.DateFormat;
@@ -33,13 +35,23 @@ public class SearchFacilityActivity extends AppCompatActivity implements  DatePi
     Button BtnDate;
     Button BtnTime;
     TimePickerDialog timePickerDialog;
+    TextView header;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_facility);
         BtnSearchFacility = findViewById(R.id.BtnSearchFacility);
         BtnDate = findViewById(R.id.EtxDatePicker);
+        header = findViewById(R.id.activityheader);
         BtnTime = findViewById(R.id.EtxTimePicker);
+        final UserModel usermodel = (UserModel) getIntent().getParcelableExtra("usermodel");
+
+        if (usermodel.getRole().equals("fm")){
+            header.setText("Search Facility FM");
+        }
+        else
+            header.setText("Search Facility");
+
         BtnSearchFacility.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

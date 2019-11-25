@@ -59,23 +59,18 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Change Password"
-        android:id="@+id/BtnChangePassword"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Search Facility"
-        android:id="@+id/BtnFacilityDetails"/>
+        android:id="@+id/BtnFacilitySearch"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Search User"
-        android:id="@+id/search_facility"/>
+        android:id="@+id/search_user"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
