@@ -45,6 +45,7 @@
     <TextView
         android:id="@+id/username"
         android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content" />
 
     <TextView
@@ -53,20 +54,22 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Update Password"
-        android:id="@+id/BtnChangePassword"/>
 
     <Button
+        android:id="@+id/search_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Change User Roles"
-        android:id="@+id/BtnChangeRoles"/>
+        android:text="Search User" />
+
     <Button
+        android:id="@+id/BtnChangeRoles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign out"
-        android:id="@+id/signout"/>
+        android:text="Edit User" />
+
+    <Button
+        android:id="@+id/signout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Log out" />
 </LinearLayout>

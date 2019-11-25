@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.common.ReserveFacility">
+    tools:context=".user.ReserveFacility">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,10 +44,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="Facility Type:" />
+            android:text="Facility Name:" />
 
         <TextView
-            android:id="@+id/TxtFType"
+            android:id="@+id/TxtFName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -60,10 +60,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center_vertical"
-            android:text="Facility Name:" />
+            android:text="Facility Code:" />
 
         <TextView
-            android:id="@+id/TxtFName"
+            android:id="@+id/TxtFCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -138,22 +138,12 @@
 
 
         <Button
-            android:id="@+id/BtnModifyReservation"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="25dp"
-            android:background="@color/colorPrimary"
-            android:text="Modify Reservation"
-            android:textColor="@color/colorTextWhite" />
-        
-        
-        <Button
             android:id="@+id/BtnMakeReservation"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="25dp"
-            android:text="Cancel Reservation"
             android:background="@color/colorPrimary"
+            android:text="Make Reservation"
             android:textColor="@color/colorTextWhite" />
 
         <ImageView

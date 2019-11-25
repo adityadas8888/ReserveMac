@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.seproject.reservemac.R;
+import com.seproject.reservemac.facility_manager.SearchUserActivity;
 import com.seproject.reservemac.mainscreens.ChangePassword;
 import com.seproject.reservemac.model.UserModel;
 import com.seproject.reservemac.ui.login.LoginActivity;
@@ -22,15 +23,15 @@ public class Admin_screen extends AppCompatActivity {
     TextView username = null;
 
     Button signout = null;
-    Button BtnChangePassword = null;
+    Button search_user = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_screen);
-
+        final UserModel usermodel = (UserModel)getIntent().getParcelableExtra("usermodel");
         username = findViewById(R.id.username);
         signout = findViewById(R.id.signout);
-        BtnChangePassword = findViewById(R.id.BtnChangePassword);
+        search_user = findViewById(R.id.search_user);
 
         signout = findViewById(R.id.signout);
         signout.setOnClickListener(new View.OnClickListener() {
@@ -39,17 +40,15 @@ public class Admin_screen extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        UserModel usermodel = (UserModel)getIntent().getParcelableExtra("usermodel");
 
 
-        username.setText("Welcome "+usermodel.getUsername());
 
-
-        BtnChangePassword.setOnClickListener(new View.OnClickListener() {
+        username.setText(usermodel.getUsername());
+        search_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), ChangePassword.class);
-                intent.putExtra("username",username.getText().toString());
+                Intent intent = new Intent(getBaseContext(), SearchUserActivity.class);
+                intent.putExtra("role",usermodel.getRole());              // to determine what activity to move to from the search user activity
                 startActivity(intent);
             }
         });

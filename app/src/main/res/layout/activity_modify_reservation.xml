@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.common.ModifyReservation">
+    tools:context=".user.ModifyReservation">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,14 +44,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="Facility Type:" />
+            android:text="Facility Name:" />
 
-        <Spinner
-            android:id="@+id/SpinnerFType"
+        <TextView
+            android:id="@+id/TxtName"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:entries="@array/ftype"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
+            android:text="Multi Purpose room"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -60,10 +60,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center_vertical"
-            android:text="Facility Name:" />
+            android:text="Facility Code:" />
 
         <TextView
-            android:id="@+id/TxtFName"
+            android:id="@+id/TxtFCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -87,38 +87,6 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <!--        <TextView-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="10dp"-->
-        <!--            android:gravity="center_vertical"-->
-        <!--            android:text="Date:" />-->
-
-        <!--        <TextView-->
-        <!--            android:id="@+id/TxtDate"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:gravity="center_vertical"-->
-        <!--            android:text="10/23/2019"-->
-        <!--            android:textSize="16sp"-->
-        <!--            android:textStyle="bold" />-->
-
-        <!--        <TextView-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="10dp"-->
-        <!--            android:gravity="center_vertical"-->
-        <!--            android:text="Start-End Time:" />-->
-
-        <!--        <TextView-->
-        <!--            android:id="@+id/TxtInterval"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:gravity="center_vertical"-->
-        <!--            android:text="10:00 AM - 11:00 AM"-->
-        <!--            android:textSize="16sp"-->
-        <!--            android:textStyle="bold" />-->
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -126,7 +94,7 @@
             android:layout_marginTop="10dp"
             android:text="Select Date" />
 
-        <EditText
+        <Button
             android:id="@+id/EtxDatePicker"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -139,7 +107,7 @@
             android:gravity="center_vertical"
             android:text="Select Time" />
 
-        <EditText
+        <Button
             android:id="@+id/EtxTimePicker"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -172,18 +140,14 @@
             android:text="Modify Reservation"
             android:textColor="@color/colorTextWhite" />
 
-
-        <TextView
+        <Button
+            android:id="@+id/BtnCancelReservation"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginTop="100dp"
-            android:text="Reservation Modified !"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:textColor="@color/colorTextWhite"
-            android:background="@drawable/ic_rect"/>
+            android:layout_height="50dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/colorPrimary"
+            android:text="Cancel Reservation"
+            android:textColor="@color/colorTextWhite" />
 
     </LinearLayout>
 

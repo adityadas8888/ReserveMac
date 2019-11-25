@@ -19,9 +19,9 @@
         tools:replace="android:icon">
         <activity android:name=".user.view_profile_user"></activity>
         <activity android:name=".ui.common.ViewViolations" />
-        <activity android:name=".ui.common.ModifyReservation" />
+        <activity android:name=".user.ModifyReservation" />
         <activity android:name=".ui.common.ViewReservation" />
-        <activity android:name=".ui.common.ReserveFacility" /> <!-- <activity -->
+        <activity android:name=".user.ReserveFacility" /> <!-- <activity -->
         <!-- android:name=".ReserveFacility" -->
         <!-- android:label="@string/title_activity_login"> -->
         <!-- <intent-filter> -->

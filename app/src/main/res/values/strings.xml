@@ -25,7 +25,7 @@
     <string name="login_failed">"Login failed"</string>
 
     <string-array name="ftype">
-        <item>Multipurpose Rooms</item>
+        <item>4 Multipurpose Rooms</item>
         <item>5 Indoor Basketball Court</item>
         <item>9 Volleyball Court</item>
         <item>Indoor Soccer Gymnasium</item>

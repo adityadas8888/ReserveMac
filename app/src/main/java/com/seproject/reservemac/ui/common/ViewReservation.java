@@ -69,9 +69,7 @@ public class ViewReservation extends AppCompatActivity implements GetRequests.As
                     reservationModel.setFacilitycode((json.getString("facilitycode")));
                     reservationModel.setFacilityName((json.getString("name")));
                     reservationModelArrayList.add(reservationModel);
-
                 }
-
                 viewReservationsAdapter = new ViewReservationsAdapter(reservationModelArrayList);
                 RecycleViewReservation.setAdapter(viewReservationsAdapter);
             } catch (JSONException e) {
