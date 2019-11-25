@@ -135,6 +135,7 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        System.out.println("asdhasd");
         Calendar c = Calendar.getInstance();
         String Fname = SpinnerFType.getSelectedItem().toString();
         String[] outdoor = new String[] { "2 Outdoor Volleyball Courts", "2 Outdoor Basketball Courts"};
