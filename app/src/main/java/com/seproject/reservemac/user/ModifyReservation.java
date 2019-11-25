@@ -28,9 +28,11 @@ import com.seproject.reservemac.ui.login.LoginActivity;
 import org.json.JSONObject;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 
 public class ModifyReservation extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, GetRequests.AsyncResponse {
 
@@ -67,7 +69,7 @@ public class ModifyReservation extends AppCompatActivity implements DatePickerDi
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                deleteReservation();
+                             //   deleteReservation();
 //                                Intent intent = new Intent(ModifyReservation.this, LoginActivity.class);
 //                                startActivity(intent);                                                        /// Call cancell reservation.php
 //                                Facility_manager_screen.this.finish();
@@ -89,13 +91,6 @@ public class ModifyReservation extends AppCompatActivity implements DatePickerDi
 
             }
         });
-
-        String Fname = FacilityName.getText().toString();
-        String[] outdoor = new String[] { "2 Outdoor Volleyball Courts", "2 Outdoor Basketball Courts"};
-        if(Arrays.asList(outdoor).contains(Fname))
-        {
-            maxDate = 6;
-        }
 
         BtnDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,32 +134,40 @@ public class ModifyReservation extends AppCompatActivity implements DatePickerDi
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar c = Calendar.getInstance();
-        c.set(Calendar.YEAR, year);
-        c.set(Calendar.MONTH, month);
         String Fname = FacilityName.getText().toString();
         String[] outdoor = new String[] { "2 Outdoor Volleyball Courts", "2 Outdoor Basketball Courts"};
+
         if(Arrays.asList(outdoor).contains(Fname))
         {
-            maxDate = 6;
+            SimpleDateFormat myFormat = new SimpleDateFormat("dd MM yyyy");
+            String selectedate = dayOfMonth+" "+month+" "+year;
+            String todaysdate = c.get(Calendar.DAY_OF_MONTH)+" "+c.get(Calendar.MONTH)+" "+c.get(Calendar.YEAR);
+            try {
+                Date date1 = myFormat.parse(selectedate);
+                Date date2 = myFormat.parse(todaysdate);
+                long diff = date1.getTime() - date2.getTime();
+                float days = diff / (1000*60*60*24);
+                maxDate = (int)days;
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            if(maxDate>6){
+                Toast.makeText(getApplicationContext(), "Outdoor Facilities are limited to just 7 days including today" , Toast.LENGTH_SHORT).show();
+            }
+            else{
+                c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+                c.set(Calendar.MONTH,month);
+                c.set(Calendar.YEAR,year);
+            }
+
         }
         else {
-            Toast.makeText(getApplicationContext(), "Invalid date for the facility type: " , Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Indoor Facilities are limited to just today's date " , Toast.LENGTH_SHORT).show();
         }
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
         String currentDateString = format1.format(c.getTime());
         BtnDate.setText(currentDateString);
-    }
-    public void deleteReservation(){
-
-
-        String type = "ViewReservation";
-        StringBuilder stringBuilder = new StringBuilder();
-        final UserModel userModel = getIntent().getParcelableExtra("usermodel");    // change this to the appropriate model
-        //        String ReservationID = reservationModel.getreservationid();           /// set this to the appropriate model
-//        stringBuilder.append("cancel_reservation.php?reservationid=").append(ReservationID);
-        String url = stringBuilder.toString();
-        new GetRequests(ModifyReservation.this, url, ModifyReservation.this, "ViewReservation").execute("");
-
     }
 
     @Override

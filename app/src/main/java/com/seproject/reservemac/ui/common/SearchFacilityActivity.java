@@ -19,8 +19,11 @@ import androidx.fragment.app.DialogFragment;
 import com.seproject.reservemac.R;
 import com.seproject.reservemac.model.UserModel;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 
@@ -33,6 +36,7 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
     TextView header;
     Spinner SpinnerFType;
     String facilityCode = "";
+    Integer maxDate=0;
 
     HashMap<String, String> facilitycode = new HashMap<>();
 
@@ -132,15 +136,39 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar c = Calendar.getInstance();
-        c.set(Calendar.YEAR, year);
-        c.set(Calendar.MONTH, month);
-        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String Fname = SpinnerFType.getSelectedItem().toString();
+        String[] outdoor = new String[] { "2 Outdoor Volleyball Courts", "2 Outdoor Basketball Courts"};
 
+        if(Arrays.asList(outdoor).contains(Fname))
+        {
+            SimpleDateFormat myFormat = new SimpleDateFormat("dd MM yyyy");
+            String selectedate = dayOfMonth+" "+month+" "+year;
+            String todaysdate = c.get(Calendar.DAY_OF_MONTH)+" "+c.get(Calendar.MONTH)+" "+c.get(Calendar.YEAR);
+            try {
+                Date date1 = myFormat.parse(selectedate);
+                Date date2 = myFormat.parse(todaysdate);
+                long diff = date1.getTime() - date2.getTime();
+                float days = diff / (1000*60*60*24);
+                maxDate = (int)days;
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            if(maxDate>6){
+                Toast.makeText(getApplicationContext(), "Outdoor Facilities are limited to just 7 days including today" , Toast.LENGTH_SHORT).show();
+            }
+            else{
+                c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+                c.set(Calendar.MONTH,month);
+                c.set(Calendar.YEAR,year);
+            }
+
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Indoor Facilities are limited to just today's date " , Toast.LENGTH_SHORT).show();
+        }
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-
         String currentDateString = format1.format(c.getTime());
-
-//        String currentDateString = DateFormat.getDateInstance(DateFormat.DEFAULT).format(c.getTime());
         BtnDate.setText(currentDateString);
     }
 
