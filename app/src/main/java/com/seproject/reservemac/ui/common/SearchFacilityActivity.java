@@ -120,7 +120,7 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
                         String roundMinutes = "";
                         String roundHours = "";
                         int day = c.get(Calendar.DAY_OF_WEEK);
-                        if (hourOfDay >= c.get(Calendar.HOUR) && minutes >= c.get(Calendar.MINUTE) && flag == Boolean.FALSE) {
+                        if(hourOfDay>=c.get(Calendar.HOUR) && minutes>=c.get(Calendar.MINUTE) && flag==Boolean.FALSE) {
                             if (day >= 2 && day <= 6) {
                                 if (hourOfDay >= 6 && hourOfDay <= 23) {
                                     roundHours = Integer.toString(hourOfDay);
@@ -146,7 +146,9 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
                                     BtnTime.setText(roundHours + ":" + roundMinutes);
                                 }
                             }
-                        } else if (flag == Boolean.TRUE) {
+                        }
+
+                        else  if (flag==Boolean.TRUE){
                             if (day >= 2 && day <= 6) {
                                 if (hourOfDay >= 6 && hourOfDay <= 23) {
                                     roundHours = Integer.toString(hourOfDay);
@@ -172,7 +174,8 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
                                     BtnTime.setText(roundHours + ":" + roundMinutes);
                                 }
                             }
-                        } else
+                        }
+                        else
                             Toast.makeText(getApplicationContext(), "Can't select time in the past ", Toast.LENGTH_SHORT).show();
                     }
                 }, 0, 0, false);
