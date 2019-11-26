@@ -45,7 +45,7 @@ public class User_screen extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        Toast.makeText(User_screen.this, "Logged in username: " + username, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Logged in successfully " , Toast.LENGTH_SHORT).show();
         Txtusername.setText(username);
 
 

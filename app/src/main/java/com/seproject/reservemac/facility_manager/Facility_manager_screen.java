@@ -10,6 +10,7 @@ import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.seproject.reservemac.R;
 import com.seproject.reservemac.model.UserModel;
@@ -39,7 +40,7 @@ public class Facility_manager_screen extends AppCompatActivity {
         searchUser = findViewById(R.id.search_user);
         ViewProfile = findViewById(R.id.BtnViewProfile);
         SearchReservation = findViewById(R.id.BtnReservation);
-
+        Toast.makeText(getApplicationContext(), "Logged in successfully " , Toast.LENGTH_SHORT).show();
         final UserModel usermodel = (UserModel)getIntent().getParcelableExtra("usermodel");
         username.setText(usermodel.getUsername());
 

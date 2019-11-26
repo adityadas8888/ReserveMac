@@ -10,6 +10,7 @@ import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.seproject.reservemac.R;
 import com.seproject.reservemac.facility_manager.SearchUserActivity;
@@ -36,7 +37,7 @@ public class Admin_screen extends AppCompatActivity {
         signout = findViewById(R.id.signout);
         search_user = findViewById(R.id.search_user);
         view_profile = findViewById(R.id.BtnViewProfile);
-
+        Toast.makeText(getApplicationContext(), "Logged in successfully " , Toast.LENGTH_SHORT).show();
         signout = findViewById(R.id.signout);
         signout.setOnClickListener(new View.OnClickListener() {
             @Override

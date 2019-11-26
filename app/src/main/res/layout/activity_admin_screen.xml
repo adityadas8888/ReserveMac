@@ -77,11 +77,6 @@
         android:text="Search User" />
 
     <Button
-        android:id="@+id/BtnChangeRoles"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Edit User" />
-    <Button
         android:id="@+id/BtnViewProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
