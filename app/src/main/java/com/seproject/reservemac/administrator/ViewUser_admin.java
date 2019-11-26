@@ -99,7 +99,7 @@ public class ViewUser_admin extends AppCompatActivity implements GetRequests.Asy
 //                        role.setText(json.getString("role"));
                         String[] items = new String[]{"user", "fm", "admin"};
                         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-                        role.setSelection(((ArrayAdapter<String>)role.getAdapter()).getPosition("fm"));
+                        role.setSelection(((ArrayAdapter<String>)role.getAdapter()).getPosition(json.getString("role")));
                         phone.setText(json.getString("contactno"));
                         address.setText(json.getString("streetaddress"));
                         zipcode.setText(json.getString("zipcode"));

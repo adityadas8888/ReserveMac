@@ -236,7 +236,7 @@ public class view_profile_user extends AppCompatActivity implements PostRequests
         final ConnectivityManager connectivityManager = ((ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE));
         final UserModel usermodel = (UserModel) getIntent().getParcelableExtra("usermodel");
         username = findViewById(R.id.EtxUsername);
-        username.setText(usermodel.getUsername());
+//        username.setText(usermodel.getUsername());
         password = findViewById(R.id.EtxPassword);
         firstname = findViewById(R.id.EtxFirstName);
         lastname = findViewById(R.id.EtxLastName);
