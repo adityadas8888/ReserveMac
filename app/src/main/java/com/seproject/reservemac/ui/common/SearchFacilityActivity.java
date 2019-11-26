@@ -247,15 +247,16 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
         Calendar c = Calendar.getInstance();
         String Fname = SpinnerFType.getSelectedItem().toString();
         String[] outdoor = new String[]{"2 Outdoor Volleyball Courts", "2 Outdoor Basketball Courts"};
+        selectedate = dayOfMonth + " " + month + " " + year;
+        todaysdate = c.get(Calendar.DAY_OF_MONTH) + " " + c.get(Calendar.MONTH) + " " + c.get(Calendar.YEAR);
+        maxDate = dayCalc(selectedate,todaysdate);
+
         if (Arrays.asList(outdoor).contains(Fname)) {
             flag = Boolean.TRUE;
 
-            selectedate = dayOfMonth + " " + month + " " + year;
-            todaysdate = c.get(Calendar.DAY_OF_MONTH) + " " + c.get(Calendar.MONTH) + " " + c.get(Calendar.YEAR);
-            maxDate = dayCalc(selectedate,todaysdate);
 
             if (maxDate > 0) {
-                if (maxDate > 6) {
+                if (maxDate >7) {
                     Toast.makeText(getApplicationContext(), "Outdoor Facilities are limited to just 7 days from today", Toast.LENGTH_SHORT).show();
                 } else {
                     c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -265,7 +266,13 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
             } else
                 Toast.makeText(getApplicationContext(), "Outdoor Facilities are can't be booked in the past", Toast.LENGTH_SHORT).show();
         } else {
+            if(maxDate>=2)
             Toast.makeText(getApplicationContext(), "Indoor Facilities are limited to just today's date ", Toast.LENGTH_SHORT).show();
+            else {
+                c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                c.set(Calendar.MONTH, month);
+                c.set(Calendar.YEAR, year);
+            }
         }
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
         String currentDateString = format1.format(c.getTime());
