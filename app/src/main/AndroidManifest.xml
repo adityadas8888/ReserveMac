@@ -22,6 +22,7 @@
         <activity android:name=".ui.common.ViewReservation" />
         <activity android:name=".user.ReserveFacility" />
         <activity android:name=".facility_manager.SearchReservation" />
+        <activity android:name=".facility_manager.ViewFacilityFM" />
         <activity android:name=".facility_manager.Facility_manager_reservation" />
         <!-- <activity -->
         <!-- android:name=".ReserveFacility" -->

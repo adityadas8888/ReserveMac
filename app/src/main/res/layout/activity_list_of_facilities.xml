@@ -33,6 +33,16 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/TxtTotalFacilities"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Toatal Available facilities: 4"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:visibility="invisible" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecycleAvilableFacilites"
         android:layout_width="match_parent"

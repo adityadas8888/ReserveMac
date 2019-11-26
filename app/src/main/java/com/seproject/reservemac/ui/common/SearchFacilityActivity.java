@@ -54,10 +54,12 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
         BtnDate = findViewById(R.id.EtxDatePicker);
         header = findViewById(R.id.activityheader);
         BtnTime = findViewById(R.id.EtxTimePicker);
-        UserCreds usermodel = UserCreds.getInstance();
+        UserCreds userCreds = UserCreds.getInstance();
 
-        if (usermodel.getRole().equals("fm")) {
+        if (userCreds.getRole().equals("fm")) {
             header.setText("Search Facility FM");
+
+
         } else
             header.setText("Search Facility");
 

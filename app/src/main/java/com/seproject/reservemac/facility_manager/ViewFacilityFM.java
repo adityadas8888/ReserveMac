@@ -1,4 +1,4 @@
-package com.seproject.reservemac.user;
+package com.seproject.reservemac.facility_manager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,14 +14,13 @@ import com.seproject.reservemac.background.GetRequests;
 import com.seproject.reservemac.model.FacilityModel;
 import com.seproject.reservemac.model.UserCreds;
 import com.seproject.reservemac.ui.common.SearchFacilityActivity;
-import com.seproject.reservemac.ui.common.ViewReservation;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ReserveFacility extends AppCompatActivity implements GetRequests.AsyncResponse {
+public class ViewFacilityFM extends AppCompatActivity implements GetRequests.AsyncResponse {
 
-    Button BtnMakeReservation;
+    Button BtnMakeUnavailable;
     TextView FacilityName;
     TextView FacilityCode;
     TextView FacilityDescription;
@@ -33,11 +32,11 @@ public class ReserveFacility extends AppCompatActivity implements GetRequests.As
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reserve_facility);
+        setContentView(R.layout.activity_view_facility_fm);
 
         final FacilityModel facilityModel = getIntent().getParcelableExtra("facilityModel");
 
-        BtnMakeReservation = findViewById(R.id.BtnMakeReservation);
+        BtnMakeUnavailable = findViewById(R.id.BtnMakeUnavailable);
 
         FacilityName = findViewById(R.id.TxtFName);
         FacilityName.setText(facilityModel.getFacilityname());
@@ -58,23 +57,21 @@ public class ReserveFacility extends AppCompatActivity implements GetRequests.As
         Deposit.setText("$" + String.valueOf(facilityModel.getDeposit()));/// fix this
 
 
-        BtnMakeReservation.setOnClickListener(new View.OnClickListener() {
+        BtnMakeUnavailable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String type = "MakeReservation";
+                String type = "MakeUnavailable";
                 StringBuilder stringBuilder = new StringBuilder();
                 UserCreds userCreds = UserCreds.getInstance();
 
-//                http://mohammedmurtuzabhaiji.uta.cloud/se1project/user/reserve_facility.php?facilitycode=OVBC2&date=2019-12-29&start=2:00&end=3:00&user=aditdas&facilitytype=Outdoor
-
-                stringBuilder.append("user/reserve_facility.php?facilitycode=").append(facilityModel.getFacilitycode());
-                stringBuilder.append("&date=").append(Date.getText().toString());
-                stringBuilder.append("&start=").append(facilityModel.getStartTime());
-                stringBuilder.append("&end=").append(facilityModel.getEndTime());
-                stringBuilder.append("&user=").append(userCreds.getUsername());
-                stringBuilder.append("&facilitytype=").append(facilityModel.getFacilitytype());
+                //http://mohammedmurtuzabhaiji.uta.cloud/se1project/fm/facility_unavailable.php?
+                // facilitycode=BMC5&avail=0
+                stringBuilder.append("fm/facility_unavailable.php?facilitycode=")
+                        .append(facilityModel.getFacilitycode());
+                stringBuilder.append("&avail=").append("0");
+//
                 String url = stringBuilder.toString();
-                new GetRequests(ReserveFacility.this, url, ReserveFacility.this, "MakeReservation").execute("");
+                new GetRequests(ViewFacilityFM.this, url, ViewFacilityFM.this, "MakeUnavailable").execute("");
 
             }
         });
@@ -88,14 +85,8 @@ public class ReserveFacility extends AppCompatActivity implements GetRequests.As
             try {
                 String resp = String.valueOf(jsonObject.getString("response_desc"));
                 if (resp.equalsIgnoreCase("OK")) {
-                    Toast.makeText(this, "Reservation done successfully", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(ReserveFacility.this, ViewReservation.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(this, "Reservation unsuccessful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(ReserveFacility.this, SearchFacilityActivity.class);
+                    Toast.makeText(this, "Reservation made Unavailable.!!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ViewFacilityFM.this, SearchFacilityActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
                     startActivity(intent);
                     finish();

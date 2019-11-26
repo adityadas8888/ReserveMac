@@ -16,7 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.seproject.reservemac.R;
 import com.seproject.reservemac.background.GetRequests;
+import com.seproject.reservemac.facility_manager.ViewFacilityFM;
 import com.seproject.reservemac.model.FacilityModel;
+import com.seproject.reservemac.model.UserCreds;
 import com.seproject.reservemac.user.ReserveFacility;
 
 import org.json.JSONArray;
@@ -28,9 +30,11 @@ import java.util.ArrayList;
 public class ListOfFacilitiesActivity extends AppCompatActivity implements GetRequests.AsyncResponse {
 
     RecyclerView RecycleAvilableFacilites;
+    TextView TxtTotalFacilities;
     AvailableFacilitiesAdapter availableFacilitiesAdapter;
     ArrayList<FacilityModel> facilityModelArrayList;
     String facilityCode = "MR", date = "", time = "";
+    UserCreds userCreds = UserCreds.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,7 @@ public class ListOfFacilitiesActivity extends AppCompatActivity implements GetRe
         setContentView(R.layout.activity_list_of_facilities);
 
         RecycleAvilableFacilites = (RecyclerView) findViewById(R.id.RecycleAvilableFacilites);
+        TxtTotalFacilities = (TextView) findViewById(R.id.TxtTotalFacilities);
 
         facilityCode = getIntent().getStringExtra("facilitycode");
         date = getIntent().getStringExtra("date");
@@ -89,6 +94,12 @@ public class ListOfFacilitiesActivity extends AppCompatActivity implements GetRe
                     Toast.makeText(this, "Nothing Available.!!", Toast.LENGTH_SHORT).show();
                 }
 
+
+                if (userCreds.getRole().equalsIgnoreCase("fm")) {
+                    TxtTotalFacilities.setVisibility(View.VISIBLE);
+                    String size = String.valueOf(facilityModelArrayList.size());
+                    TxtTotalFacilities.setText("Total Available facilities: " + size);
+                }
                 availableFacilitiesAdapter = new AvailableFacilitiesAdapter(facilityModelArrayList);
                 RecycleAvilableFacilites.setAdapter(availableFacilitiesAdapter);
 
@@ -151,10 +162,17 @@ public class ListOfFacilitiesActivity extends AppCompatActivity implements GetRe
             holder.LnrFacility.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i = new Intent(view.getContext(), ReserveFacility.class);
-                    i.putExtra("facilityModel", (Parcelable) facilityModel);
-                    i.putExtra("date", date);
-                    startActivity(i);
+                    if (userCreds.getRole().equalsIgnoreCase("fm")) {
+                        Intent i = new Intent(view.getContext(), ViewFacilityFM.class);
+                        i.putExtra("facilityModel", (Parcelable) facilityModel);
+                        i.putExtra("date", date);
+                        startActivity(i);
+                    } else {
+                        Intent i = new Intent(view.getContext(), ReserveFacility.class);
+                        i.putExtra("facilityModel", (Parcelable) facilityModel);
+                        i.putExtra("date", date);
+                        startActivity(i);
+                    }
 //                    i.putExtra("FacilityName", facilityModel.getFacilityname());
 //                    i.putExtra("FacilityCode", facilityModel.getFacilitycode());
 //                    i.putExtra("StartTime", facilityModel.getStartTime());
