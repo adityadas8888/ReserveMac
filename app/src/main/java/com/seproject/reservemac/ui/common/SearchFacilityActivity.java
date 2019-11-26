@@ -39,6 +39,7 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
     String faclity = "";
     Integer maxDate = 0;
     Calendar c = Calendar.getInstance();
+    Boolean flag = Boolean.FALSE;
 
     HashMap<String, String> facilitycode = new HashMap<>();
 
@@ -119,40 +120,60 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
                         String roundMinutes = "";
                         String roundHours = "";
                         int day = c.get(Calendar.DAY_OF_WEEK);
-                        if (day >= 2 && day <= 6) {
-                            if(hourOfDay>=c.get(Calendar.HOUR) && minutes>=c.get(Calendar.MINUTE)){
+                        if (hourOfDay >= c.get(Calendar.HOUR) && minutes >= c.get(Calendar.MINUTE) && flag == Boolean.FALSE) {
+                            if (day >= 2 && day <= 6) {
                                 if (hourOfDay >= 6 && hourOfDay <= 23) {
                                     roundHours = Integer.toString(hourOfDay);
                                     if (minutes <= 15) {
                                         roundMinutes = "00";
-                                    }
-                                    else if (minutes > 15 && minutes < 59) {
+                                    } else if (minutes > 15 && minutes < 59) {
                                         roundMinutes = "30";
                                     }
                                     BtnTime.setText(roundHours + ":" + roundMinutes);
                                 } else
                                     Toast.makeText(getApplicationContext(), "MAC is closed at the selected time ", Toast.LENGTH_SHORT).show();
-                            }
-                            else
-                                Toast.makeText(getApplicationContext(), "Can't select time in the past ", Toast.LENGTH_SHORT).show();
 
-                        } else if (day == 1 || day == 7) {
-                            if(hourOfDay>=c.get(Calendar.HOUR) && minutes>=c.get(Calendar.MINUTE)){
+                            } else if (day == 1 || day == 7) {
+
                                 if (hourOfDay >= 12 && hourOfDay <= 23) {
                                     roundHours = Integer.toString(hourOfDay);
                                     if (minutes <= 15) {
                                         roundMinutes = "00";
 
-                                } else if (minutes > 15 && minutes < 59) {
-                                    roundMinutes = "30";
+                                    } else if (minutes > 15 && minutes < 59) {
+                                        roundMinutes = "30";
+                                    }
+                                    BtnTime.setText(roundHours + ":" + roundMinutes);
                                 }
+                            }
+                        } else if (flag == Boolean.TRUE) {
+                            if (day >= 2 && day <= 6) {
+                                if (hourOfDay >= 6 && hourOfDay <= 23) {
+                                    roundHours = Integer.toString(hourOfDay);
+                                    if (minutes <= 15) {
+                                        roundMinutes = "00";
+                                    } else if (minutes > 15 && minutes < 59) {
+                                        roundMinutes = "30";
+                                    }
+                                    BtnTime.setText(roundHours + ":" + roundMinutes);
+                                } else
+                                    Toast.makeText(getApplicationContext(), "MAC is closed at the selected time ", Toast.LENGTH_SHORT).show();
 
-                                BtnTime.setText(roundHours + ":" + roundMinutes);
-                            } else
-                                Toast.makeText(getApplicationContext(), "MAC is closed at the selected time ", Toast.LENGTH_SHORT).show();
-                        }
-                        }
+                            } else if (day == 1 || day == 7) {
 
+                                if (hourOfDay >= 12 && hourOfDay <= 23) {
+                                    roundHours = Integer.toString(hourOfDay);
+                                    if (minutes <= 15) {
+                                        roundMinutes = "00";
+
+                                    } else if (minutes > 15 && minutes < 59) {
+                                        roundMinutes = "30";
+                                    }
+                                    BtnTime.setText(roundHours + ":" + roundMinutes);
+                                }
+                            }
+                        } else
+                            Toast.makeText(getApplicationContext(), "Can't select time in the past ", Toast.LENGTH_SHORT).show();
                     }
                 }, 0, 0, false);
                 timePickerDialog.show();
@@ -162,11 +183,12 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        flag = Boolean.FALSE;
         Calendar c = Calendar.getInstance();
         String Fname = SpinnerFType.getSelectedItem().toString();
         String[] outdoor = new String[]{"2 Outdoor Volleyball Courts", "2 Outdoor Basketball Courts"};
-
         if (Arrays.asList(outdoor).contains(Fname)) {
+            flag = Boolean.TRUE;
             SimpleDateFormat myFormat = new SimpleDateFormat("dd MM yyyy");
             String selectedate = dayOfMonth + " " + month + " " + year;
             String todaysdate = c.get(Calendar.DAY_OF_MONTH) + " " + c.get(Calendar.MONTH) + " " + c.get(Calendar.YEAR);
@@ -197,7 +219,9 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
         BtnDate.setText(currentDateString);
     }
 
-
 }
+
+
+
 
 
