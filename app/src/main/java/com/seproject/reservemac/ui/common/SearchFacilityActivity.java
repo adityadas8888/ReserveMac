@@ -48,7 +48,7 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_facility);
-        SpinnerFType = findViewById(R.id.SpinnerFType);
+        SpinnerFType = (Spinner) findViewById(R.id.SpinnerFType);
         SpinnerFType.setSelection(0);
         BtnSearchFacility = findViewById(R.id.BtnSearchFacility);
         BtnDate = findViewById(R.id.EtxDatePicker);

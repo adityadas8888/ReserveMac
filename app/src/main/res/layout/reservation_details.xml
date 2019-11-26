@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -9,11 +11,13 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="10dp">
+
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:padding="15dp"
             android:src="@drawable/ic_arrow_back" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,6 +29,119 @@
             android:textStyle="bold" />
 
     </LinearLayout>
+
+
+    <TableLayout
+        android:id="@+id/simpleTableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:gravity="center_vertical"
+        android:stretchColumns="*"> <!-- stretch the second column of the layout-->
+
+        <!-- first row of the table layout-->
+        <TableRow
+
+            android:id="@+id/firstRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <!-- first element of the row-->
+            <TextView
+
+                android:id="@+id/reservationidColumn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="1dp"
+                android:text="Reservation ID"
+                android:textColor="@color/colorTextWhite"
+                android:textSize="16dp" />
+
+            <TextView
+
+                android:id="@+id/UseridColumn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="1dp"
+                android:text="Username"
+                android:textColor="@color/colorTextWhite"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/facility_nameColumn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="1dp"
+                android:text="Facility Code"
+                android:textColor="@color/colorTextWhite"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/Date_bookedColumn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="1dp"
+                android:text="Booking slot"
+                android:textColor="@color/colorTextWhite"
+                android:textSize="16dp" />
+
+        </TableRow>
+
+        <TableRow
+
+            android:id="@+id/secondRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <!-- first element of the row-->
+            <TextView
+
+                android:id="@+id/reservationid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextWhite"
+                android:text="1001675"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp" />
+
+            <TextView
+
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextWhite"
+                android:text="ax5748"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp" />
+
+            <TextView
+
+                android:id="@+id/FacilityCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextWhite"
+                android:text="MR-1"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp" />
+
+            <TextView
+
+                android:id="@+id/reservationdates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextWhite"
+                android:padding="1dp"
+                android:text="8-8:30pm 10/20/19"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14dp" />
+
+        </TableRow>
+    </TableLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,117 +151,19 @@
             android:id="@+id/BtnDltReservation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Delete Reservation" />
+            android:layout_margin="10dp"
+            android:background="@color/colorPrimary"
+            android:text="Delete Reservation"
+            android:textColor="@color/colorTextWhite" />
 
         <Button
             android:id="@+id/BtnReportVio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Report Violatation" />
+            android:layout_margin="10dp"
+            android:background="@color/colorPrimary"
+            android:text="Report Violatation"
+            android:textColor="@color/colorTextWhite" />
     </LinearLayout>
-    <TableLayout
-        android:gravity="center_vertical"
-        android:id="@+id/simpleTableLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:stretchColumns="*"> <!-- stretch the second column of the layout-->
 
-    <!-- first row of the table layout-->
-    <TableRow
-
-        android:id="@+id/firstRow"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <!-- first element of the row-->
-        <TextView
-
-            android:id="@+id/reservationidColumn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:text="Reservation ID"
-            android:textColor="#000"
-            android:padding="1dp"
-            android:textSize="16dp" />
-
-        <TextView
-
-            android:id="@+id/UseridColumn"
-            android:padding="1dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:text="Username"
-            android:textColor="#000"
-            android:textSize="16dp" />
-
-        <TextView
-            android:id="@+id/facility_nameColumn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:padding="1dp"
-            android:text="Facility Code"
-            android:textColor="#000"
-            android:textSize="16dp" />
-        <TextView
-            android:padding="1dp"
-            android:id="@+id/Date_bookedColumn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:text="Booking slot"
-            android:textColor="#000"
-            android:textSize="16dp" />
-
-    </TableRow>
-    <TableRow
-
-        android:id="@+id/secondRow"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <!-- first element of the row-->
-        <TextView
-
-            android:id="@+id/reservationid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorTextWhite"
-            android:text="1001675"
-            android:textColor="#000"
-            android:textSize="16dp" />
-
-        <TextView
-
-            android:id="@+id/username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorTextWhite"
-            android:text="ax5748"
-            android:textColor="#000"
-            android:textSize="16dp" />
-        <TextView
-
-            android:id="@+id/FacilityCode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorTextWhite"
-            android:text="MR-1"
-            android:textColor="#000"
-            android:textSize="16dp" />
-        <TextView
-
-            android:id="@+id/reservationdates"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorTextWhite"
-            android:padding="1dp"
-            android:text="8-8:30pm 10/20/19"
-            android:textColor="#000"
-            android:textSize="14dp" />
-
-    </TableRow>
-    </TableLayout>
 </LinearLayout>

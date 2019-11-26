@@ -2,6 +2,7 @@ package com.seproject.reservemac.user;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
@@ -94,15 +96,31 @@ public class ModifyReservation extends AppCompatActivity implements DatePickerDi
             @Override
             public void onClick(View v) {
 
-                StringBuilder stringBuilder = new StringBuilder();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(ModifyReservation.this);
+                builder.setMessage("Are you sure you want to cancel your resrevation?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                StringBuilder stringBuilder = new StringBuilder();
 
 //                http://mohammedmurtuzabhaiji.uta.cloud/se1project/user/cancel_reservation.php?
 //                reservationid=105
 
-                stringBuilder.append("user/cancel_reservation.php?reservationid=")
-                        .append(reservationModel.getReservationid());
-                String url = stringBuilder.toString();
-                new GetRequests(ModifyReservation.this, url, ModifyReservation.this, "CancelReservation").execute("");
+                                stringBuilder.append("user/cancel_reservation.php?reservationid=")
+                                        .append(reservationModel.getReservationid());
+                                String url = stringBuilder.toString();
+                                new GetRequests(ModifyReservation.this, url, ModifyReservation.this, "CancelReservation").execute("");
+
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
 
 
             }

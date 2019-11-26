@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.common.AllFacilitiesActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,27 +26,42 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="Search Reservation FM"
+            android:text="Facilities"
             android:textColor="@color/colorTextWhite"
             android:textSize="16dp"
             android:textStyle="bold" />
+
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/TxtReservationID"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:hint="Enter Reservation ID" />
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:text="Facility Type" />
 
-    <Button
-        android:id="@+id/BtnSearchReservation"
+    <Spinner
+        android:id="@+id/SpinnerFType"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:entries="@array/ftype" />
+
+
+    <TextView
+        android:id="@+id/TxtTotalFacilities"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:background="@color/colorPrimary"
-        android:text="Search Reservation"
-        android:textColor="@color/colorTextWhite" />
+        android:layout_marginTop="10dp"
+        android:text="Toatal Available facilities: 4"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:visibility="invisible" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecycleAvilableFacilites"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp" />
 
 
 </LinearLayout>

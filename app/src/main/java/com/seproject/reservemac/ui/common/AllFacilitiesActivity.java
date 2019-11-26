@@ -6,7 +6,9 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,8 +28,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-public class ListOfFacilitiesActivity extends AppCompatActivity implements GetRequests.AsyncResponse {
+public class AllFacilitiesActivity extends AppCompatActivity implements GetRequests.AsyncResponse {
 
     RecyclerView RecycleAvilableFacilites;
     TextView TxtTotalFacilities;
@@ -35,38 +38,72 @@ public class ListOfFacilitiesActivity extends AppCompatActivity implements GetRe
     ArrayList<FacilityModel> facilityModelArrayList;
     String facilityCode = "MR", date = "", time = "";
     UserCreds userCreds = UserCreds.getInstance();
+    Spinner SpinnerFType;
+    HashMap<String, String> facilitycode = new HashMap<>();
+
+    String faclity = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_of_facilities);
+        setContentView(R.layout.activity_search_all_facilities);
 
         RecycleAvilableFacilites = (RecyclerView) findViewById(R.id.RecycleAvilableFacilites);
         TxtTotalFacilities = (TextView) findViewById(R.id.TxtTotalFacilities);
-
-        facilityCode = getIntent().getStringExtra("facilitycode");
-        date = getIntent().getStringExtra("date");
-        time = getIntent().getStringExtra("time");
+        SpinnerFType = (Spinner) findViewById(R.id.SpinnerFType);
+        SpinnerFType.setSelection(0);
 
         RecycleAvilableFacilites.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         RecycleAvilableFacilites.setLayoutManager(llm);
-        loadAvailableFacilitiesArray();
+
+        facilitycode.put("4 Multipurpose Rooms", "MR");
+        facilitycode.put("5 Indoor Basketball Court", "IBBC");
+        facilitycode.put("9 Volleyball Court", "IVBC");
+        facilitycode.put("Indoor Soccer Gymnasium", "SCG");
+        facilitycode.put("5 Racquetball Courts", "RBC");
+        facilitycode.put("10 Badminton Courts", "BMC");
+        facilitycode.put("Table Tennis", "TT");
+        facilitycode.put("Conference Rooms", "CR");
+        facilitycode.put("2 Outdoor Volleyball Courts", "OVBC");
+        facilitycode.put("2 Outdoor Basketball Courts", "OBBC");
+
+        SpinnerFType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                faclity = SpinnerFType.getSelectedItem().toString();
+
+                facilityCode = facilitycode.get(faclity);
+                loadAvailableFacilitiesArray();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                facilityCode = "MR";
+                SpinnerFType.setSelection(0);
+                loadAvailableFacilitiesArray();
+            }
+        });
+
+
+//        facilityCode = getIntent().getStringExtra("facilitycode");
+//        date = getIntent().getStringExtra("date");
+//        time = getIntent().getStringExtra("time");
 
 
     }
 
     private void loadAvailableFacilitiesArray() {
 
-        String type = "ViewFaclities";
+//        http://mohammedmurtuzabhaiji.uta.cloud/se1project/fm/search_all_facility.php?name=BMC
+
+        String type = "SearchAll";
         StringBuilder stringBuilder = new StringBuilder();
         final FacilityModel facilityModel = getIntent().getParcelableExtra("facilityModel");
-        stringBuilder.append("user/facility_search.php?facilitycode=").append(facilityCode);
-        stringBuilder.append("&date=").append(date);
-        stringBuilder.append("&time=").append(time);
+        stringBuilder.append("fm/search_all_facility.php?name=").append(facilityCode);
 
         String url = stringBuilder.toString();
-        new GetRequests(ListOfFacilitiesActivity.this, url, ListOfFacilitiesActivity.this, "ListOfFacilitiesActivity").execute("");
+        new GetRequests(AllFacilitiesActivity.this, url, AllFacilitiesActivity.this, "ListOfFacilitiesActivity").execute("");
 
     }
 
@@ -85,8 +122,8 @@ public class ListOfFacilitiesActivity extends AppCompatActivity implements GetRe
                         facilityModel.setFacilitytype((json.getString("type")));
                         facilityModel.setFacilityname((json.getString("name")));
                         facilityModel.setFacilitydescription((json.getString("description")));
-                        facilityModel.setStartTime(json.getString("start"));
-                        facilityModel.setEndTime(json.getString("end"));
+//                        facilityModel.setStartTime(json.getString("start"));
+//                        facilityModel.setEndTime(json.getString("end"));
                         facilityModelArrayList.add(facilityModel);
 
                     }
@@ -99,7 +136,7 @@ public class ListOfFacilitiesActivity extends AppCompatActivity implements GetRe
                 if (userCreds.getRole().equalsIgnoreCase("fm") && Integer.parseInt(size) > 0) {
                     TxtTotalFacilities.setVisibility(View.VISIBLE);
                     TxtTotalFacilities.setText("Total Available facilities: " + size);
-                } else{
+                } else {
                     TxtTotalFacilities.setText("No Facilities Available.!!");
                 }
                 availableFacilitiesAdapter = new AvailableFacilitiesAdapter(facilityModelArrayList);

@@ -20,6 +20,7 @@
         <activity android:name=".ui.common.ViewViolations" />
         <activity android:name=".user.ModifyReservation" />
         <activity android:name=".ui.common.ViewReservation" />
+        <activity android:name=".ui.common.AllFacilitiesActivity" />
         <activity android:name=".user.ReserveFacility" />
         <activity android:name=".facility_manager.SearchReservation" />
         <activity android:name=".facility_manager.ViewFacilityFM" />
@@ -42,6 +43,8 @@
         <activity android:name=".administrator.Admin_screen" />
         <activity android:name=".user.User_screen" />
         <activity android:name=".ui.RegisterActivity" />
+        <activity android:name=".facility_manager.ViewUser_fm" />
+        <activity android:name=".facility_manager.ViewViolations_fm" />
         <activity android:name=".facility_manager.ViewUser_fm"/>
         <activity android:name=".facility_manager.ViewViolations_fm"/>
         <activity android:name=".administrator.SearchUserActivity_admin"/>
