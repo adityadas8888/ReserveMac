@@ -15,6 +15,7 @@ import com.seproject.reservemac.R;
 import com.seproject.reservemac.model.UserModel;
 import com.seproject.reservemac.ui.common.SearchFacilityActivity;
 import com.seproject.reservemac.ui.login.LoginActivity;
+import com.seproject.reservemac.user.view_profile_user;
 
 public class Facility_manager_screen extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public class Facility_manager_screen extends AppCompatActivity {
     Button SearchFacility = null;
     Button searchUser =null;
     Button signout = null;
+    Button ViewProfile = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +33,19 @@ public class Facility_manager_screen extends AppCompatActivity {
         SearchFacility = findViewById(R.id.BtnFacilitySearch);
         signout = findViewById(R.id.signout);
         searchUser = findViewById(R.id.search_user);
+        ViewProfile = findViewById(R.id.BtnViewProfile);
         final UserModel usermodel = (UserModel)getIntent().getParcelableExtra("usermodel");
         username.setText(usermodel.getUsername());
+
+        ViewProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), view_profile_user.class);
+                intent.putExtra("usermodel", (Parcelable) usermodel);
+                startActivity(intent);
+            }
+        });
+
         SearchFacility.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,6 +54,8 @@ public class Facility_manager_screen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
         searchUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

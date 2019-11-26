@@ -65,6 +65,11 @@
         android:layout_height="wrap_content"
         android:text="Search Facility"
         android:id="@+id/BtnFacilitySearch"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Profile"
+        android:id="@+id/BtnViewProfile"/>
 
     <Button
         android:layout_width="match_parent"

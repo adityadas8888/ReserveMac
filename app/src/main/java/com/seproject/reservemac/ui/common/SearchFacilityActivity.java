@@ -120,22 +120,28 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
                         String roundHours = "";
                         int day = c.get(Calendar.DAY_OF_WEEK);
                         if (day >= 2 && day <= 6) {
-                            if (hourOfDay >= 6 && hourOfDay <= 23) {
-                                roundHours = Integer.toString(hourOfDay);
-                                if (minutes <= 15) {
-                                    roundMinutes = "00";
+                            if(hourOfDay>=c.get(Calendar.HOUR) && minutes>=c.get(Calendar.MINUTE)){
+                                if (hourOfDay >= 6 && hourOfDay <= 23) {
+                                    roundHours = Integer.toString(hourOfDay);
+                                    if (minutes <= 15) {
+                                        roundMinutes = "00";
+                                    }
+                                    else if (minutes > 15 && minutes < 59) {
+                                        roundMinutes = "30";
+                                    }
+                                    BtnTime.setText(roundHours + ":" + roundMinutes);
+                                } else
+                                    Toast.makeText(getApplicationContext(), "MAC is closed at the selected time ", Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                                Toast.makeText(getApplicationContext(), "Can't select time in the past ", Toast.LENGTH_SHORT).show();
 
-                                } else if (minutes > 15 && minutes < 59) {
-                                    roundMinutes = "30";
-                                }
-                                BtnTime.setText(roundHours + ":" + roundMinutes);
-                            } else
-                                Toast.makeText(getApplicationContext(), "MAC is closed at the selected time ", Toast.LENGTH_SHORT).show();
                         } else if (day == 1 || day == 7) {
-                            if (hourOfDay >= 12 && hourOfDay <= 23) {
-                                roundHours = Integer.toString(hourOfDay);
-                                if (minutes <= 15) {
-                                    roundMinutes = "00";
+                            if(hourOfDay>=c.get(Calendar.HOUR) && minutes>=c.get(Calendar.MINUTE)){
+                                if (hourOfDay >= 12 && hourOfDay <= 23) {
+                                    roundHours = Integer.toString(hourOfDay);
+                                    if (minutes <= 15) {
+                                        roundMinutes = "00";
 
                                 } else if (minutes > 15 && minutes < 59) {
                                     roundMinutes = "30";
@@ -144,6 +150,7 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
                                 BtnTime.setText(roundHours + ":" + roundMinutes);
                             } else
                                 Toast.makeText(getApplicationContext(), "MAC is closed at the selected time ", Toast.LENGTH_SHORT).show();
+                        }
                         }
 
                     }

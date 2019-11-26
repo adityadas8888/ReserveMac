@@ -73,8 +73,7 @@ public class LoginActivity extends AppCompatActivity implements GetRequests.Asyn
         });
 
     }
-
-
+    
     public void loginUser() {
 
         password = passwordEditText.getText().toString().trim();
