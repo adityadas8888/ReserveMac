@@ -2,6 +2,7 @@ package com.seproject.reservemac.user;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import com.seproject.reservemac.background.GetRequests;
 import com.seproject.reservemac.model.FacilityModel;
 import com.seproject.reservemac.model.ReservationModel;
 import com.seproject.reservemac.ui.common.DatePickerFragment;
+import com.seproject.reservemac.ui.common.ViewReservation;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -91,6 +93,17 @@ public class ModifyReservation extends AppCompatActivity implements DatePickerDi
         CancelReservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                StringBuilder stringBuilder = new StringBuilder();
+
+//                http://mohammedmurtuzabhaiji.uta.cloud/se1project/user/cancel_reservation.php?
+//                reservationid=105
+
+                stringBuilder.append("user/cancel_reservation.php?reservationid=")
+                        .append(reservationModel.getReservationid());
+                String url = stringBuilder.toString();
+                new GetRequests(ModifyReservation.this, url, ModifyReservation.this, "CancelReservation").execute("");
+
 
             }
         });
@@ -206,11 +219,20 @@ public class ModifyReservation extends AppCompatActivity implements DatePickerDi
 
                     }
 
-                } else {
+                } else if (Identity.equalsIgnoreCase("ModifyReservation")) {
                     result = jsonObject.getString("content");
 
                     if (result.equalsIgnoreCase("True")) {
-                        Toast.makeText(this, "Reservation Modified", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Reservation Modified.!!", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    result = jsonObject.getString("response_desc");
+
+                    if (result.equalsIgnoreCase("OK")) {
+                        Toast.makeText(this, "Reservation Cancelled.!!", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(ModifyReservation.this, ViewReservation.class);
+                        startActivity(i);
+
                     }
                 }
 

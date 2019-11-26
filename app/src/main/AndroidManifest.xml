@@ -21,8 +21,8 @@
         <activity android:name=".user.ModifyReservation" />
         <activity android:name=".ui.common.ViewReservation" />
         <activity android:name=".user.ReserveFacility" />
-        <activity android:name=".facility_manager.SearchReservation"/>
-        <activity android:name=".facility_manager.Facility_manager_reservation"/>
+        <activity android:name=".facility_manager.SearchReservation" />
+        <activity android:name=".facility_manager.Facility_manager_reservation" />
         <!-- <activity -->
         <!-- android:name=".ReserveFacility" -->
         <!-- android:label="@string/title_activity_login"> -->
@@ -41,9 +41,7 @@
         <activity android:name=".administrator.Admin_screen" />
         <activity android:name=".user.User_screen" />
         <activity android:name=".ui.RegisterActivity" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login">
+        <activity android:name=".ui.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
