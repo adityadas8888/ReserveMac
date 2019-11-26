@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.seproject.reservemac.R;
 import com.seproject.reservemac.background.GetRequests;
 import com.seproject.reservemac.model.ReservationModel;
+import com.seproject.reservemac.model.UserCreds;
 import com.seproject.reservemac.model.UserModel;
 import com.seproject.reservemac.user.ModifyReservation;
 
@@ -48,10 +49,10 @@ public class ViewReservation extends AppCompatActivity implements GetRequests.As
     private void loadReservationsArray() {
         String type = "ViewReservation";
         StringBuilder stringBuilder = new StringBuilder();
-        final UserModel userModel = getIntent().getParcelableExtra("usermodel");
+//        final UserModel userModel = getIntent().getParcelableExtra("usermodel");
 //        http://mohammedmurtuzabhaiji.uta.cloud/se1project/user/my_reservations.php?username=mohammed
-
-        stringBuilder.append("user/my_reservations.php?username=").append(userModel.getUsername());
+        UserCreds userCreds = UserCreds.getInstance();
+        stringBuilder.append("user/my_reservations.php?username=").append(userCreds.getUsername());
         String url = stringBuilder.toString();
         new GetRequests(ViewReservation.this, url, ViewReservation.this, "ViewReservation").execute("");
 

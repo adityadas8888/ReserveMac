@@ -77,6 +77,7 @@ public class ListOfFacilitiesActivity extends AppCompatActivity implements GetRe
                         JSONObject json = jsonArray.getJSONObject(i);
                         facilityModel.setDeposit(Integer.parseInt((json.getString("deposit"))));
                         facilityModel.setFacilitycode((json.getString("facilitycode")));
+                        facilityModel.setFacilitytype((json.getString("type")));
                         facilityModel.setFacilityname((json.getString("name")));
                         facilityModel.setFacilitydescription((json.getString("description")));
                         facilityModel.setStartTime(json.getString("start"));

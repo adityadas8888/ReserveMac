@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +18,7 @@ import com.seproject.reservemac.administrator.Admin_screen;
 import com.seproject.reservemac.background.GetRequests;
 import com.seproject.reservemac.facility_manager.Facility_manager_screen;
 import com.seproject.reservemac.model.UserModel;
+import com.seproject.reservemac.model.UserCreds;
 import com.seproject.reservemac.ui.RegisterActivity;
 import com.seproject.reservemac.user.User_screen;
 
@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity implements GetRequests.Asyn
     Button registerButton = null;
     UserModel userModel ;
     String password, username;
+    UserCreds userCreds;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -112,7 +113,7 @@ public class LoginActivity extends AppCompatActivity implements GetRequests.Asyn
         if (jsonObject != null) {
             try {
                 userModel = new UserModel();
-
+                UserCreds userCreds = UserCreds.getInstance();
                 JSONObject jsonContent = jsonObject.getJSONObject("content");
                 userModel.setUsername((jsonContent.getString("username")));
                 userModel.setFirstname((jsonContent.getString("firstname")));
@@ -126,7 +127,8 @@ public class LoginActivity extends AppCompatActivity implements GetRequests.Asyn
                 userModel.setNoshow((jsonContent.getInt("noshow")));
                 userModel.setRevoked((jsonContent.getInt("revoked")));
                 userModel.setEmail((jsonContent.getString("email")));
-
+                userCreds.setUsername(jsonContent.getString("username"));
+                userCreds.setRole(jsonContent.getString("role"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
