@@ -234,9 +234,9 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
             if (hourOfDay >= 6 && hourOfDay <= 23)                                                                                              // check if selected during open hours of weekdays
             {
                 roundHours = Integer.toString(hourOfDay);
-                if (minutes <= 15) {
+                if (minutes>=0 && minutes<30) {
                     roundMinutes = "00";
-                } else if (minutes > 15 && minutes < 59) {
+                } else if (minutes >=30 && minutes < 59) {
                     roundMinutes = "30";
                 }
                 BtnTime.setText(roundHours + ":" + roundMinutes);
@@ -246,9 +246,9 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
         } else if (day == 1 || day == 7) {                  //check if on weekends
             if (hourOfDay >= 12 && hourOfDay <= 23) {           //check if selected during open hours of weekends
                 roundHours = Integer.toString(hourOfDay);
-                if (minutes <= 15) {
+                if (minutes>=0 && minutes<30) {
                     roundMinutes = "00";
-                } else if (minutes > 15 && minutes < 59) {
+                } else if (minutes >=30 && minutes < 59) {
                     roundMinutes = "30";
                 }
                 BtnTime.setText(roundHours + ":" + roundMinutes);
@@ -271,9 +271,9 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
                 if (hourOfDay >= 6 && hourOfDay <= 23)                                                                                              // check if selected during open hours of weekdays
                 {
                     roundHours = Integer.toString(hourOfDay);
-                    if (minutes <= 15) {
+                    if (minutes>=0 && minutes<30) {
                         roundMinutes = "00";
-                    } else if (minutes > 15 && minutes < 59) {
+                    } else if (minutes >=30 && minutes < 59) {
                         roundMinutes = "30";
                     }
                     BtnTime.setText(roundHours + ":" + roundMinutes);
@@ -283,9 +283,9 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
             } else if (day == 1 || day == 7) {                  //check if on weekends
                 if (hourOfDay >= 12 && hourOfDay <= 23) {           //check if selected during open hours of weekends
                     roundHours = Integer.toString(hourOfDay);
-                    if (minutes <= 15) {
+                    if (minutes>=0 && minutes<30) {
                         roundMinutes = "00";
-                    } else if (minutes > 15 && minutes < 59) {
+                    } else if (minutes >=30 && minutes < 59) {
                         roundMinutes = "30";
                     }
                     BtnTime.setText(roundHours + ":" + roundMinutes);

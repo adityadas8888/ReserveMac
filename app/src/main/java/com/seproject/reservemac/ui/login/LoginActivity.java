@@ -153,8 +153,6 @@ public class LoginActivity extends AppCompatActivity implements GetRequests.Asyn
                     LoginActivity.this.finish();
                 }
 
-
-
             }
 
         }
