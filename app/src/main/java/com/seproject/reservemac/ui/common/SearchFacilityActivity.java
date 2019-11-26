@@ -37,7 +37,7 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
     Spinner SpinnerFType;
     String facilityCode = "";
     Integer maxDate=0;
-
+    Calendar c = Calendar.getInstance();
     HashMap<String, String> facilitycode = new HashMap<>();
 
     @Override
@@ -86,9 +86,9 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
         BtnSearchFacility.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Toast.makeText(SearchFacilityActivity.this, "" + facilityCode, Toast.LENGTH_SHORT).show();
                 Intent myintent = new Intent(getBaseContext(), ListOfFacilitiesActivity.class);
-
                 myintent.putExtra("facilitycode", facilityCode);
                 myintent.putExtra("date", BtnDate.getText());
                 myintent.putExtra("time", BtnTime.getText());
@@ -113,19 +113,39 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
                         String roundMinutes = "";
-                        if (minutes == 0 || minutes <= 15) {
-                            roundMinutes = "00";
-
-                        } else if (minutes > 15 && minutes < 59) {
-                            roundMinutes = "30";
-                        }
                         String roundHours = "";
-                        if (hourOfDay == 0) {
-                            roundHours = "00";
-                        } else
-                            roundHours = Integer.toString(hourOfDay);
+                        int day = c.get(Calendar.DAY_OF_WEEK);
+                        if(day>=2 && day<=6){
+                            if(hourOfDay>=6 && hourOfDay<=23 ){
+                                roundHours = Integer.toString(hourOfDay);
+                                if (minutes <= 15) {
+                                    roundMinutes = "00";
 
-                        BtnTime.setText(roundHours + ":" + roundMinutes);
+                                } else if (minutes > 15 && minutes < 59) {
+                                    roundMinutes = "30";
+                                }
+                                BtnTime.setText(roundHours + ":" + roundMinutes);
+                            }
+                            else
+                                Toast.makeText(getApplicationContext(), "MAC is closed at the selected time " , Toast.LENGTH_SHORT).show();
+                        }
+
+                        else if (day==1 || day==7){
+                            if(hourOfDay>=12 && hourOfDay<=23 ){
+                                roundHours = Integer.toString(hourOfDay);
+                                if (minutes <= 15) {
+                                    roundMinutes = "00";
+
+                                } else if (minutes > 15 && minutes < 59) {
+                                    roundMinutes = "30";
+                                }
+
+                                BtnTime.setText(roundHours + ":" + roundMinutes);
+                            }
+                            else
+                                Toast.makeText(getApplicationContext(), "MAC is closed at the selected time " , Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                 }, 0, 0, false);
                 timePickerDialog.show();
@@ -136,7 +156,6 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         System.out.println("asdhasd");
-        Calendar c = Calendar.getInstance();
         String Fname = SpinnerFType.getSelectedItem().toString();
         String[] outdoor = new String[] { "2 Outdoor Volleyball Courts", "2 Outdoor Basketball Courts"};
 
