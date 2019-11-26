@@ -130,7 +130,6 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        outdoorflag = Boolean.FALSE;
         Calendar c = Calendar.getInstance();
         String Fname = SpinnerFType.getSelectedItem().toString();
         String[] outdoor = new String[]{"2 Outdoor Volleyball Courts", "2 Outdoor Basketball Courts"};
@@ -139,11 +138,8 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
         maxDate = dayCalc(selectedate, todaysdate);
 
         if (Arrays.asList(outdoor).contains(Fname)) {
-            outdoorflag = Boolean.TRUE;
-
-
-            if (maxDate > 0) {
-                if (maxDate > 7) {
+            if (maxDate >= 0) {
+                if (maxDate >= 7) {
                     Toast.makeText(getApplicationContext(), "Outdoor Facilities are limited to just 7 days from today", Toast.LENGTH_SHORT).show();
                 } else {
                     c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -152,8 +148,9 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
                 }
             } else
                 Toast.makeText(getApplicationContext(), "Outdoor Facilities are can't be booked in the past", Toast.LENGTH_SHORT).show();
-        } else {
-            if (maxDate > 0) {
+        }
+        else {
+            if (maxDate >= 0) {
                 if (maxDate >= 2)
                     Toast.makeText(getApplicationContext(), "Indoor Facilities are limited to just today and tomorrow ", Toast.LENGTH_SHORT).show();
                 else {
