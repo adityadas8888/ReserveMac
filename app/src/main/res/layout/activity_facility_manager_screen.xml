@@ -33,38 +33,59 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/TxtWelcome"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:gravity="center"
-        android:textColor="@color/colorPrimary"
-        android:text="Welcome"
-        android:textSize="16dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="25dp" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/username"
-        android:gravity="center"
-        android:textColor="@color/colorPrimary"
-        android:text="Aditya"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/TxtWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:gravity="center"
+            android:text="Welcome"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="25dp" />
 
-    <TextView
-        android:id="@+id/user_role"
-        android:textColor="@color/colorPrimary"
-        android:text="Facility Manager"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
+        <TextView
+            android:id="@+id/user_role"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:text="Facility Manager"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/Txtusername"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp" />
+    </LinearLayout>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Search Facility"
         android:id="@+id/BtnFacilitySearch"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search  All Facility"
+        android:id="@+id/BtnFacilityAllSearch"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search  Reservation"
+        android:id="@+id/BtnReservation"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -20,7 +20,10 @@
         <activity android:name=".ui.common.ViewViolations" />
         <activity android:name=".user.ModifyReservation" />
         <activity android:name=".ui.common.ViewReservation" />
-        <activity android:name=".user.ReserveFacility" /> <!-- <activity -->
+        <activity android:name=".user.ReserveFacility" />
+        <activity android:name=".facility_manager.SearchReservation"/>
+        <activity android:name=".facility_manager.Facility_manager_reservation"/>
+        <!-- <activity -->
         <!-- android:name=".ReserveFacility" -->
         <!-- android:label="@string/title_activity_login"> -->
         <!-- <intent-filter> -->

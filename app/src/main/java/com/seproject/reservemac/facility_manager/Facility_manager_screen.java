@@ -24,16 +24,22 @@ public class Facility_manager_screen extends AppCompatActivity {
     Button searchUser =null;
     Button signout = null;
     Button ViewProfile = null;
+    Button SearchAllFacility = null;
+    Button SearchReservation= null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facility_manager_screen);
-        username = findViewById(R.id.username);
+        username = findViewById(R.id.Txtusername);
         signout = findViewById(R.id.signout);
         SearchFacility = findViewById(R.id.BtnFacilitySearch);
+        SearchAllFacility= findViewById(R.id.BtnFacilityAllSearch);
         signout = findViewById(R.id.signout);
         searchUser = findViewById(R.id.search_user);
         ViewProfile = findViewById(R.id.BtnViewProfile);
+        SearchReservation = findViewById(R.id.BtnReservation);
+
         final UserModel usermodel = (UserModel)getIntent().getParcelableExtra("usermodel");
         username.setText(usermodel.getUsername());
 
@@ -51,10 +57,27 @@ public class Facility_manager_screen extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SearchFacilityActivity.class);
                 intent.putExtra("usermodel", (Parcelable) usermodel);
+                intent.putExtra("all",0);
+                startActivity(intent);
+            }
+        });
+        SearchReservation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SearchReservation.class);
                 startActivity(intent);
             }
         });
 
+        SearchAllFacility.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SearchFacilityActivity.class);
+                intent.putExtra("all",1);
+                intent.putExtra("usermodel", (Parcelable) usermodel);
+                startActivity(intent);
+            }
+        });
 
         searchUser.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -23,8 +23,26 @@
             android:textColor="@color/colorTextWhite"
             android:textSize="16dp"
             android:textStyle="bold" />
+
     </LinearLayout>
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/BtnDltReservation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete Reservation" />
+
+        <Button
+            android:id="@+id/BtnReportVio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Report Violatation" />
+    </LinearLayout>
+    <TableLayout
         android:gravity="center_vertical"
         android:id="@+id/simpleTableLayout"
         android:layout_width="match_parent"
@@ -41,7 +59,7 @@
         <!-- first element of the row-->
         <TextView
 
-            android:id="@+id/reservationid"
+            android:id="@+id/reservationidColumn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
@@ -52,7 +70,7 @@
 
         <TextView
 
-            android:id="@+id/Userid"
+            android:id="@+id/UseridColumn"
             android:padding="1dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,18 +78,19 @@
             android:text="Username"
             android:textColor="#000"
             android:textSize="16dp" />
+
         <TextView
-            android:padding="1dp"
-            android:id="@+id/facility_name"
+            android:id="@+id/facility_nameColumn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:text="Facility Name"
+            android:padding="1dp"
+            android:text="Facility Code"
             android:textColor="#000"
             android:textSize="16dp" />
         <TextView
             android:padding="1dp"
-            android:id="@+id/Date_booked"
+            android:id="@+id/Date_bookedColumn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
@@ -89,7 +108,7 @@
         <!-- first element of the row-->
         <TextView
 
-            android:id="@+id/facilityname1"
+            android:id="@+id/reservationid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorTextWhite"
@@ -99,7 +118,7 @@
 
         <TextView
 
-            android:id="@+id/facilitynumber1"
+            android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorTextWhite"
@@ -108,7 +127,7 @@
             android:textSize="16dp" />
         <TextView
 
-            android:id="@+id/facilitydetails1"
+            android:id="@+id/FacilityCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorTextWhite"

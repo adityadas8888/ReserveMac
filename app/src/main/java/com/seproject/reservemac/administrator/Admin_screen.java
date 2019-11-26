@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.seproject.reservemac.mainscreens.ChangePassword;
 import com.seproject.reservemac.model.UserModel;
 import com.seproject.reservemac.ui.login.LoginActivity;
 import com.seproject.reservemac.user.User_screen;
+import com.seproject.reservemac.user.view_profile_user;
 
 public class Admin_screen extends AppCompatActivity {
 
@@ -24,14 +26,16 @@ public class Admin_screen extends AppCompatActivity {
 
     Button signout = null;
     Button search_user = null;
+    Button view_profile = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_screen);
         final UserModel usermodel = (UserModel)getIntent().getParcelableExtra("usermodel");
-        username = findViewById(R.id.username);
+        username = findViewById(R.id.Txtusername);
         signout = findViewById(R.id.signout);
         search_user = findViewById(R.id.search_user);
+        view_profile = findViewById(R.id.BtnViewProfile);
 
         signout = findViewById(R.id.signout);
         signout.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +45,14 @@ public class Admin_screen extends AppCompatActivity {
             }
         });
 
+        view_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), view_profile_user.class);
+                intent.putExtra("usermodel", (Parcelable) usermodel);
+                startActivity(intent);
+            }
+        });
 
 
         username.setText(usermodel.getUsername());
