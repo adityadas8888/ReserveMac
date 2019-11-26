@@ -18,7 +18,6 @@ import com.seproject.reservemac.R;
 import com.seproject.reservemac.background.GetRequests;
 import com.seproject.reservemac.model.ReservationModel;
 import com.seproject.reservemac.model.UserCreds;
-import com.seproject.reservemac.model.UserModel;
 import com.seproject.reservemac.user.ModifyReservation;
 
 import org.json.JSONArray;

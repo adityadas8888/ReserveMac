@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import com.seproject.reservemac.R;
-import com.seproject.reservemac.model.UserModel;
+import com.seproject.reservemac.model.UserCreds;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -54,7 +54,7 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
         BtnDate = findViewById(R.id.EtxDatePicker);
         header = findViewById(R.id.activityheader);
         BtnTime = findViewById(R.id.EtxTimePicker);
-        final UserModel usermodel = (UserModel) getIntent().getParcelableExtra("usermodel");
+        UserCreds usermodel = UserCreds.getInstance();
 
         if (usermodel.getRole().equals("fm")) {
             header.setText("Search Facility FM");
