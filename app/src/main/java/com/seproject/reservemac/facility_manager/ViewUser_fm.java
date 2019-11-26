@@ -52,7 +52,7 @@ public class ViewUser_fm extends AppCompatActivity implements GetRequests.AsyncR
         setContentView(R.layout.activity_view_user_details_fm);
         username = findViewById(R.id.EtxUsername);
         password = findViewById(R.id.EtxPassword);
-        firstname = findViewById(R.id.etxfirstName);
+        firstname = findViewById(R.id.EtxFirstName);
         lastname = findViewById(R.id.EtxLastName);
         utaid = findViewById(R.id.EtxUtaID);
         phone = findViewById(R.id.EtxPhone);

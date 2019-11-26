@@ -219,13 +219,13 @@ public class view_profile_user extends AppCompatActivity implements PostRequests
     private boolean connection = false;
     TextView username;
     TextView password;
-    EditText firstname;     //
-    EditText lastname;         //
-    TextView utaid;         //
-    EditText phone;         //
-    EditText email;         //
-    EditText address;       //
-    EditText zipcode;       //
+    EditText firstname;
+    EditText lastname;
+    TextView utaid;
+    EditText phone;
+    EditText email;
+    EditText address;
+    EditText zipcode;
     TextView role;
     Button Update;
 
@@ -238,7 +238,7 @@ public class view_profile_user extends AppCompatActivity implements PostRequests
         username = findViewById(R.id.EtxUsername);
         username.setText(usermodel.getUsername());
         password = findViewById(R.id.EtxPassword);
-        firstname = findViewById(R.id.etxfirstName);
+        firstname = findViewById(R.id.EtxFirstName);
         lastname = findViewById(R.id.EtxLastName);
         utaid = findViewById(R.id.EtxUtaID);
         phone = findViewById(R.id.EtxPhone);
@@ -277,7 +277,7 @@ public class view_profile_user extends AppCompatActivity implements PostRequests
 
         String type = "update";
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("admin/update_profile_admin.php");
+        stringBuilder.append("user/update_profile.php");
         String url = stringBuilder.toString();
         try {
             List<NameValuePair> pairs = new ArrayList<NameValuePair>();
@@ -321,9 +321,9 @@ public class view_profile_user extends AppCompatActivity implements PostRequests
 
                 } else if (Identity.equalsIgnoreCase("Update")) {
                     Toast.makeText(this, "Profile updated.!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(view_profile_user.this, User_screen.class);
-                    startActivity(intent);
-                    view_profile_user.this.finish();
+//                    Intent intent = new Intent(view_profile_user.this, User_screen.class);
+//                    startActivity(intent);
+//                    view_profile_user.this.finish();
                 }
 
 
