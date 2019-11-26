@@ -171,9 +171,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:hint="Broke Desk"
-            android:text="Report Violatation"
-
-            android:textColor="@color/colorTextWhite" />
+            android:text="Report Violatation" />
 
         <Button
             android:id="@+id/BtnViolaton"

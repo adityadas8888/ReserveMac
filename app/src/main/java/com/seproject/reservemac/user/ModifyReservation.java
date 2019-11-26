@@ -242,7 +242,10 @@ public class ModifyReservation extends AppCompatActivity implements DatePickerDi
 
                     if (result.equalsIgnoreCase("True")) {
                         Toast.makeText(this, "Reservation Modified.!!", Toast.LENGTH_SHORT).show();
-
+                        Intent i = new Intent(ModifyReservation.this, ViewReservation.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+                        startActivity(i);
+                        finish();
                     }
                 } else {
                     result = jsonObject.getString("response_desc");
@@ -250,7 +253,9 @@ public class ModifyReservation extends AppCompatActivity implements DatePickerDi
                     if (result.equalsIgnoreCase("OK")) {
                         Toast.makeText(this, "Reservation Cancelled.!!", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(ModifyReservation.this, ViewReservation.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
                         startActivity(i);
+                        finish();
 
                     }
                 }

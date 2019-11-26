@@ -76,7 +76,8 @@ public class Facility_manager_reservation extends AppCompatActivity implements G
                 Violationsubmit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+//               http://mohammedmurtuzabhaiji.uta.cloud/se1project/fm/report_violation.php?
+//               reservationid=36&viodetails=damaged
                         String violations = violationdetails.getText().toString();
                         String type = "ReportViolation";
                         StringBuilder stringBuilder = new StringBuilder();
@@ -104,7 +105,7 @@ public class Facility_manager_reservation extends AppCompatActivity implements G
         stringBuilder.append("fm/search_reservation.php?reservationid=").append(reservationId);
 
         String url = stringBuilder.toString();
-        new GetRequests(Facility_manager_reservation.this, url, Facility_manager_reservation.this, "Facility_manager_reservation").execute("");
+        new GetRequests(Facility_manager_reservation.this, url, Facility_manager_reservation.this, "SearchReservation").execute("");
 
 
     }
@@ -133,31 +134,35 @@ public class Facility_manager_reservation extends AppCompatActivity implements G
                     String resp = jsonObject.getString("response_code");
                     if (resp.equalsIgnoreCase("OK")) {
                         Toast.makeText(this, "Reservation Deleted.", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(Facility_manager_reservation.this, SearchReservation.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//**Change Here**
+                        startActivity(i);
+                        finish();
+                    } else {
+                        Toast.makeText(this, "Reservation not updated.", Toast.LENGTH_SHORT).show();
+
                     }
-                    Intent i = new Intent(Facility_manager_reservation.this, SearchReservation.class);
-                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//**Change Here**
-                    startActivity(i);
-                    finish();
 
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             } else {
-                String resp = null;
+                String resp = "";
                 try {
                     resp = jsonObject.getString("response_code");
 
                     if (resp.equalsIgnoreCase("OK")) {
                         Toast.makeText(this, "Reservation Deleted.", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(Facility_manager_reservation.this, SearchReservation.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//**Change Here**
+                        startActivity(i);
+                        finish();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Intent i = new Intent(Facility_manager_reservation.this, SearchReservation.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//**Change Here**
-                startActivity(i);
-                finish();
+
             }
 
         }
