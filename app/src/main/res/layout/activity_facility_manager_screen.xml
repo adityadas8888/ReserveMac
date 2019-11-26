@@ -36,9 +36,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:padding="15dp"
-        android:gravity="center">
+        android:padding="15dp">
 
         <TextView
             android:id="@+id/TxtWelcome"
@@ -71,36 +71,66 @@
             android:textColor="@color/colorPrimary"
             android:textSize="16dp" />
     </LinearLayout>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Search Facility"
-        android:id="@+id/BtnFacilitySearch"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Search  All Facility"
-        android:id="@+id/BtnFacilityAllSearch"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Search  Reservation"
-        android:id="@+id/BtnReservation"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View Profile"
-        android:id="@+id/BtnViewProfile"/>
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Search User"
-        android:id="@+id/search_user"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
 
-    <Button
-        android:id="@+id/signout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Log out" />
+        <Button
+            android:id="@+id/BtnFacilitySearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:text="Search Facility"
+            android:textColor="@color/colorTextWhite" />
+
+        <Button
+            android:id="@+id/BtnFacilityAllSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:text="Search  All Facility"
+            android:textColor="@color/colorTextWhite" />
+
+        <Button
+            android:id="@+id/BtnReservation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:text="Search  Reservation"
+            android:textColor="@color/colorTextWhite" />
+
+        <Button
+            android:id="@+id/BtnViewProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:text="View Profile"
+            android:textColor="@color/colorTextWhite" />
+
+        <Button
+            android:id="@+id/search_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:text="Search User"
+            android:textColor="@color/colorTextWhite" />
+
+        <Button
+            android:id="@+id/signout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:text="Log out"
+            android:textColor="@color/colorTextWhite" />
+
+    </LinearLayout>
 </LinearLayout>
