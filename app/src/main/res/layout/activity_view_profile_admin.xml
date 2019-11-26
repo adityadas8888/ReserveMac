@@ -16,6 +16,7 @@
         android:paddingLeft="10dp">
 
         <ImageView
+            android:id="@+id/bckbutton"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:padding="15dp"
@@ -54,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="murtuza24" />
+                android:hint="JohnRobb" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -63,12 +64,12 @@
                 android:gravity="center_vertical"
                 android:text="Password" />
 
-            <TextView
+            <EditText
                 android:id="@+id/EtxPassword"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="user123" />
+                android:hint="password" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -78,11 +79,11 @@
                 android:text="First Name" />
 
             <EditText
-                android:id="@+id/etxfirstName"
+                android:id="@+id/EtxFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="Mohammed" />
+                android:hint="John" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -96,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="Bhaiji" />
+                android:hint="Doe" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -105,12 +106,12 @@
                 android:gravity="center_vertical"
                 android:text="UTA ID" />
 
-            <EditText
+            <TextView
                 android:id="@+id/EtxUtaID"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="1001666586" />
+                android:hint="1001666666" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -120,11 +121,12 @@
                 android:text="Phone" />
 
             <EditText
+                android:inputType="phone"
                 android:id="@+id/EtxPhone"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="9876543210" />
+                android:hint="6826696690" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -138,7 +140,7 @@
                 android:layout_height="40dp"
                 android:inputType="textEmailAddress"
                 android:gravity="center_vertical"
-                android:text="murtuza@mavs.uta.edu" />
+                android:hint="johndoe@mavs.uta.edu" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -152,7 +154,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="507 Summit Ave" />
+                android:hint="900 Summer Road" />
 
 
             <TextView
@@ -163,72 +165,37 @@
                 android:text="Zipcode" />
 
             <EditText
+                android:inputType="number"
                 android:id="@+id/EtxZipcode"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="76013" />
+                android:hint="76010" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center_vertical"
-                android:text="Roles" />
+                android:text="Role" />
 
-            <Spinner
+            <TextView
                 android:id="@+id/EtxRole"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
-                android:text="Student/Faculty" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:text="Number of Violations" />
-
-            <TextView
-                android:id="@+id/NoViolatations"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:text="2" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:text="Number of No shows" />
-
-            <TextView
-                android:id="@+id/Nonoshows"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:text="1" />
-
-<!--            <Button-->
-<!--                android:id="@+id/BtnViodetails"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="40dp"-->
-<!--                android:layout_marginTop="15dp"-->
-<!--                android:background="@color/colorPrimary"-->
-<!--                android:text="Violation Details"-->
-<!--                android:textColor="@color/colorTextWhite" />-->
+                android:hint="User" />
 
 
             <Button
-                android:id="@+id/BtnDetails"
+                android:id="@+id/Update"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:text="Update Details"
                 android:layout_marginTop="15dp"
+                android:textColor="@color/colorTextWhite"
                 android:background="@color/colorPrimary"
-                android:text="Edit Details"
-                android:textColor="@color/colorTextWhite" />
+                tools:ignore="InvalidId" />
 
         </LinearLayout>
 

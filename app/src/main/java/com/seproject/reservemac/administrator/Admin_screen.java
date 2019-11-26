@@ -49,7 +49,7 @@ public class Admin_screen extends AppCompatActivity {
         view_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), view_profile_user.class);
+                Intent intent = new Intent(getApplicationContext(), view_profile_user_admin.class);
                 intent.putExtra("usermodel", (Parcelable) usermodel);
                 startActivity(intent);
             }
@@ -60,7 +60,7 @@ public class Admin_screen extends AppCompatActivity {
         search_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), SearchUserActivity.class);
+                Intent intent = new Intent(getBaseContext(), SearchUserActivity_admin.class);
                 intent.putExtra("role",usermodel.getRole());              // to determine what activity to move to from the search user activity
                 startActivity(intent);
             }

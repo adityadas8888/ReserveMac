@@ -1,5 +1,6 @@
 package com.seproject.reservemac.administrator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -98,7 +99,7 @@ public class ViewUser_admin extends AppCompatActivity implements GetRequests.Asy
 //                        role.setText(json.getString("role"));
                         String[] items = new String[]{"user", "fm", "admin"};
                         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-                        role.setSelection(((ArrayAdapter<String>)role.getAdapter()).getPosition(json.getString("role")));
+                        role.setSelection(((ArrayAdapter<String>)role.getAdapter()).getPosition("fm"));
                         phone.setText(json.getString("contactno"));
                         address.setText(json.getString("streetaddress"));
                         zipcode.setText(json.getString("zipcode"));
@@ -112,6 +113,9 @@ public class ViewUser_admin extends AppCompatActivity implements GetRequests.Asy
 
                 } else if (Identity.equalsIgnoreCase("Update")) {
                     Toast.makeText(this, "Profile updated.!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ViewUser_admin.this,SearchUserActivity_admin.class);
+                    startActivity(intent);
+                    ViewUser_admin.this.finish();
                 }
 
 
@@ -125,7 +129,7 @@ public class ViewUser_admin extends AppCompatActivity implements GetRequests.Asy
 
         String type = "update";
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("user_update_profile.php");
+        stringBuilder.append("admin/update_profile_admin.php");
         String url = stringBuilder.toString();
         try {
             List<NameValuePair> pairs = new ArrayList<NameValuePair>();

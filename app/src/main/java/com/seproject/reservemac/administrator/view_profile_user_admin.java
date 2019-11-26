@@ -181,30 +181,26 @@
 //    }
 //}
 
-package com.seproject.reservemac.user;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.seproject.reservemac.administrator;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.seproject.reservemac.R;
-import com.seproject.reservemac.administrator.Admin_screen;
-import com.seproject.reservemac.administrator.SearchUserActivity_admin;
-import com.seproject.reservemac.administrator.ViewUser_admin;
 import com.seproject.reservemac.background.GetRequests;
 import com.seproject.reservemac.background.PostRequests;
 import com.seproject.reservemac.model.UserCreds;
 import com.seproject.reservemac.model.UserModel;
+import com.seproject.reservemac.user.User_screen;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -215,7 +211,7 @@ import java.util.List;
 import cz.msebera.android.httpclient.NameValuePair;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
-public class view_profile_user extends AppCompatActivity implements PostRequests.PostAsyncResponse , GetRequests.AsyncResponse {
+public class view_profile_user_admin extends AppCompatActivity implements PostRequests.PostAsyncResponse , GetRequests.AsyncResponse {
     private boolean connection = false;
     TextView username;
     TextView password;
@@ -232,13 +228,13 @@ public class view_profile_user extends AppCompatActivity implements PostRequests
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_profile_user);
+        setContentView(R.layout.activity_view_profile_admin);
         final ConnectivityManager connectivityManager = ((ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE));
         final UserModel usermodel = (UserModel) getIntent().getParcelableExtra("usermodel");
         username = findViewById(R.id.EtxUsername);
         username.setText(usermodel.getUsername());
         password = findViewById(R.id.EtxPassword);
-        firstname = findViewById(R.id.etxfirstName);
+        firstname = findViewById(R.id.EtxFirstName);
         lastname = findViewById(R.id.EtxLastName);
         utaid = findViewById(R.id.EtxUtaID);
         phone = findViewById(R.id.EtxPhone);
@@ -255,7 +251,7 @@ public class view_profile_user extends AppCompatActivity implements PostRequests
         UserCreds userCreds = UserCreds.getInstance();
         stringBuilder.append("user/view_profile.php?username=").append(usermodel.getUsername());
         String url = stringBuilder.toString();
-        new GetRequests(view_profile_user.this, url, view_profile_user.this, "ViewUser").execute("");
+        new GetRequests(view_profile_user_admin.this, url, view_profile_user_admin.this, "ViewUser").execute("");
         Update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -290,7 +286,7 @@ public class view_profile_user extends AppCompatActivity implements PostRequests
             pairs.add(new BasicNameValuePair("streetaddress", address.getText().toString()));
             pairs.add(new BasicNameValuePair("zipcode", zipcode.getText().toString()));
             pairs.add(new BasicNameValuePair("email", email.getText().toString()));
-            new PostRequests(view_profile_user.this, url, view_profile_user.this, "Update", pairs).execute("");
+            new PostRequests(view_profile_user_admin.this, url, view_profile_user_admin.this, "Update", pairs).execute("");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -321,9 +317,8 @@ public class view_profile_user extends AppCompatActivity implements PostRequests
 
                 } else if (Identity.equalsIgnoreCase("Update")) {
                     Toast.makeText(this, "Profile updated.!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(view_profile_user.this, User_screen.class);
-                    startActivity(intent);
-                    view_profile_user.this.finish();
+//                    Intent intent = new Intent(view_profile_user_admin.this, Admin_screen.class);
+//                    startActivity(intent);
                 }
 
 

@@ -9,6 +9,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.seproject.reservemac.R;
+import com.seproject.reservemac.facility_manager.SearchUserActivity;
 import com.seproject.reservemac.facility_manager.ViewUser_fm;
 
 public class SearchUserActivity_admin extends AppCompatActivity {
@@ -27,6 +28,7 @@ public class SearchUserActivity_admin extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),ViewUser_admin.class);
                 intent.putExtra("username",usr);
                 startActivity(intent);
+                SearchUserActivity_admin.this.finish();
             }
         });
     }
