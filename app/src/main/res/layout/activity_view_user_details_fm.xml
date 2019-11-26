@@ -78,7 +78,7 @@
                 android:text="First Name" />
 
             <EditText
-                android:id="@+id/etxfirstName"
+                android:id="@+id/EtxFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
