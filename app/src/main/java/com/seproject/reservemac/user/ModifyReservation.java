@@ -65,7 +65,7 @@ public class ModifyReservation extends AppCompatActivity implements DatePickerDi
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                builder.setMessage("Are you sure you want to Delete this reserbation?")
+                builder.setMessage("Are you sure you want to Delete this reservation?")
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {

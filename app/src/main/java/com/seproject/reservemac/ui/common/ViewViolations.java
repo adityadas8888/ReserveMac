@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class ViewViolations extends AppCompatActivity implements  GetRequests.AsyncResponse {
 
-
+//username,violation,violationdetails,facilitycode
     RecyclerView RecycleViewviolation;
     ViewViolationsAdapter viewViolationsAdapter;
     ArrayList<ViolationModel> violationModelArrayList;

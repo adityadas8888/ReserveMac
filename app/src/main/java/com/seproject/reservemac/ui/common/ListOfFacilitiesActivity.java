@@ -63,7 +63,6 @@ public class ListOfFacilitiesActivity extends AppCompatActivity implements GetRe
         String url = stringBuilder.toString();
         new GetRequests(ListOfFacilitiesActivity.this, url, ListOfFacilitiesActivity.this, "ListOfFacilitiesActivity").execute("");
 
-
     }
 
     @Override
