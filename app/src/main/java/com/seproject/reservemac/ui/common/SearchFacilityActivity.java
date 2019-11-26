@@ -145,6 +145,9 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
                     c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                     c.set(Calendar.MONTH, month);
                     c.set(Calendar.YEAR, year);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+                    String currentDateString = format1.format(c.getTime());
+                    BtnDate.setText(currentDateString);
                 }
             } else
                 Toast.makeText(getApplicationContext(), "Outdoor Facilities are can't be booked in the past", Toast.LENGTH_SHORT).show();
@@ -157,13 +160,14 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
                     c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                     c.set(Calendar.MONTH, month);
                     c.set(Calendar.YEAR, year);
+                    SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+                    String currentDateString = format1.format(c.getTime());
+                    BtnDate.setText(currentDateString);
                 }
             } else
                 Toast.makeText(getApplicationContext(), "Can't book dates in the past ", Toast.LENGTH_SHORT).show();
         }
-        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-        String currentDateString = format1.format(c.getTime());
-        BtnDate.setText(currentDateString);
+
     }
 
     public int dayCalc(String day1, String day2) {
@@ -196,7 +200,7 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
                     Toast.makeText(getApplicationContext(), "Outdoor can be booked only in the 7 day period", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(getApplicationContext(), "Can't book date in the past ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Can't book date in the past2 ", Toast.LENGTH_SHORT).show();
             }
         } else {
             maxDate = dayCalc(selectedate, todaysdate);
@@ -209,7 +213,7 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
                     Toast.makeText(getApplicationContext(), "Outdoor can be booked only in the 7 day period", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(getApplicationContext(), "Can't book date in the past ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Can't book date in the past 3", Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -254,7 +258,10 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
         String roundMinutes = "";
         String roundHours = "";
         int day = c.get(Calendar.DAY_OF_WEEK);
-        if (hourOfDay >= c.get(Calendar.HOUR) && minutes >= c.get(Calendar.MINUTE)) {
+        int hour = c.get(Calendar.HOUR);
+        int min = c.get(Calendar.MINUTE);
+        Toast.makeText(getApplicationContext(), "hour:"+c.get(Calendar.HOUR)+"min"+ c.get(Calendar.MINUTE), Toast.LENGTH_SHORT).show();
+        if (hourOfDay >= c.get(Calendar.HOUR) ) {
             if (day >= 2 && day <= 6)                                                                                                               //check if on weekdays
             {
                 if (hourOfDay >= 6 && hourOfDay <= 23)                                                                                              // check if selected during open hours of weekdays
@@ -282,7 +289,7 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
                     Toast.makeText(getApplicationContext(), "MAC is closed at the selected time ", Toast.LENGTH_SHORT).show();              //booking during closed time
             }
         } else
-            Toast.makeText(getApplicationContext(), "Can't book time in the past ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Can't book time in the past1 ", Toast.LENGTH_SHORT).show();
     }
 }
 
