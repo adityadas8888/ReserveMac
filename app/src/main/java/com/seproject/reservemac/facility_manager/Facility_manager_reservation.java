@@ -1,7 +1,9 @@
 package com.seproject.reservemac.facility_manager;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +24,8 @@ public class Facility_manager_reservation extends AppCompatActivity implements G
     TextView FacilityCode;
     TextView Bookingtime;
     String reservationId = "";
+    Button Violationsubmit;
+    EditText violationdetails;
 
 
     @Override
@@ -35,11 +39,38 @@ public class Facility_manager_reservation extends AppCompatActivity implements G
         username = findViewById(R.id.username);
         FacilityCode = findViewById(R.id.FacilityCode);
         Bookingtime = findViewById(R.id.reservationdates);
-
+        Violationsubmit = findViewById(R.id.BtnViolaton);
+        violationdetails = findViewById(R.id.Violatiodetails);
+        Violationsubmit.setVisibility(View.INVISIBLE);
+        violationdetails.setVisibility(View.INVISIBLE);
         reservationId = getIntent().getStringExtra("ReservationId");
 
         loadData();
+        ReportViolation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReportViolation.setVisibility(View.INVISIBLE);
+                Violationsubmit.setVisibility(View.VISIBLE);
+                violationdetails.setVisibility(View.VISIBLE);
+                Violationsubmit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
+                        String violations = violationdetails.getText().toString();
+                        String type = "ReportViolation";
+                        StringBuilder stringBuilder = new StringBuilder();
+                        final FacilityModel facilityModel = getIntent().getParcelableExtra("facilityModel");
+                        stringBuilder.append("fm/report_violation.php?reservationid=").append(reservationId);
+                        stringBuilder.append("&viodetails=").append(violations);
+                        String url = stringBuilder.toString();
+                        new GetRequests(Facility_manager_reservation.this, url, Facility_manager_reservation.this, "report violations").execute("");
+
+
+                    }
+                });
+
+            }
+        });
     }
 
     private void loadData() {
