@@ -82,6 +82,12 @@ public class ReserveFacility extends AppCompatActivity implements GetRequests.As
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+    }
+
+    @Override
     public void ProcessFinish(String output, JSONObject jsonObject, String Identity) {
         if (jsonObject != null) {
             String result = "";

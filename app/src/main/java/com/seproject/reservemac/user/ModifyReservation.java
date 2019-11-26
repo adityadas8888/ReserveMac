@@ -245,7 +245,7 @@ public class ModifyReservation extends AppCompatActivity implements DatePickerDi
                         Intent i = new Intent(ModifyReservation.this, ViewReservation.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
                         startActivity(i);
-                        finish();
+//                        finish();
                     }
                 } else {
                     result = jsonObject.getString("response_desc");

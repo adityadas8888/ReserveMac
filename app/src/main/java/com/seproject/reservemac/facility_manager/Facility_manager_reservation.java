@@ -131,13 +131,13 @@ public class Facility_manager_reservation extends AppCompatActivity implements G
                 }
             } else if (Identity.equalsIgnoreCase("DeleteReservation")) {
                 try {
-                    String resp = jsonObject.getString("response_code");
+                    String resp = jsonObject.getString("response_desc");
                     if (resp.equalsIgnoreCase("OK")) {
                         Toast.makeText(this, "Reservation Deleted.", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(Facility_manager_reservation.this, SearchReservation.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//**Change Here**
                         startActivity(i);
-                        finish();
+//                        finish();
                     } else {
                         Toast.makeText(this, "Reservation not updated.", Toast.LENGTH_SHORT).show();
 

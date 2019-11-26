@@ -93,8 +93,17 @@ public class ViewReservation extends AppCompatActivity implements GetRequests.As
 
 
         }
+
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+//        Intent intent = new Intent(ViewReservation.this, User_screen.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+//        startActivity(intent);
+//        finish();
+    }
 
     public class ViewReservationsAdapter extends RecyclerView.Adapter<ViewReservationsAdapter.MyViewHolder> {
         ArrayList<ReservationModel> listofreservation;
