@@ -164,6 +164,7 @@
             android:background="@color/colorPrimary"
             android:text="Press to report Violation"
             android:textColor="@color/colorTextWhite" />
+
         <EditText
             android:id="@+id/Violatiodetails"
             android:layout_width="match_parent"
@@ -173,6 +174,7 @@
             android:text="Report Violatation"
 
             android:textColor="@color/colorTextWhite" />
+
         <Button
             android:id="@+id/BtnViolaton"
             android:layout_width="match_parent"
