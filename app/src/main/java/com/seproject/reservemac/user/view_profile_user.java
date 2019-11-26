@@ -140,7 +140,7 @@ public class view_profile_user extends AppCompatActivity implements PostRequests
                 userModel.setEmail((jsonContent.getString("email")));
 
 
-                Toast.makeText(this, "Profile updates.!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Profile updated.!", Toast.LENGTH_SHORT).show();
 
 
             } catch (JSONException e) {

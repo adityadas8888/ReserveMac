@@ -22,8 +22,9 @@ public class SearchUserActivity extends AppCompatActivity {
         Search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String usr = username.getText().toString();
                 Intent intent = new Intent(getApplicationContext(),ViewUser_fm.class);
-                intent.putExtra(String.valueOf(username.getText()),"username");
+                intent.putExtra("username",usr);
                 startActivity(intent);
             }
         });

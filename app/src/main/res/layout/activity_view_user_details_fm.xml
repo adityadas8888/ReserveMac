@@ -49,7 +49,7 @@
                 android:gravity="center_vertical"
                 android:text="Username:" />
 
-            <EditText
+            <TextView
                 android:id="@+id/EtxUsername"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -63,7 +63,7 @@
                 android:gravity="center_vertical"
                 android:text="Password" />
 
-            <EditText
+            <TextView
                 android:id="@+id/EtxPassword"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -176,7 +176,7 @@
                 android:gravity="center_vertical"
                 android:text="Role" />
 
-            <EditText
+            <TextView
                 android:id="@+id/EtxRole"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -190,7 +190,7 @@
                 android:gravity="center_vertical"
                 android:text="Number of Violations" />
 
-            <EditText
+            <TextView
                 android:id="@+id/NoViolatations"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -204,21 +204,21 @@
                 android:gravity="center_vertical"
                 android:text="Number of No shows" />
 
-            <EditText
+            <TextView
                 android:id="@+id/Nonoshows"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:text="1" />
 
-            <Button
-                android:id="@+id/BtnViodetails"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/colorPrimary"
-                android:text="Violation Details"
-                android:textColor="@color/colorTextWhite" />
+<!--            <Button-->
+<!--                android:id="@+id/BtnViodetails"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:background="@color/colorPrimary"-->
+<!--                android:text="Violation Details"-->
+<!--                android:textColor="@color/colorTextWhite" />-->
 
 
             <Button

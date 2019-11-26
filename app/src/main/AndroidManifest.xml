@@ -41,6 +41,8 @@
         <activity android:name=".administrator.Admin_screen" />
         <activity android:name=".user.User_screen" />
         <activity android:name=".ui.RegisterActivity" />
+        <activity android:name=".facility_manager.ViewUser_fm"/>
+        <activity android:name=".facility_manager.ViewViolations_fm"/>
         <activity android:name=".ui.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
