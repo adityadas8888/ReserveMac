@@ -39,6 +39,16 @@ public class view_profile_user extends AppCompatActivity implements PostRequests
     TextView role;
     Button Update;
     UserModel userModel;
+    String usr ="";
+    String pass ="";
+    String fname ="";
+    String lname ="";
+    String uta ="";
+    String phn ="";
+    String emal ="";
+    String addr ="";
+    String zpd ="";
+    String rol ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,33 +58,41 @@ public class view_profile_user extends AppCompatActivity implements PostRequests
         final UserModel usermodel = (UserModel) getIntent().getParcelableExtra("usermodel");
         extUsername = findViewById(R.id.EtxUsername);
         extUsername.setText(usermodel.getUsername());
-
+        usr = extUsername.getText().toString();
         password = findViewById(R.id.EtxPassword);
         password.setText(usermodel.getPassword());
-
+        pass = password.getText().toString();
         firstName = findViewById(R.id.EtxFirstName);
         firstName.setText(usermodel.getFirstname());
+        fname= firstName.getText().toString();
+
 
         lastName = findViewById(R.id.EtxLastName);
         lastName.setText(usermodel.getLastname());
+        lname= lastName.getText().toString();
 
         utaid = findViewById(R.id.EtxUtaID);
         utaid.setText(usermodel.getUtaid());
+        uta= utaid.getText().toString();
 
         phone = findViewById(R.id.EtxPhone);
         phone.setText(usermodel.getContactno());
+        phn= phone.getText().toString();
 
         email = findViewById(R.id.EtxEmail);
         email.setText(usermodel.getEmail());
+        emal= email.getText().toString();
 
         address = findViewById(R.id.EtxStreetAddress);
         address.setText(usermodel.getStreetaddress());
-
+        addr= address.getText().toString();
         zipcode = findViewById(R.id.EtxZipcode);
         zipcode.setText(usermodel.getZipcode());
+        zpd= zipcode.getText().toString();
 
         role = findViewById(R.id.EtxRole);
         role.setText(usermodel.getRole());
+        rol= role.getText().toString();
 
         Update = findViewById(R.id.Update);
         assert connectivityManager != null;
@@ -103,13 +121,13 @@ public class view_profile_user extends AppCompatActivity implements PostRequests
         String url = stringBuilder.toString();
         try {
             List<NameValuePair> pairs = new ArrayList<NameValuePair>();
-            pairs.add(new BasicNameValuePair("username", extUsername.getText().toString()));
-            pairs.add(new BasicNameValuePair("firstname", firstName.getText().toString()));
-            pairs.add(new BasicNameValuePair("lastname", lastName.getText().toString()));
-            pairs.add(new BasicNameValuePair("password", password.getText().toString()));
-            pairs.add(new BasicNameValuePair("contactno", phone.getText().toString()));
-            pairs.add(new BasicNameValuePair("streetaddress", address.getText().toString()));
-            pairs.add(new BasicNameValuePair("zipcode", zipcode.getText().toString()));
+            pairs.add(new BasicNameValuePair("username",extUsername.getText().toString()));
+            pairs.add(new BasicNameValuePair("firstname", fname));
+            pairs.add(new BasicNameValuePair("lastname", lname));
+            pairs.add(new BasicNameValuePair("password", pass));
+            pairs.add(new BasicNameValuePair("contactno", phn));
+            pairs.add(new BasicNameValuePair("streetaddress",addr));
+            pairs.add(new BasicNameValuePair("zipcode", zpd));
             pairs.add(new BasicNameValuePair("email", email.getText().toString()));
             new PostRequests(view_profile_user.this, url, view_profile_user.this, "Update", pairs).execute("");
 
@@ -124,27 +142,38 @@ public class view_profile_user extends AppCompatActivity implements PostRequests
 
             try {
 //                String msg = String.valueOf(jsonObject.getString("content"));
-                userModel = new UserModel();
+//                userModel = new UserModel();
                 JSONObject jsonContent = jsonObject.getJSONObject("content");
                 userModel.setUsername((jsonContent.getString("username")));
+                extUsername.setText(userModel.getUsername());
                 userModel.setFirstname((jsonContent.getString("firstname")));
+                firstName.setText(userModel.getFirstname());
                 userModel.setPassword((jsonContent.getString("password")));
+                password.setText(userModel.getPassword());
                 userModel.setLastname((jsonContent.getString("lastname")));
+                lastName.setText(userModel.getLastname());
                 userModel.setUtaid((jsonContent.getString("utaid")));
+                utaid.setText(userModel.getUtaid());
                 userModel.setRole((jsonContent.getString("role")));
+                role.setText(userModel.getRole());
                 userModel.setContactno((jsonContent.getString("contactno")));
+                phone.setText(userModel.getContactno());
                 userModel.setStreetaddress((jsonContent.getString("streetaddress")));
+                address.setText(userModel.getStreetaddress());
                 userModel.setZipcode((jsonContent.getString("zipcode")));
+                zipcode.setText(userModel.getZipcode());
                 userModel.setNoshow((jsonContent.getInt("noshow")));
                 userModel.setRevoked((jsonContent.getInt("revoked")));
                 userModel.setEmail((jsonContent.getString("email")));
+                email.setText(userModel.getEmail());
 
-
+                Intent intent = new Intent(view_profile_user.this,User_screen.class);
+                startActivity(intent);
                 Toast.makeText(this, "Profile updated.!", Toast.LENGTH_SHORT).show();
 
 
             } catch (JSONException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
 
 

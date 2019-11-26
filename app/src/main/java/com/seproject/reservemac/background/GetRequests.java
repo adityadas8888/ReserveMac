@@ -71,7 +71,7 @@ public class GetRequests extends AsyncTask<String, Void, String> {
             httpGet.setHeader("Content-Type", "application/x-www-form-urlencoded");
             httpGet.setHeader("Content-Type", "application/json");
 
-            HttpResponse httpResponse = httpClient.execute(httpGet);
+                HttpResponse httpResponse = httpClient.execute(httpGet);
             InputStream inputStream = httpResponse.getEntity().getContent();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
