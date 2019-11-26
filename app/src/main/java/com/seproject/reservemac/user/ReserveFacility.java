@@ -11,17 +11,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.seproject.reservemac.R;
 import com.seproject.reservemac.background.GetRequests;
-import com.seproject.reservemac.facility_manager.SearchReservation;
 import com.seproject.reservemac.model.FacilityModel;
 import com.seproject.reservemac.model.UserCreds;
 import com.seproject.reservemac.ui.common.SearchFacilityActivity;
 import com.seproject.reservemac.ui.common.ViewReservation;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ReserveFacility extends AppCompatActivity implements GetRequests.AsyncResponse{
+public class ReserveFacility extends AppCompatActivity implements GetRequests.AsyncResponse {
 
     Button BtnMakeReservation;
     TextView FacilityName;
@@ -65,7 +63,7 @@ public class ReserveFacility extends AppCompatActivity implements GetRequests.As
             public void onClick(View view) {
                 String type = "MakeReservation";
                 StringBuilder stringBuilder = new StringBuilder();
-                UserCreds userCreds =   UserCreds.getInstance();
+                UserCreds userCreds = UserCreds.getInstance();
 
 //                http://mohammedmurtuzabhaiji.uta.cloud/se1project/user/reserve_facility.php?facilitycode=OVBC2&date=2019-12-29&start=2:00&end=3:00&user=aditdas&facilitytype=Outdoor
 
@@ -88,15 +86,14 @@ public class ReserveFacility extends AppCompatActivity implements GetRequests.As
         if (jsonObject != null) {
             String result = "";
             try {
-                String resp = String.valueOf(jsonObject.getJSONArray("response_desc"));
-                if (resp.equals("OK")){
-                    Toast.makeText(getApplicationContext(), "Reservation done successfully", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), SearchFacilityActivity.class);
+                String resp = String.valueOf(jsonObject.getString("response_desc"));
+                if (resp.equalsIgnoreCase("OK")) {
+                    Toast.makeText(this, "Reservation done successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ReserveFacility.this, ViewReservation.class);
                     startActivity(intent);
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), "Reservation unsuccessful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), SearchFacilityActivity.class);
+                } else {
+                    Toast.makeText(this, "Reservation unsuccessful", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ReserveFacility.this, SearchFacilityActivity.class);
                     startActivity(intent);
                 }
 
