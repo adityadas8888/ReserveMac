@@ -117,6 +117,11 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
                 TimePickerDialog timePickerDialog = new TimePickerDialog(SearchFacilityActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                        String Fname = SpinnerFType.getSelectedItem().toString();
+                        String[] outdoor = new String[]{"2 Outdoor Volleyball Courts", "2 Outdoor Basketball Courts"};
+                        if (Arrays.asList(outdoor).contains(Fname)) {
+                            flag = Boolean.TRUE;
+                        }
                         String roundMinutes = "";
                         String roundHours = "";
                         int day = c.get(Calendar.DAY_OF_WEEK);
@@ -154,10 +159,11 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
                                     roundHours = Integer.toString(hourOfDay);
                                     if (minutes <= 15) {
                                         roundMinutes = "00";
+                                        BtnTime.setText(roundHours + ":" + roundMinutes);
                                     } else if (minutes > 15 && minutes < 59) {
                                         roundMinutes = "30";
+                                        BtnTime.setText(roundHours + ":" + roundMinutes);
                                     }
-                                    BtnTime.setText(roundHours + ":" + roundMinutes);
                                 } else
                                     Toast.makeText(getApplicationContext(), "MAC is closed at the selected time ", Toast.LENGTH_SHORT).show();
 
@@ -167,11 +173,13 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
                                     roundHours = Integer.toString(hourOfDay);
                                     if (minutes <= 15) {
                                         roundMinutes = "00";
+                                        BtnTime.setText(roundHours + ":" + roundMinutes);
 
                                     } else if (minutes > 15 && minutes < 59) {
                                         roundMinutes = "30";
+                                        BtnTime.setText(roundHours + ":" + roundMinutes);
                                     }
-                                    BtnTime.setText(roundHours + ":" + roundMinutes);
+
                                 }
                             }
                         }
@@ -222,6 +230,44 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
         BtnDate.setText(currentDateString);
     }
 
+    public String[] TimeFilter(int hourOfDay, int minutes,Boolean flag){
+
+        String[] ans = new String[2];
+
+        String roundMinutes = "";
+        String roundHours = "";
+        int day = c.get(Calendar.DAY_OF_WEEK);
+        if(hourOfDay>=c.get(Calendar.HOUR) && minutes>=c.get(Calendar.MINUTE)) {
+            if (day >= 2 && day <= 6) {
+                if (hourOfDay >= 6 && hourOfDay <= 23) {
+                    roundHours = Integer.toString(hourOfDay);
+                    if (minutes <= 15) {
+                        roundMinutes = "00";
+                    } else if (minutes > 15 && minutes < 59) {
+                        roundMinutes = "30";
+                    }
+                    BtnTime.setText(roundHours + ":" + roundMinutes);
+                } else
+                    Toast.makeText(getApplicationContext(), "MAC is closed at the selected time ", Toast.LENGTH_SHORT).show();
+
+            } else if (day == 1 || day == 7) {
+
+                if (hourOfDay >= 12 && hourOfDay <= 23) {
+                    roundHours = Integer.toString(hourOfDay);
+                    if (minutes <= 15) {
+                        roundMinutes = "00";
+
+                    } else if (minutes > 15 && minutes < 59) {
+                        roundMinutes = "30";
+                    }
+                    BtnTime.setText(roundHours + ":" + roundMinutes);
+                }
+            }
+        }
+        else
+            Toast.makeText(getApplicationContext(), "Can't select time in the past ", Toast.LENGTH_SHORT).show();
+        return ans;
+    }
 }
 
 
