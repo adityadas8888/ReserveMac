@@ -60,7 +60,7 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
             header.setText("Search Facility");
 
 
-        facilitycode.put("Multipurpose Rooms", "MR");
+        facilitycode.put("4 Multipurpose Rooms", "MR");
         facilitycode.put("5 Indoor Basketball Court", "IBBC");
         facilitycode.put("9 Volleyball Court", "IVBC");
         facilitycode.put("Indoor Soccer Gymnasium", "SCG");

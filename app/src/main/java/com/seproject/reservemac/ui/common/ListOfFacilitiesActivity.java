@@ -153,6 +153,7 @@ public class ListOfFacilitiesActivity extends AppCompatActivity implements GetRe
                     Intent i = new Intent(view.getContext(), ReserveFacility.class);
                     i.putExtra("facilityModel", (Parcelable) facilityModel);
                     i.putExtra("date", date);
+                    startActivity(i);
 //                    i.putExtra("FacilityName", facilityModel.getFacilityname());
 //                    i.putExtra("FacilityCode", facilityModel.getFacilitycode());
 //                    i.putExtra("StartTime", facilityModel.getStartTime());

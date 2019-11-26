@@ -47,7 +47,7 @@ public class ReserveFacility extends AppCompatActivity {
         EndTime.setText(facilityModel.getEndTime());/// fix this
 
         Deposit = findViewById(R.id.TxtDeposit);
-        Deposit.setText(facilityModel.getDeposit());/// fix this
+        Deposit.setText(String.valueOf(facilityModel.getDeposit()));/// fix this
 
 
         BtnMakeReservation.setOnClickListener(new View.OnClickListener() {
