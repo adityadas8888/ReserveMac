@@ -11,6 +11,7 @@ public class FacilityModel implements Parcelable {
     public String facilitytype = "";
     public String facilitydescription = "";
     public float interval = 0;
+    public String date = "";
     public String starttime = "";
     public String endtime = "";
     public int availability = 0;
@@ -22,32 +23,32 @@ public class FacilityModel implements Parcelable {
 
     }
 
-//    public UserModel(String username, String firstname, String lastname, String utaid, String role, String contactno, String streetaddress, String zipcode, int noshow, int revoked, String email) {
-//        this.username = username;
-//        this.firstname = firstname;
-//        this.lastname = lastname;
-//        this.utaid = utaid;
-//        this.role = role;
-//        this.contactno = contactno;
-//        this.streetaddress = streetaddress;
-//        this.zipcode = zipcode;
-//        this.noshow = noshow;
-//        this.revoked = revoked;
-//        this.email = email;
-//    }
-
 
     protected FacilityModel(Parcel in) {
-        facilityname = in.readString();
-        facilitycode = in.readString();
-        facilitydescription = in.readString();
         facilitytype = in.readString();
+        facilitycode = in.readString();
+        facilityname = in.readString();
+        facilitydescription = in.readString();
+        deposit = in.readInt();
+        availability = in.readInt();
+        date = in.readString();
         starttime = in.readString();
         endtime = in.readString();
-        availability = in.readInt();
-        deposit = in.readInt();
-
         interval = in.readFloat();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(facilitytype);
+        dest.writeString(facilitycode);
+        dest.writeString(facilityname);
+        dest.writeString(facilitydescription);
+        dest.writeInt(deposit);
+        dest.writeInt(availability);
+        dest.writeString(date);
+        dest.writeString(starttime);
+        dest.writeString(endtime);
+        dest.writeFloat(interval);
     }
 
     public static final Creator<FacilityModel> CREATOR = new Creator<FacilityModel>() {
@@ -110,6 +111,14 @@ public class FacilityModel implements Parcelable {
         this.starttime = starttime;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public String getEndTime() {
         return endtime;
     }
@@ -151,17 +160,5 @@ public class FacilityModel implements Parcelable {
         return 0;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(facilitytype);
-        dest.writeString(facilitycode);
-        dest.writeString(facilityname);
-        dest.writeString(facilitydescription);
 
-        dest.writeInt(deposit);
-        dest.writeInt(availability);
-        dest.writeString(starttime);
-        dest.writeString(endtime);
-        dest.writeFloat(interval);
-    }
 }

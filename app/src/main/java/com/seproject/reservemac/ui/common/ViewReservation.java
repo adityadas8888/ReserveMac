@@ -1,6 +1,8 @@
 package com.seproject.reservemac.ui.common;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,15 +18,13 @@ import com.seproject.reservemac.R;
 import com.seproject.reservemac.background.GetRequests;
 import com.seproject.reservemac.model.ReservationModel;
 import com.seproject.reservemac.model.UserModel;
+import com.seproject.reservemac.user.ModifyReservation;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ViewReservation extends AppCompatActivity implements GetRequests.AsyncResponse {
 
@@ -76,6 +76,8 @@ public class ViewReservation extends AppCompatActivity implements GetRequests.As
                         reservationModel.setUsername((json.getString("username")));
                         reservationModel.setFacilitycode((json.getString("facilitycode")));
                         reservationModel.setFacilityName((json.getString("name")));
+                        reservationModel.setFacilitydescription((json.getString("description")));
+                        reservationModel.setDeposit(Integer.parseInt((json.getString("deposit"))));
                         reservationModelArrayList.add(reservationModel);
                     }
 
@@ -105,7 +107,7 @@ public class ViewReservation extends AppCompatActivity implements GetRequests.As
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            public TextView TxtFacilityName, TxtFacilityCode, TxtReservationID, TxtDate;
+            public TextView TxtFacilityName, TxtFacilityCode, TxtReservationID, TxtDate, TxtStartTime, TxtEndTime;
             public LinearLayout LnrReservation;
 
             public MyViewHolder(View v) {
@@ -117,6 +119,8 @@ public class ViewReservation extends AppCompatActivity implements GetRequests.As
                 TxtFacilityCode = (TextView) v.findViewById(R.id.TxtFacilityCode);
                 TxtReservationID = (TextView) v.findViewById(R.id.TxtReservationID);
                 TxtDate = (TextView) v.findViewById(R.id.TxtDate);
+                TxtStartTime = (TextView) v.findViewById(R.id.TxtStartTime);
+                TxtEndTime = (TextView) v.findViewById(R.id.TxtEndTime);
 
             }
 
@@ -137,29 +141,36 @@ public class ViewReservation extends AppCompatActivity implements GetRequests.As
         public void onBindViewHolder(ViewReservationsAdapter.MyViewHolder holder, final int position) {
             final ReservationModel reservationModel = listofreservation.get(position);
 
-            String date = reservationModel.getstarttime();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            try {
+            String startTime = reservationModel.getstarttime();
+            String endTime = reservationModel.getEndTime();
 
-                Date date1 = (Date) sdf.parse(date);
-                String newDate = sdf.format(date1);
+            String[] parts = startTime.split(" ");
+            String date = parts[0];
+            String start = parts[1].substring(0, 5);
+
+            String[] parts2 = endTime.split(" ");
+            String end = parts2[1].substring(0, 5);
 
 
-                holder.TxtFacilityName.setText(reservationModel.getFacilityName());
-                holder.TxtFacilityCode.setText(reservationModel.getFacilitycode());
-                holder.TxtReservationID.setText("Res ID: " + reservationModel.getReservationid());
-                holder.TxtDate.setText(newDate);
+            reservationModel.setDate(date);
+            reservationModel.setstarttime(start);
+            reservationModel.setEndTime(end);
 
-                holder.LnrReservation.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-//                        Intent i = new Intent(view.getContext(),  );
-                    }
-                });
+            holder.TxtFacilityName.setText(reservationModel.getFacilityName());
+            holder.TxtFacilityCode.setText(reservationModel.getFacilitycode());
+            holder.TxtReservationID.setText("Res ID: " + reservationModel.getReservationid());
+            holder.TxtDate.setText("Date: " + reservationModel.getDate());
+            holder.TxtStartTime.setText("Time: " + reservationModel.getstarttime());
+            holder.TxtEndTime.setText(reservationModel.getEndTime());
 
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            holder.LnrReservation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(view.getContext(), ModifyReservation.class);
+                    i.putExtra("reservationModel", (Parcelable) reservationModel);
+                    startActivity(i);
+                }
+            });
         }
 
         @Override

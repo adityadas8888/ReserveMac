@@ -15,7 +15,7 @@ public class ReservationModel implements Parcelable {
     public int resstatus = 0;
     public String username = "";
     public String facilitycode = "";
-    public String facilityname = "";
+    public String name = "";
 
     public String facilitydescription = "";
     public int deposit = 0;
@@ -47,12 +47,30 @@ public class ReservationModel implements Parcelable {
         starttime = in.readString();
         endtime = in.readString();
         facilitycode = in.readString();
-        viodetails = in.readString();
-        reservationid = in.readInt();
-        violation = in.readInt();
-        resstatus = in.readInt();
+        name = in.readString();
         facilitydescription = in.readString();
         deposit = in.readInt();
+        reservationid = in.readInt();
+        resstatus = in.readInt();
+        violation = in.readInt();
+        viodetails = in.readString();
+
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(username);
+        dest.writeString(date);
+        dest.writeString(starttime);
+        dest.writeString(endtime);
+        dest.writeString(facilitycode);
+        dest.writeString(name);
+        dest.writeString(facilitydescription);
+        dest.writeInt(deposit);
+        dest.writeInt(reservationid);
+        dest.writeInt(resstatus);
+        dest.writeInt(violation);
+        dest.writeString(viodetails);
     }
 
     public static final Creator<ReservationModel> CREATOR = new Creator<ReservationModel>() {
@@ -141,11 +159,11 @@ public class ReservationModel implements Parcelable {
     }
 
     public String getFacilityName() {
-        return facilityname;
+        return name;
     }
 
-    public void setFacilityName(String facilityname) {
-        this.facilityname = facilityname;
+    public void setFacilityName(String name) {
+        this.name = name;
     }
 
     public String getFacilitydescription() {
@@ -182,19 +200,5 @@ public class ReservationModel implements Parcelable {
         return 0;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(username);
-        dest.writeString(date);
-        dest.writeString(starttime);
-        dest.writeString(endtime);
-        dest.writeString(facilitycode);
-        dest.writeString(facilityname);
-        dest.writeString(facilitydescription);
-        dest.writeInt(deposit);
-        dest.writeInt(reservationid);
-        dest.writeInt(resstatus);
-        dest.writeInt(violation);
-        dest.writeString(viodetails);
-    }
+
 }

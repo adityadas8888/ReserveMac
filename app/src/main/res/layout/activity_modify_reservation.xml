@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:gravity="center_vertical"
-            android:text="Modify Reservation"
+            android:text="Reservation Details"
             android:textColor="@color/colorTextWhite"
             android:textSize="16sp"
             android:textStyle="bold" />
