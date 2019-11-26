@@ -64,10 +64,10 @@ public class Facility_manager_reservation extends AppCompatActivity implements G
 
             try {
                 JSONObject jsonContent = jsonObject.getJSONObject("content");
-                ReservationId.setText(String.valueOf(jsonObject.getString("reservationid")));
-                username.setText(String.valueOf(jsonObject.getString("username")));
-                FacilityCode.setText(String.valueOf(jsonObject.getString("name")));
-                Bookingtime.setText(String.valueOf(jsonObject.getString("time")));
+                ReservationId.setText(String.valueOf(jsonContent.getString("reservationid")));
+                username.setText(String.valueOf(jsonContent.getString("username")));
+                FacilityCode.setText(String.valueOf(jsonContent.getString("name")));
+                Bookingtime.setText(String.valueOf(jsonContent.getString("time")));
 
 
             } catch (JSONException e) {
