@@ -185,8 +185,6 @@ public class SearchFacilityActivity extends AppCompatActivity implements DatePic
 
     public void TimeFilter(int hourOfDay, int minutes){
         String Fname = SpinnerFType.getSelectedItem().toString();
-        String roundMinutes = "";
-        String roundHours = "";
         String[] outdoor = new String[]{"2 Outdoor Volleyball Courts", "2 Outdoor Basketball Courts"};                  // check if outdoor
         if (Arrays.asList(outdoor).contains(Fname))
         {   outdoorflag = Boolean.TRUE;

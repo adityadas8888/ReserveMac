@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity implements GetRequests.Asyn
             stringBuilder.append("login.php?username=").append(username);
             stringBuilder.append("&password=").append(password);
             String url = stringBuilder.toString();
-//                String Url = stringBuilder.toString();
+
             new GetRequests(LoginActivity.this, url, LoginActivity.this, "Login").execute("");
 
         }
@@ -109,10 +109,10 @@ public class LoginActivity extends AppCompatActivity implements GetRequests.Asyn
 
     private void AfterReceived(JSONObject jsonObject, String output) {
 
-
         if (jsonObject != null) {
             try {
                 userModel = new UserModel();
+
                 JSONObject jsonContent = jsonObject.getJSONObject("content");
                 userModel.setUsername((jsonContent.getString("username")));
                 userModel.setFirstname((jsonContent.getString("firstname")));
@@ -158,6 +158,8 @@ public class LoginActivity extends AppCompatActivity implements GetRequests.Asyn
             }
 
         }
+        else
+            Toast.makeText(getApplicationContext(), "Username or Password is Invalid" , Toast.LENGTH_SHORT).show();
 
 
     }
