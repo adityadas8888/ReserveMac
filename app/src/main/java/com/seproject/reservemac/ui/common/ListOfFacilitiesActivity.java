@@ -1,10 +1,14 @@
 package com.seproject.reservemac.ui.common;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.seproject.reservemac.R;
 import com.seproject.reservemac.background.GetRequests;
 import com.seproject.reservemac.model.FacilityModel;
+import com.seproject.reservemac.user.ReserveFacility;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,7 +30,7 @@ public class ListOfFacilitiesActivity extends AppCompatActivity implements GetRe
     RecyclerView RecycleAvilableFacilites;
     AvailableFacilitiesAdapter availableFacilitiesAdapter;
     ArrayList<FacilityModel> facilityModelArrayList;
-    String facilityCode = "", date = "", time = "";
+    String facilityCode = "MR", date = "", time = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,18 +72,21 @@ public class ListOfFacilitiesActivity extends AppCompatActivity implements GetRe
             facilityModelArrayList = new ArrayList<>();
             try {
                 JSONArray jsonArray = jsonObject.getJSONArray("content");
+                if (jsonArray.length() != 0) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        FacilityModel facilityModel = new FacilityModel();
+                        JSONObject json = jsonArray.getJSONObject(i);
+                        facilityModel.setDeposit(Integer.parseInt((json.getString("deposit"))));
+                        facilityModel.setFacilitycode((json.getString("facilitycode")));
+                        facilityModel.setFacilityname((json.getString("name")));
+                        facilityModel.setFacilitydescription((json.getString("description")));
+                        facilityModel.setStartTime(json.getString("start"));
+                        facilityModel.setEndTime(json.getString("end"));
+                        facilityModelArrayList.add(facilityModel);
 
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    FacilityModel facilityModel = new FacilityModel();
-                    JSONObject json = jsonArray.getJSONObject(i);
-                    facilityModel.setDeposit(Integer.parseInt((json.getString("deposit"))));
-                    facilityModel.setFacilitycode((json.getString("facilitycode")));
-                    facilityModel.setFacilityname((json.getString("name")));
-                    facilityModel.setFacilitydescription((json.getString("description")));
-                    facilityModel.setStartTime(json.getString("start"));
-                    facilityModel.setEndTime(json.getString("end"));
-                    facilityModelArrayList.add(facilityModel);
-
+                    }
+                } else {
+                    Toast.makeText(this, "Nothing Available.!!", Toast.LENGTH_SHORT).show();
                 }
 
                 availableFacilitiesAdapter = new AvailableFacilitiesAdapter(facilityModelArrayList);
@@ -103,12 +111,13 @@ public class ListOfFacilitiesActivity extends AppCompatActivity implements GetRe
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
             public TextView TxtFacilityName, TxtFacilityCode, TxtStartTime, TxtEndTime;
-
+            public LinearLayout LnrFacility;
 
             public MyViewHolder(View v) {
                 super(v);
 
 
+                LnrFacility = (LinearLayout) v.findViewById(R.id.LnrFacility);
                 TxtFacilityName = (TextView) v.findViewById(R.id.TxtFacilityName);
                 TxtFacilityCode = (TextView) v.findViewById(R.id.TxtFacilityCode);
                 TxtStartTime = (TextView) v.findViewById(R.id.TxtStartTime);
@@ -139,6 +148,17 @@ public class ListOfFacilitiesActivity extends AppCompatActivity implements GetRe
             holder.TxtStartTime.setText(facilityModel.getStartTime());
             holder.TxtEndTime.setText(facilityModel.getEndTime());
 
+            holder.LnrFacility.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(view.getContext(), ReserveFacility.class);
+                    i.putExtra("facilityModel", (Parcelable) facilityModel);
+                    i.putExtra("date", date);
+//                    i.putExtra("FacilityName", facilityModel.getFacilityname());
+//                    i.putExtra("FacilityCode", facilityModel.getFacilitycode());
+//                    i.putExtra("StartTime", facilityModel.getStartTime());
+                }
+            });
         }
 
         @Override

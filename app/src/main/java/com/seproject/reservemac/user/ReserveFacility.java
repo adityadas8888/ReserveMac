@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.seproject.reservemac.R;
-import com.seproject.reservemac.model.ReservationModel;
+import com.seproject.reservemac.model.FacilityModel;
 
 public class ReserveFacility extends AppCompatActivity {
 
@@ -18,7 +18,7 @@ public class ReserveFacility extends AppCompatActivity {
     TextView FacilityCode;
     TextView FacilityDescription;
     TextView Date;
-    TextView Time;
+    TextView StartTime, EndTime;
     TextView Deposit;
 
 
@@ -27,24 +27,27 @@ public class ReserveFacility extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reserve_facility);
 
-        final ReservationModel reservationModel = getIntent().getParcelableExtra("reservationmodel");
+        final FacilityModel facilityModel = getIntent().getParcelableExtra("facilityModel");
 
         BtnMakeReservation = findViewById(R.id.BtnMakeReservation);
 
         FacilityName = findViewById(R.id.TxtFName);
-        FacilityName.setText(reservationModel.getFacilityName());
+        FacilityName.setText(facilityModel.getFacilityname());
 
         FacilityCode = findViewById(R.id.TxtFCode);
-        FacilityCode.setText(reservationModel.getFacilitycode());
+        FacilityCode.setText(facilityModel.getFacilitycode());
 
         Date = findViewById(R.id.TxtDate);
-        Date.setText(reservationModel.getDate());/// fix this
+        Date.setText(getIntent().getStringExtra("date"));/// fix this
 
-        Time = findViewById(R.id.TxtStartTime);
-        Time.setText(reservationModel.getstarttime());/// fix this
+        StartTime = findViewById(R.id.TxtStartTime);
+        StartTime.setText(facilityModel.getStartTime());/// fix this
+
+        EndTime = findViewById(R.id.TxtEndTime);
+        EndTime.setText(facilityModel.getEndTime());/// fix this
 
         Deposit = findViewById(R.id.TxtDeposit);
-//        Deposit.setText(reservationModel.getDeposit());/// fix this
+        Deposit.setText(facilityModel.getDeposit());/// fix this
 
 
         BtnMakeReservation.setOnClickListener(new View.OnClickListener() {
